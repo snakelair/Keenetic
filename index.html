@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Keenetic Entware Community Hub — SmartRoute & SmartPhoto</title>
+  <title>Keenetic Entware Community Hub — Smart Apps</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <style>
@@ -15,6 +15,7 @@
       --text-dim: #8b949e;
       --cyan: #38d39f;
       --blue: #1f6feb;
+      --purple: #a371f7;
       --yellow: #f1e05a;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -26,7 +27,7 @@
       padding: 48px 20px;
       line-height: 1.5;
     }
-    .container { max-width: 1100px; margin: 0 auto; }
+    .container { max-width: 1150px; margin: 0 auto; }
     .header { text-align: center; margin-bottom: 48px; }
     .header-badge {
       display: inline-flex;
@@ -60,13 +61,13 @@
     .coexist-text h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 4px; }
     .coexist-text p { color: var(--text-dim); font-size: 0.9rem; }
 
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; margin-bottom: 48px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-bottom: 48px; }
     .card {
       background: var(--card-bg);
       backdrop-filter: blur(14px);
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 30px;
+      padding: 28px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -77,14 +78,15 @@
       border-color: rgba(56, 211, 159, 0.4);
       box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
     }
-    .card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
-    .card-title { font-size: 1.5rem; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+    .card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+    .card-title { font-size: 1.4rem; font-weight: 700; display: flex; align-items: center; gap: 8px; }
     .badge { font-size: 0.76rem; font-weight: 700; padding: 4px 10px; border-radius: 999px; font-family: 'JetBrains Mono', monospace; }
     .badge-cyan { background: rgba(56, 211, 159, 0.15); color: var(--cyan); border: 1px solid rgba(56, 211, 159, 0.3); }
     .badge-blue { background: rgba(31, 111, 235, 0.15); color: #58a6ff; border: 1px solid rgba(31, 111, 235, 0.3); }
-    .port-pill { font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; color: var(--yellow); }
-    .desc { color: var(--text-dim); font-size: 0.94rem; line-height: 1.6; margin-bottom: 20px; flex: 1; }
-    .features { list-style: none; margin-bottom: 24px; font-size: 0.88rem; display: flex; flex-direction: column; gap: 8px; }
+    .badge-purple { background: rgba(163, 113, 247, 0.15); color: var(--purple); border: 1px solid rgba(163, 113, 247, 0.3); }
+    .port-pill { font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; color: var(--yellow); margin-bottom: 12px; }
+    .desc { color: var(--text-dim); font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px; flex: 1; }
+    .features { list-style: none; margin-bottom: 24px; font-size: 0.84rem; display: flex; flex-direction: column; gap: 8px; }
     .features li { display: flex; align-items: center; gap: 8px; }
     .features li::before { content: "✓"; color: var(--cyan); font-weight: bold; }
     
@@ -95,7 +97,7 @@
       border-radius: 8px;
       padding: 12px 14px;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       color: #7ee787;
       word-break: break-all;
       margin-bottom: 20px;
@@ -105,10 +107,10 @@
     .btn {
       flex: 1;
       text-align: center;
-      padding: 11px 16px;
+      padding: 10px 14px;
       border-radius: 8px;
       font-weight: 600;
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       text-decoration: none;
       transition: all 0.15s;
     }
@@ -140,7 +142,7 @@
     <div class="coexist-banner">
       <div class="coexist-text">
         <h3>⚡ Одновременная работа на одном роутере</h3>
-        <p>Smart-Route (порт 8088) и Smart-Photo (порт 8089) полностью изолированы, не конфликтуют и используют не более 15-30 МБ RAM суммарно.</p>
+        <p>Smart-Photo (порт 8089), Smart-Route (порт 8088) и Smart-Utils (порт 8087) полностью изолированы, не конфликтуют и работают с 0% нагрузки в режиме покоя.</p>
       </div>
       <span class="badge badge-cyan">Coexistence Verified</span>
     </div>
@@ -151,7 +153,7 @@
         <div>
           <div class="card-top">
             <h2 class="card-title">📷 Smart-Photo</h2>
-            <span class="badge badge-cyan">v1.0.9</span>
+            <span class="badge badge-cyan">v1.0.15</span>
           </div>
           <div class="port-pill">Порт: :8089 (http://192.168.1.1:8089)</div>
           <p class="desc">Персональный домашний фотосервер в стиле Google Photos прямо на роутере. Читает фото напрямую с USB-накопителей с генерацией миниатюр на лету.</p>
@@ -159,8 +161,8 @@
             <li>Бесконечная хроника фотоленты (Infinite Scroll)</li>
             <li>Интерактивный скроллер годов и дат справа</li>
             <li>Полноэкранный просмотрщик, зум, слайд-шоу, EXIF & GPS</li>
-            <li>Мини файловый менеджер для выбора папок</li>
-            <li>Кэширование в RAM и в корне USB-накопителя</li>
+            <li>Выбор нескольких папок и Live-синхронизация</li>
+            <li>0% нагрузки на CPU в режиме ожидания (RAM Logging)</li>
           </ul>
         </div>
         <div>
@@ -178,7 +180,7 @@
         <div>
           <div class="card-top">
             <h2 class="card-title">⚡ Smart-Route</h2>
-            <span class="badge badge-blue">v1.0.11</span>
+            <span class="badge badge-blue">v1.0.13</span>
           </div>
           <div class="port-pill">Порт: :8088 (http://192.168.1.1:8088)</div>
           <p class="desc">Сервис динамической многоинтерфейсной маршрутизации, бесшовного перехвата сбойных соединений (Failover Relay) и аппаратной разгрузки ядра.</p>
@@ -196,6 +198,33 @@
           <div class="actions">
             <a href="https://github.com/snakelair/SmartRoute" target="_blank" class="btn btn-primary">GitHub</a>
             <a href="smart_route_user_guide.md" class="btn btn-secondary">Инструкция</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Smart-Utils Card -->
+      <div class="card">
+        <div>
+          <div class="card-top">
+            <h2 class="card-title">🛠️ Smart-Utils</h2>
+            <span class="badge badge-purple">v1.0.3</span>
+          </div>
+          <div class="port-pill">Порт: :8087 (http://192.168.1.1:8087)</div>
+          <p class="desc">Многофункциональный веб-центр администрирования: встроенный веб-терминал, двухпанельный файловый менеджер и менеджер пакетов OPKG.</p>
+          <ul class="features">
+            <li>Веб-терминал в браузере (Web SSH / TTY)</li>
+            <li>Total Commander двухпанельный менеджер файлов</li>
+            <li>Управление и поиск пакетов OPKG с автодиагностикой</li>
+            <li>Мониторинг CPU, памяти и накопителей</li>
+            <li>Быстрые бэкапы конфигураций роутера</li>
+          </ul>
+        </div>
+        <div>
+          <div class="cmd-label">Установка в 1 команду по SSH:</div>
+          <div class="cmd-box">curl -sSL https://raw.githubusercontent.com/snakelair/Keenetic/main/install.sh | sh -s smart-utils</div>
+          <div class="actions">
+            <a href="https://github.com/snakelair/SmartUtils" target="_blank" class="btn btn-primary">GitHub</a>
+            <a href="smart_utils_user_guide.md" class="btn btn-secondary">Инструкция</a>
           </div>
         </div>
       </div>

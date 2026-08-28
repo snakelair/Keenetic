@@ -1,36 +1,24 @@
-Package: smart-route
-Version: 1.0.14-1
-Depends: iptables, ipset, ip-full, ca-certificates
-Section: net
+Package: smart-utils
+Version: 1.0.3-1
+Depends: ca-certificates
+Section: admin
 Architecture: aarch64-3.10
-Maintainer: Smart-Route Team
-MD5Sum: bf8b56c60f40f9249c3e48c41284eeac
-SHA256Sum: 4bfa48cf559181532a74063a2e340d7643dabb2f65e21c9ae47fc4b2095e6284
-Size: 3169166
-Filename: smart-route_1.0.14-1_aarch64-3.10.ipk
-Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
-
-Package: smart-route
-Version: 1.0.13-1
-Depends: iptables, ipset, ip-full, ca-certificates
-Section: net
-Architecture: aarch64-3.10
-Maintainer: Smart-Route Team
-MD5Sum: 708f912f5111fbcdbd5c169e0e28629f
-SHA256Sum: bca97cee299a4f59e8dd6bf39c6e365501ec4b1053cff2a9ae08c93038c72366
-Size: 3169165
-Filename: smart-route_1.0.13-1_aarch64-3.10.ipk
-Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
+Maintainer: Smart-Utils Team
+MD5Sum: 0f6bde77c3b05e6fe374197784bac075
+SHA256Sum: 5eba1c67ed5deba9d10e7ee53398573637f3fc04bff262e76aba95371b671270
+Size: 3158886
+Filename: smart-utils_1.0.3-1_aarch64-3.10.ipk
+Description: Modern Web Administration Suite with Web Terminal, Total Commander Dual-Pane File Manager, OPKG Package Manager, CPU/System Analyzer and Backups for Keenetic Entware routers.
 
 Package: smart-photo
-Version: 1.0.9-1
+Version: 1.0.15-1
 Depends: ca-certificates
 Section: multimedia
 Architecture: aarch64-3.10
 Maintainer: Smart-Photo Team
-MD5Sum: 4b55eb021587454f25ceccdf5df2ee88
-SHA256Sum: c90d07feb31a9a1a2dff52c5197b184bd15f8bc37bae6bc00666d882d5a540a6
-Size: 3050829
-Filename: smart-photo_1.0.9-1_aarch64-3.10.ipk
+MD5Sum: e6d0dd62c5df7beb6a6ee24d52768059
+SHA256Sum: e7cf4e98a98fa33a6337325f439bdf7b684df704ede7b146075eba2a5ea31089
+Size: 3053780
+Filename: smart-photo_1.0.15-1_aarch64-3.10.ipk
 Description: Google Photos-like photo manager and viewer daemon for USB storage with modern Web UI on Keenetic Entware routers.
 

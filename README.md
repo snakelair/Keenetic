@@ -6,31 +6,26 @@
 
 ## 📦 Доступные пакеты в репозитории
 
-### 1. ⚡ `smart-route` (v1.0.14)
-Системный сервис динамической многоинтерфейсной маршрутизации, бесшовного перехвата сбойных соединений (Failover Relay) и аппаратной разгрузки ядра (IPSet / NDM):
-- Автоматический выбор самого быстрого VPN-канала при сбоях и блокировках (Race/Sequential).
-- Аппаратный оффлоад ядра Linux (0% нагрузки на процессор роутера).
-- Поддержка списков исключений (.ru, .рф, банки, госуслуги) для прямого WAN-доступа.
-- Встроенная веб-панель управления: `http://192.168.1.1:8088` (или IP вашего роутера).
-- [📘 **Полное руководство пользователя и схемы работы (smart_route_user_guide.md)**](smart_route_user_guide.md)
-
-### 2. 📷 `smart-photo`
-Персональный домашний фотосервер в стиле **Google Photos** прямо на роутере Keenetic для подключенных USB-накопителей:
+### 1. 📷 `smart-photo` (v1.0.15)
+Персональный домашний фотосервер в стиле **Google Photos** прямо на роутере Keenetic:
 - Бесконечная лента фотохроники (Infinite Scroll) с быстрым отображением.
 - Сканирование и просмотр фото с подключенных по USB накопителей (флешки, HDD, SSD).
 - Мгновенная генерация и кэширование миниатюр на лету.
 - Полноэкранный просмотрщик (Lightbox) с зумом, слайд-шоу и просмотром EXIF-метаданных (камера, выдержка, диафрагма, GPS).
+- Автоматическая группировка по датам, папкам и альбомам.
 - Встроенная веб-панель: `http://192.168.1.1:8089`
-- [📷 **Руководство пользователя Smart-Photo (smart_photo_USER_GUIDE.md)**](smart_photo_USER_GUIDE.md)
+
+### 2. ⚡ `smart-route`
+Системный сервис динамической многоинтерфейсной маршрутизации и прозрачного отказоустойчивого проксирования для Keenetic:
+- Автоматический выбор самого быстрого интернет-канала и прокси.
+- Встроенная веб-панель: `http://192.168.1.1:8088`
 
 ### 3. 🛠️ `smart-utils`
-Панель системного администрирования, файловый менеджер и веб-терминалы для роутеров Keenetic:
-- Двухпанельный файловый менеджер (Total Commander/MC) с редактором конфигов.
-- Веб-терминалы: прямой CLI KeeneticOS (`ndmc`) и Linux SSH PTY консоль (`/opt/bin/sh`).
-- Менеджер пакетов и каталогов OPKG с живым поиском и установкой в 1 клик.
-- Мониторинг процессора, памяти, дисков и интерактивная таблица процессов (`top`/`htop`).
-- Встроенная веб-панель: `http://192.168.1.1:8090`
-- [🛠️ **Руководство пользователя Smart-Utils (smart_utils_user_guide.md)**](smart_utils_user_guide.md)
+Многофункциональный веб-центр администрирования и утилит для Keenetic:
+- Встроенный веб-терминал (Web SSH / TTY).
+- Двухпанельный файловый менеджер в стиле Total Commander.
+- Управление пакетами OPKG и автодиагностика системы.
+- Встроенная веб-панель: `http://192.168.1.1:8087`
 
 ---
 
@@ -41,13 +36,13 @@
 Подключитесь к роутеру по SSH и выполните:
 
 ```bash
-# Установить Smart-Route:
-curl -sSL https://raw.githubusercontent.com/snakelair/Keenetic/main/install.sh | sh -s smart-route
-
 # Установить Smart-Photo:
 curl -sSL https://raw.githubusercontent.com/snakelair/Keenetic/main/install.sh | sh -s smart-photo
 
-# Установить Smart-Utils:
+# Или установить Smart-Route:
+curl -sSL https://raw.githubusercontent.com/snakelair/Keenetic/main/install.sh | sh -s smart-route
+
+# Или установить Smart-Utils:
 curl -sSL https://raw.githubusercontent.com/snakelair/Keenetic/main/install.sh | sh -s smart-utils
 ```
 
@@ -59,12 +54,12 @@ curl -sSL https://raw.githubusercontent.com/snakelair/Keenetic/main/install.sh |
 
 ```bash
 ARCH=$(uname -m | sed 's/mips/mipsel-3.4/' | sed 's/aarch64/aarch64-3.10/' | sed 's/armv7l/armv7-3.2/')
-echo "src/gz keenetic-custom https://raw.githubusercontent.com/snakelair/Keenetic/main/entware/${ARCH}" > /opt/etc/opkg/keenetic.conf
+echo "src/gz keenetic https://raw.githubusercontent.com/snakelair/Keenetic/main/entware/${ARCH}" > /opt/etc/opkg/keenetic.conf
 
-# Обновите список пакетов и установите нужные сервисы:
+# Обновите список пакетов и установите нужный сервис:
 opkg update
-opkg install smart-route
 opkg install smart-photo
+opkg install smart-route
 opkg install smart-utils
 ```
 
@@ -73,12 +68,12 @@ opkg install smart-utils
 ## 🔄 Обновление пакетов
 
 ```bash
-opkg update && opkg upgrade smart-route smart-photo smart-utils
+opkg update && opkg upgrade smart-photo smart-route smart-utils
 ```
 
 ---
 
-## 🌐 Соответствие моделей Keenetic и архитектур
+## 🌐 Таблица совместимости моделей Keenetic
 
 | Архитектура | Модели роутеров Keenetic |
 | :--- | :--- |
