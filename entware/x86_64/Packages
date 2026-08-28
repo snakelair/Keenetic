@@ -1,3 +1,15 @@
+Package: smart-route
+Version: 1.0.15-1
+Depends: iptables, ipset, ip-full, ca-certificates
+Section: net
+Architecture: x86_64
+Maintainer: Smart-Route Team
+MD5Sum: 6d9284812e161ad6101c54e2764cba0b
+SHA256Sum: 1a30ff07186900992c64fead52c83f8d4f065c4622ebdd3d549fccd1030ef9a8
+Size: 3506790
+Filename: smart-route_1.0.15-1_x86_64.ipk
+Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
+
 Package: smart-utils
 Version: 1.0.3-1
 Depends: ca-certificates
