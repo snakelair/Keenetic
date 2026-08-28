@@ -1,0 +1,12 @@
+Package: smart-route
+Version: 1.0.11-1
+Depends: iptables, ipset, ip-full, ca-certificates
+Section: net
+Architecture: mips-3.4
+Maintainer: Smart-Route Team
+MD5Sum: 73d05530de2597ce6ba4dce978e1dec5
+SHA256Sum: f29748e7734a0df11dd78e6eb9b68b889e05567e5baa907497caba189c6efc0e
+Size: 3306420
+Filename: smart-route_1.0.11-1_mips-3.4.ipk
+Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
+
