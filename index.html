@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keenetic Entware Community Hub — SmartRoute & SmartPhoto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #080c14;
+      --card-bg: rgba(22, 27, 34, 0.85);
+      --border: rgba(255, 255, 255, 0.12);
+      --text: #e6edf3;
+      --text-dim: #8b949e;
+      --cyan: #38d39f;
+      --blue: #1f6feb;
+      --yellow: #f1e05a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: radial-gradient(circle at 10% 20%, #111827 0%, #080c14 90%);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      padding: 48px 20px;
+      line-height: 1.5;
+    }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .header { text-align: center; margin-bottom: 48px; }
+    .header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: rgba(31, 111, 235, 0.15);
+      border: 1px solid rgba(31, 111, 235, 0.3);
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #58a6ff;
+      margin-bottom: 16px;
+    }
+    .header h1 { font-size: 2.6rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 12px; }
+    .header h1 span { background: linear-gradient(135deg, #1f6feb, #38d39f); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .header p { color: var(--text-dim); font-size: 1.1rem; max-width: 680px; margin: 0 auto; }
+    
+    .coexist-banner {
+      background: linear-gradient(135deg, rgba(31, 111, 235, 0.12), rgba(56, 211, 159, 0.12));
+      border: 1px solid rgba(56, 211, 159, 0.3);
+      border-radius: 16px;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+    }
+    .coexist-text h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 4px; }
+    .coexist-text p { color: var(--text-dim); font-size: 0.9rem; }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; margin-bottom: 48px; }
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(56, 211, 159, 0.4);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+    }
+    .card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+    .card-title { font-size: 1.5rem; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+    .badge { font-size: 0.76rem; font-weight: 700; padding: 4px 10px; border-radius: 999px; font-family: 'JetBrains Mono', monospace; }
+    .badge-cyan { background: rgba(56, 211, 159, 0.15); color: var(--cyan); border: 1px solid rgba(56, 211, 159, 0.3); }
+    .badge-blue { background: rgba(31, 111, 235, 0.15); color: #58a6ff; border: 1px solid rgba(31, 111, 235, 0.3); }
+    .port-pill { font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; color: var(--yellow); }
+    .desc { color: var(--text-dim); font-size: 0.94rem; line-height: 1.6; margin-bottom: 20px; flex: 1; }
+    .features { list-style: none; margin-bottom: 24px; font-size: 0.88rem; display: flex; flex-direction: column; gap: 8px; }
+    .features li { display: flex; align-items: center; gap: 8px; }
+    .features li::before { content: "✓"; color: var(--cyan); font-weight: bold; }
+    
+    .cmd-label { font-size: 0.78rem; font-weight: 600; color: var(--text-dim); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .cmd-box {
+      background: #0d1117;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: #7ee787;
+      word-break: break-all;
+      margin-bottom: 20px;
+      user-select: all;
+    }
+    .actions { display: flex; gap: 10px; }
+    .btn {
+      flex: 1;
+      text-align: center;
+      padding: 11px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.88rem;
+      text-decoration: none;
+      transition: all 0.15s;
+    }
+    .btn-primary { background: var(--blue); color: #fff; }
+    .btn-primary:hover { background: #388bfd; }
+    .btn-secondary { background: rgba(255,255,255,0.06); color: var(--text); border: 1px solid var(--border); }
+    .btn-secondary:hover { background: rgba(255,255,255,0.12); }
+    
+    .table-section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+    }
+    .table-section h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 16px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th, td { padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border); }
+    th { color: var(--text-dim); font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="header-badge">⚡ Keenetic Entware Repository</div>
+      <h1>Keenetic <span>Smart Apps Hub</span></h1>
+      <p>Официальный репозиторий пакетов OPKG на чистом Go для роутеров Keenetic. Нулевой оверхед, высокая производительность и современные веб-интерфейсы.</p>
+    </div>
+
+    <div class="coexist-banner">
+      <div class="coexist-text">
+        <h3>⚡ Одновременная работа на одном роутере</h3>
+        <p>Smart-Route (порт 8088) и Smart-Photo (порт 8089) полностью изолированы, не конфликтуют и используют не более 15-30 МБ RAM суммарно.</p>
+      </div>
+      <span class="badge badge-cyan">Coexistence Verified</span>
+    </div>
+
+    <div class="grid">
+      <!-- Smart-Photo Card -->
+      <div class="card">
+        <div>
+          <div class="card-top">
+            <h2 class="card-title">📷 Smart-Photo</h2>
+            <span class="badge badge-cyan">v1.0.7</span>
+          </div>
+          <div class="port-pill">Порт: :8089 (http://192.168.1.1:8089)</div>
+          <p class="desc">Персональный домашний фотосервер в стиле Google Photos прямо на роутере. Читает фото напрямую с USB-накопителей с генерацией миниатюр на лету.</p>
+          <ul class="features">
+            <li>Бесконечная хроника фотоленты (Infinite Scroll)</li>
+            <li>Интерактивный скроллер годов и дат справа</li>
+            <li>Полноэкранный просмотрщик, зум, слайд-шоу, EXIF & GPS</li>
+            <li>Мини файловый менеджер для выбора папок</li>
+            <li>Кэширование в RAM и в корне USB-накопителя</li>
+          </ul>
+        </div>
+        <div>
+          <div class="cmd-label">Установка в 1 команду по SSH:</div>
+          <div class="cmd-box">curl -sSL https://raw.githubusercontent.com/snakelair/Keenetic/main/install.sh | sh -s smart-photo</div>
+          <div class="actions">
+            <a href="https://github.com/snakelair/SmartPhoto" target="_blank" class="btn btn-primary">GitHub</a>
+            <a href="smart_photo_USER_GUIDE.md" class="btn btn-secondary">Инструкция</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Smart-Route Card -->
+      <div class="card">
+        <div>
+          <div class="card-top">
+            <h2 class="card-title">⚡ Smart-Route</h2>
+            <span class="badge badge-blue">v1.0.11</span>
+          </div>
+          <div class="port-pill">Порт: :8088 (http://192.168.1.1:8088)</div>
+          <p class="desc">Сервис динамической многоинтерфейсной маршрутизации, бесшовного перехвата сбойных соединений (Failover Relay) и аппаратной разгрузки ядра.</p>
+          <ul class="features">
+            <li>Автоматический выбор самого быстрого VPN/WAN канала</li>
+            <li>Аппаратный оффлоад ядра Linux (IPSet / NDM)</li>
+            <li>Списки исключений (.ru, .рф, банки, госуслуги)</li>
+            <li>Удобная веб-панель управления и мониторинга</li>
+            <li>0% нагрузки на CPU роутера при передаче трафика</li>
+          </ul>
+        </div>
+        <div>
+          <div class="cmd-label">Установка в 1 команду по SSH:</div>
+          <div class="cmd-box">curl -sSL https://raw.githubusercontent.com/snakelair/Keenetic/main/install.sh | sh -s smart-route</div>
+          <div class="actions">
+            <a href="https://github.com/snakelair/SmartRoute" target="_blank" class="btn btn-primary">GitHub</a>
+            <a href="smart_route_user_guide.md" class="btn btn-secondary">Инструкция</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-section">
+      <h3>🌐 Таблица совместимости архитектур</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Архитектура Entware</th>
+            <th>Модели роутеров Keenetic</th>
+            <th>Статус</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>mipsel-3.4</strong></td>
+            <td>Viva, Extra, Speedster, Giga (KN-1010/KN-1011), Omni, Skipper, Air, Buddy</td>
+            <td><span class="badge badge-cyan">Готово</span></td>
+          </tr>
+          <tr>
+            <td><strong>armv7-3.2</strong></td>
+            <td>Hero (KN-1011/KN-1012), Titan (KN-1810), Giant (KN-2610), Ultra (KN-1810)</td>
+            <td><span class="badge badge-cyan">Готово</span></td>
+          </tr>
+          <tr>
+            <td><strong>aarch64-3.10</strong></td>
+            <td>Peak (KN-2710), Ultra (KN-1811), Titan (KN-1812), Hero 4G+ (KN-2311)</td>
+            <td><span class="badge badge-cyan">Готово</span></td>
+          </tr>
+          <tr>
+            <td><strong>x86_64</strong></td>
+            <td>x86 Entware / Виртуальные машины Keenetic</td>
+            <td><span class="badge badge-cyan">Готово</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
