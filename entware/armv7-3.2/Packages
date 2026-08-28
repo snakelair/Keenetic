@@ -1,3 +1,15 @@
+Package: smart-route
+Version: 1.0.13-1
+Depends: iptables, ipset, ip-full, ca-certificates
+Section: net
+Architecture: armv7-3.2
+Maintainer: Smart-Route Team
+MD5Sum: 4714bd24a7612085b479e336f175352c
+SHA256Sum: 8fc86d00abb72fc4535950b2eb9be8e71c703f0ebc8da8e24dea78ebb7e0bccd
+Size: 3388160
+Filename: smart-route_1.0.13-1_armv7-3.2.ipk
+Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
+
 Package: smart-utils
 Version: 1.0.3-1
 Depends: ca-certificates

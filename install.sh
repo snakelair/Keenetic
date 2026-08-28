@@ -1,8 +1,7 @@
 #!/bin/sh
-
 set -e
 
-PACKAGE="${1:-smart-utils}"
+PACKAGE="${1:-smart-route}"
 
 echo "================================================================================"
 echo "          Keenetic Entware OPKG Installer (snakelair/Keenetic)"
@@ -45,7 +44,6 @@ FEED_CONF="/opt/etc/opkg/keenetic.conf"
 REPO_URL="https://raw.githubusercontent.com/snakelair/Keenetic/main/entware/${ENT_ARCH}"
 
 echo "[*] Configuring OPKG repository feed: $REPO_URL..."
-mkdir -p /opt/etc/opkg
 echo "src/gz keenetic-custom $REPO_URL" > "$FEED_CONF"
 
 # 4. Update and Install
@@ -59,12 +57,12 @@ LAN_IP=$(uci get network.lan.ipaddr 2>/dev/null || ip route get 1.1.1.1 2>/dev/n
 
 echo ""
 echo "================================================================================"
-echo " [OK] Installation of $PACKAGE completed successfully!"
-if [ "$PACKAGE" = "smart-utils" ]; then
-    echo " Smart-Utils Web UI: http://${LAN_IP}:8090"
+echo " [OK] Installation completed successfully!"
+if [ "$PACKAGE" = "smart-photo" ]; then
+    echo " Smart-Photo Web UI: http://${LAN_IP}:8089"
 elif [ "$PACKAGE" = "smart-route" ]; then
     echo " Smart-Route Web UI: http://${LAN_IP}:8088"
-elif [ "$PACKAGE" = "smart-photo" ]; then
-    echo " Smart-Photo Web UI: http://${LAN_IP}:8089"
+else
+    echo " Package $PACKAGE is installed and ready."
 fi
 echo "================================================================================"
