@@ -25,14 +25,14 @@ Size: 3287406
 Filename: smart-utils_1.0.10_mipsel-3.4.ipk
 
 Package: smart-photo
-Version: 1.0.17
+Version: 1.0.18
 Depends: ca-certificates
 Section: multimedia
 Architecture: mipsel-3.4
 Maintainer: Smart-Photo Team
-MD5Sum: b9c03ef287934a0c087f99217420ec33
-SHA256Sum: 87019667e2f2c65ca807891775a96ce2a07fdbe5c1d96166ad0ae2eef3fdc059
-Size: 3164444
-Filename: smart-photo_1.0.17_mipsel-3.4.ipk
+MD5Sum: 0a73fb7b3ec30ff81a6cef392d35973c
+SHA256Sum: 1388bb747b80719bb7bf1239b915ad7eec670bc1ecc8a15bb00fb5b3b83284ec
+Size: 3165018
+Filename: smart-photo_1.0.18_mipsel-3.4.ipk
 Description: Google Photos-like photo manager and viewer daemon for USB storage with modern Web UI on Keenetic Entware routers.
 
