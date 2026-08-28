@@ -10,75 +10,15 @@ Size: 3506791
 Filename: smart-route_1.0.13-1_x86_64.ipk
 Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
 
-Package: smart-utils
-Version: 1.0.3-1
-Depends: ca-certificates
-Section: admin
-Architecture: x86_64
-Maintainer: Smart-Utils Team
-MD5Sum: fe99fdefce5d6c9150118985569ef04e
-SHA256Sum: da3228da348fa2ac3c4d6923b785b9198e66f6b01411fb7afb044ce32c42b90b
-Size: 3501342
-Filename: smart-utils_1.0.3-1_x86_64.ipk
-Description: Modern Web Administration Suite with Web Terminal, Total Commander Dual-Pane File Manager, OPKG Package Manager, CPU/System Analyzer and Backups for Keenetic Entware routers.
-
-Package: smart-route
-Version: 1.0.13-1
-Depends: iptables, ipset, ip-full, ca-certificates
-Section: net
-Architecture: x86_64
-Maintainer: Smart-Route Team
-MD5Sum: 0d404f6cd91cf69c1d4a65850e79fe2f
-SHA256Sum: 31315f1cc1a6b0c2614d2796c1676c4eb852b2dc81b791c2b32cbd9585217420
-Size: 3506789
-Filename: smart-route_1.0.13-1_x86_64.ipk
-Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
-
-Package: smart-route
-Version: 1.0.12-1
-Depends: iptables, ipset, ip-full, ca-certificates
-Section: net
-Architecture: all
-Maintainer: Smart-Route Team
-MD5Sum: 2406fa7f8f6a8fddeedacc1394b12487
-SHA256Sum: a0e655f80e045b9c4014bd76b2c0dcbfc919c3f02d73dab834b3ca95afb7031f
-Size: 3508367
-Filename: smart-route_1.0.12-1_x86_64.ipk
-Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
-
-Package: smart-route
-Version: 1.0.11-1
-Depends: iptables, ipset, ip-full, ca-certificates
-Section: net
-Architecture: all
-Maintainer: Smart-Route Team
-MD5Sum: 693d25b42c822a7c11987fe7a5375d22
-SHA256Sum: a57cab918952aa08a9be83f3dc2c53a507b1567a580d9496f295c7f669e416e9
-Size: 3508366
-Filename: smart-route_1.0.11-1_x86_64.ipk
-Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
-
 Package: smart-photo
-Version: 1.0.2-1
+Version: 1.0.9-1
 Depends: ca-certificates
 Section: multimedia
-Architecture: all
+Architecture: x86_64
 Maintainer: Smart-Photo Team
-MD5Sum: e0fbbdc8a0a79f768ff6eeb8ce40cc9f
-SHA256Sum: 381afa83738e9251457185c620fbb52d84fb7a885ba524d9cb52e2f6267ec271
-Size: 3349071
-Filename: smart-photo_1.0.2-1_x86_64.ipk
-Description: Google Photos-like photo manager and viewer daemon for USB storage with modern Web UI on Keenetic Entware routers.
-
-Package: smart-photo
-Version: 1.0.7-1
-Depends: ca-certificates
-Section: multimedia
-Architecture: all
-Maintainer: Smart-Photo Team
-MD5Sum: 11ac1f8e4fe1a839eea1256f20d1f2d6
-SHA256Sum: 0be5b891b807e40ae7fca4fe734c8186c657170c68a1b74ed1e7f89ef6c47976
+MD5Sum: 09b16b44a5e73aaeccaf3735730980e4
+SHA256Sum: 90106b2c2acb6cdfb855c93d08bd89f0e9782d146ad65ce4f8affc1e7413f339
 Size: 3375384
-Filename: smart-photo_1.0.7-1_x86_64.ipk
+Filename: smart-photo_1.0.9-1_x86_64.ipk
 Description: Google Photos-like photo manager and viewer daemon for USB storage with modern Web UI on Keenetic Entware routers.
 
