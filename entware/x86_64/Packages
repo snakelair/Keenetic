@@ -1,16 +1,3 @@
-Package: smart-photo
-Version: 1.0.20
-Depends: ca-certificates
-Section: multimedia
-Architecture: x86_64
-Maintainer: Smart-Photo Team
-Description: Google Photos-like photo manager and viewer daemon for USB storage with modern Web UI on Keenetic Entware routers.
-Priority: optional
-MD5Sum: fee4eead69ff2160e11c67cd9785f7f7
-SHA256Sum: 4633a58209e4927ac8f8b2285acc1267e1ef54ec77432245b5bfb168565af78c
-Size: 3405080
-Filename: smart-photo_1.0.20_x86_64.ipk
-
 Package: smart-route
 Version: 1.0.16
 Depends: iptables, ipset, ip-full, ca-certificates
@@ -36,4 +23,16 @@ MD5Sum: cbf5ba9db35e62065fb0e2bb03272d76
 SHA256Sum: cb595934ddafe5efba1d0f223c7ad6c158b4e3ec8f0097420bc3af4e6f0d1a6e
 Size: 3569302
 Filename: smart-utils_1.0.19_x86_64.ipk
+
+Package: smart-photo
+Version: 1.0.27
+Depends: ca-certificates
+Section: multimedia
+Architecture: x86_64
+Maintainer: Smart-Photo Team
+MD5Sum: 9521421a71784ed5f1b0c58da48a4004
+SHA256Sum: 1222fba7b5efddf544da60b05f356912b70c747067a3d10a3ed249b243ca7f6d
+Size: 3780021
+Filename: smart-photo_1.0.27_x86_64.ipk
+Description: Google Photos-like photo manager and viewer daemon for USB storage with modern Web UI on Keenetic Entware routers.
 
