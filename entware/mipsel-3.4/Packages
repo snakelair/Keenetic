@@ -10,3 +10,15 @@ Size: 3259662
 Filename: smart-route_1.0.11-1_mipsel-3.4.ipk
 Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
 
+Package: smart-photo
+Version: 1.0.2-1
+Depends: ca-certificates
+Section: multimedia
+Architecture: mipsel-3.4
+Maintainer: Smart-Photo Team
+MD5Sum: 67cddab3d67155aa4f79ab7894523923
+SHA256Sum: ce383601dc8145df89b1bfe116d824ef18f32dd089405ae4e3bfc32dd834080e
+Size: 3132676
+Filename: smart-photo_1.0.2-1_mipsel-3.4.ipk
+Description: Google Photos-like photo manager and viewer daemon for USB storage with modern Web UI on Keenetic Entware routers.
+

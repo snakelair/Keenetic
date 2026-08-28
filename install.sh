@@ -1,19 +1,21 @@
 #!/bin/sh
 set -e
 
+PACKAGE="${1:-smart-photo}"
+
 echo "================================================================================"
-echo "          Smart-Route OPKG Installer for Keenetic Entware"
+echo "          Keenetic Entware OPKG Installer (snakelair/Keenetic)"
 echo "================================================================================"
 echo ""
 
-# 1. Check Entware environment
+# 1. Check Entware
 if [ ! -d "/opt/bin" ] || [ ! -x "/opt/bin/opkg" ]; then
     echo "[ERROR] Entware is not installed or /opt/bin/opkg not found!"
-    echo "Please set up Entware on your Keenetic router first."
+    echo "Please configure Entware on your Keenetic USB drive first."
     exit 1
 fi
 
-# 2. Detect CPU architecture
+# 2. Detect CPU Architecture
 ARCH=$(uname -m)
 ENT_ARCH=""
 
@@ -35,24 +37,30 @@ case "$ARCH" in
         ;;
 esac
 
-echo "[*] Detected router architecture: $ARCH -> Entware feed: $ENT_ARCH"
+echo "[*] Detected CPU: $ARCH -> Entware architecture: $ENT_ARCH"
 
-# 3. Configure OPKG repository feed
-FEED_CONF="/opt/etc/opkg/smartroute.conf"
+# 3. Configure Feed
+FEED_CONF="/opt/etc/opkg/keenetic.conf"
 REPO_URL="https://raw.githubusercontent.com/snakelair/Keenetic/main/entware/${ENT_ARCH}"
 
 echo "[*] Configuring OPKG repository feed: $REPO_URL..."
-echo "src/gz smartroute $REPO_URL" > "$FEED_CONF"
+echo "src/gz keenetic-custom $REPO_URL" > "$FEED_CONF"
 
 # 4. Update and Install
-echo "[*] Updating package lists..."
+echo "[*] Updating package index..."
 /opt/bin/opkg update
 
-echo "[*] Installing smart-route..."
-/opt/bin/opkg install smart-route
+echo "[*] Installing package: $PACKAGE..."
+/opt/bin/opkg install "$PACKAGE"
+
+LAN_IP=$(uci get network.lan.ipaddr 2>/dev/null || ip route get 1.1.1.1 2>/dev/null | awk '{print $7; exit}' || echo '192.168.1.1')
 
 echo ""
 echo "================================================================================"
-echo " [OK] Smart-Route installed successfully!"
-echo " Web UI is available at: http://$(uci get network.lan.ipaddr 2>/dev/null || ip route get 1.1.1.1 2>/dev/null | awk '{print $7; exit}' || echo '192.168.1.1'):8088"
+echo " [OK] Installation completed successfully!"
+if [ "$PACKAGE" = "smart-photo" ]; then
+    echo " Smart-Photo Web UI: http://${LAN_IP}:8089"
+elif [ "$PACKAGE" = "smart-route" ]; then
+    echo " Smart-Route Web UI: http://${LAN_IP}:8088"
+fi
 echo "================================================================================"

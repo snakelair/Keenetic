@@ -10,3 +10,15 @@ Size: 3508366
 Filename: smart-route_1.0.11-1_x86_64.ipk
 Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
 
+Package: smart-photo
+Version: 1.0.2-1
+Depends: ca-certificates
+Section: multimedia
+Architecture: x86_64
+Maintainer: Smart-Photo Team
+MD5Sum: e0fbbdc8a0a79f768ff6eeb8ce40cc9f
+SHA256Sum: 381afa83738e9251457185c620fbb52d84fb7a885ba524d9cb52e2f6267ec271
+Size: 3349071
+Filename: smart-photo_1.0.2-1_x86_64.ipk
+Description: Google Photos-like photo manager and viewer daemon for USB storage with modern Web UI on Keenetic Entware routers.
+

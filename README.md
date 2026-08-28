@@ -4,16 +4,21 @@
 
 ---
 
-## 📦 Доступные пакеты
+## 📦 Доступные пакеты в репозитории
 
-- **`smart-route`** (v1.0.11) — системный сервис динамической многоинтерфейсной маршрутизации и отказоустойчивого релея с встроенной веб-панелью управления (:8088).
+### 1. 📷 `smart-photo` (v1.0.2)
+Персональный домашний фотосервер в стиле **Google Photos** прямо на роутере Keenetic:
+- Бесконечная лента фотохроники (Infinite Scroll) с быстрым отображением.
+- Сканирование и просмотр фото с подключенных по USB накопителей (флешки, HDD, SSD).
+- Мгновенная генерация и кэширование миниатюр на лету.
+- Полноэкранный просмотрщик (Lightbox) с зумом, слайд-шоу и просмотром EXIF-метаданных (камера, выдержка, диафрагма, GPS).
+- Автоматическая группировка по датам, папкам и альбомам.
+- Встроенная веб-панель: `http://192.168.1.1:8089`
 
----
-
-## 📖 Документация и Руководство пользователя
-
-- [📘 Полное руководство пользователя и Архитектура со схемами (smart_route_user_guide.md)](smart_route_user_guide.md)
-- [📗 User Guide / Краткое руководство (USER_GUIDE.md)](USER_GUIDE.md)
+### 2. ⚡ `smart-route`
+Системный сервис динамической многоинтерфейсной маршрутизации и прозрачного отказоустойчивого проксирования для Keenetic:
+- Автоматический выбор самого быстрого интернет-канала и прокси.
+- Встроенная веб-панель: `http://192.168.1.1:8088`
 
 ---
 
@@ -24,37 +29,40 @@
 Подключитесь к роутеру по SSH и выполните:
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/snakelair/Keenetic/main/install.sh | sh
+# Установить Smart-Photo:
+curl -sSL https://raw.githubusercontent.com/snakelair/Keenetic/main/install.sh | sh -s smart-photo
+
+# Или установить Smart-Route:
+curl -sSL https://raw.githubusercontent.com/snakelair/Keenetic/main/install.sh | sh -s smart-route
 ```
 
 ---
 
 ### 2. Ручное подключение репозитория OPKG:
 
-Создайте конфигурационный файл репозитория в `/opt/etc/opkg/smartroute.conf`:
+Создайте конфигурационный файл репозитория в `/opt/etc/opkg/keenetic.conf`:
 
 ```bash
-# Определите архитектуру вашего роутера (например: mipsel-3.4, aarch64-3.10, armv7-3.2)
-echo "src/gz smartroute https://raw.githubusercontent.com/snakelair/Keenetic/main/entware/$(uname -m | sed 's/mips/mipsel-3.4/' | sed 's/aarch64/aarch64-3.10/' | sed 's/armv7l/armv7-3.2/')" > /opt/etc/opkg/smartroute.conf
+ARCH=$(uname -m | sed 's/mips/mipsel-3.4/' | sed 's/aarch64/aarch64-3.10/' | sed 's/armv7l/armv7-3.2/')
+echo "src/gz keenetic-custom https://raw.githubusercontent.com/snakelair/Keenetic/main/entware/${ARCH}" > /opt/etc/opkg/keenetic.conf
 
-# Обновите список пакетов и установите
+# Обновите список пакетов и установите нужный сервис:
 opkg update
+opkg install smart-photo
 opkg install smart-route
 ```
 
 ---
 
-## 🔄 Обновление пакета
-
-При выходе новых версий обновление выполняется стандартной командой OPKG:
+## 🔄 Обновление пакетов
 
 ```bash
-opkg update && opkg upgrade smart-route
+opkg update && opkg upgrade smart-photo smart-route
 ```
 
 ---
 
-## 🌐 Соответствие моделей Keenetic и архитектур
+## 🌐 Таблица совместимости моделей Keenetic
 
 | Архитектура | Модели роутеров Keenetic |
 | :--- | :--- |
