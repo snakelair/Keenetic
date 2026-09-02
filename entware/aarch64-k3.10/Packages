@@ -1,3 +1,16 @@
+Package: smart-photo
+Version: 1.0.37
+Depends: ca-certificates
+Section: multimedia
+Architecture: aarch64-3.10
+Maintainer: Smart-Photo Team
+Description: Google Photos-like photo manager and viewer daemon for USB storage with modern Web UI on Keenetic Entware routers.
+Priority: optional
+MD5Sum: a251d19d711587a9d58adc71702c02b4
+SHA256Sum: 8d621e59553e6f9ee014de2b91e2162081f93fac138d948aff83ffe8d08951a0
+Size: 3634298
+Filename: smart-photo_1.0.37_aarch64-3.10.ipk
+
 Package: smart-route
 Version: 1.0.25
 Depends: iptables, ipset, ip-full, ca-certificates
@@ -12,27 +25,15 @@ Size: 3200751
 Filename: smart-route_1.0.25_aarch64-3.10.ipk
 
 Package: smart-utils
-Version: 1.0.19
+Version: 1.0.20
 Depends: ca-certificates
 Section: admin
 Architecture: aarch64-3.10
 Maintainer: Smart-Utils Team
 Description: Modern Web Administration Suite with Web Terminal, Total Commander Dual-Pane File Manager, OPKG Package Manager, CPU/System Analyzer and Backups for Keenetic Entware routers.
 Priority: optional
-MD5Sum: c4e7cc1f4c60704013403bf867c3ba76
-SHA256Sum: 6ac14c8497f2187031f811940065e7c568811ad51e9947ff61ed90a9f53dd822
-Size: 3224834
-Filename: smart-utils_1.0.19_aarch64-3.10.ipk
-
-Package: smart-photo
-Version: 1.0.37
-Depends: ca-certificates
-Section: multimedia
-Architecture: aarch64-3.10
-Maintainer: Smart-Photo Team
-MD5Sum: a251d19d711587a9d58adc71702c02b4
-SHA256Sum: 8d621e59553e6f9ee014de2b91e2162081f93fac138d948aff83ffe8d08951a0
-Size: 3634298
-Filename: smart-photo_1.0.37_aarch64-3.10.ipk
-Description: Google Photos-like photo manager and viewer daemon for USB storage with modern Web UI on Keenetic Entware routers.
+MD5Sum: 3a5752c895624f734f0c22cb2080bdcb
+SHA256Sum: ecb2256a8d50d5d124773cd575ceebcd959ea70c258367e0ba4f1deafe1ec2ef
+Size: 3228061
+Filename: smart-utils_1.0.20_aarch64-3.10.ipk
 
