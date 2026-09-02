@@ -25,14 +25,14 @@ Size: 3569303
 Filename: smart-utils_1.0.19_x86_64.ipk
 
 Package: smart-photo
-Version: 1.0.34
+Version: 1.0.37
 Depends: ca-certificates
 Section: multimedia
 Architecture: x86_64
 Maintainer: Smart-Photo Team
-MD5Sum: ed530c321ae206ef8086e050e6be5ca3
-SHA256Sum: 1a54a8da5c5dfede49490ad11afb55a54c981b0c811ab2a6b1ff2d91b7766fba
-Size: 4003981
-Filename: smart-photo_1.0.34_x86_64.ipk
+MD5Sum: 9262d5b45039b021a7e8daecdb6164a5
+SHA256Sum: fae75906575db43b3e06384122b00121eca50eb04a64217e23f4e8fe275e4cde
+Size: 4015400
+Filename: smart-photo_1.0.37_x86_64.ipk
 Description: Google Photos-like photo manager and viewer daemon for USB storage with modern Web UI on Keenetic Entware routers.
 

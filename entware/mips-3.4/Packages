@@ -25,14 +25,14 @@ Size: 3381019
 Filename: smart-utils_1.0.19_mips-3.4.ipk
 
 Package: smart-photo
-Version: 1.0.34
+Version: 1.0.37
 Depends: ca-certificates
 Section: multimedia
 Architecture: mips-3.4
 Maintainer: Smart-Photo Team
-MD5Sum: 826ce710823837ff49dc186e0b946044
-SHA256Sum: 6024e4c9b64a7698a3966649f1587241f6639fc6ef54146d471e7933f3507ceb
-Size: 3770150
-Filename: smart-photo_1.0.34_mips-3.4.ipk
+MD5Sum: d8d0adf06caf9fb4af5d1b6cb4a9d5f7
+SHA256Sum: 3d62c8c686063946e90e544a229da8eaf6c72bf5c301671c245561118dd4543a
+Size: 3783003
+Filename: smart-photo_1.0.37_mips-3.4.ipk
 Description: Google Photos-like photo manager and viewer daemon for USB storage with modern Web UI on Keenetic Entware routers.
 
