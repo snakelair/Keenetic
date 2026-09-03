@@ -1,0 +1,9 @@
+﻿# Enforce LF line endings for Linux scripts, packaging files, and init scripts
+*.sh text eol=lf
+*postinst text eol=lf
+*prerm text eol=lf
+*conffiles text eol=lf
+*control* text eol=lf
+S99* text eol=lf
+Makefile text eol=lf
+Packages text eol=lf

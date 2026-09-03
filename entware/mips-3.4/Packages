@@ -1,3 +1,16 @@
+Package: smart-route
+Version: 1.0.29
+Depends: iptables, ipset, ip-full, ca-certificates
+Section: net
+Architecture: mips-3.4
+Maintainer: Smart-Route Team
+Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
+Priority: optional
+MD5Sum: bedccfd8667e81e5539ba7dfc30fd8b6
+SHA256Sum: 6413fa5fa8a5b7b2b0f5e0abf9c506080f4acd49b081e18043079dc2d6a4d694
+Size: 3344379
+Filename: smart-route_1.0.29_mips-3.4.ipk
+
 Package: smart-photo
 Version: 1.0.37
 Depends: ca-certificates
@@ -10,19 +23,6 @@ MD5Sum: d8d0adf06caf9fb4af5d1b6cb4a9d5f7
 SHA256Sum: 3d62c8c686063946e90e544a229da8eaf6c72bf5c301671c245561118dd4543a
 Size: 3783003
 Filename: smart-photo_1.0.37_mips-3.4.ipk
-
-Package: smart-route
-Version: 1.0.25
-Depends: iptables, ipset, ip-full, ca-certificates
-Section: net
-Architecture: mips-3.4
-Maintainer: Smart-Route Team
-Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
-Priority: optional
-MD5Sum: bc0dba3402f01060c43bba0fed400478
-SHA256Sum: 37b92185739218264ee86870ca55aba1749bee9e3d727a442e467fffad8599d6
-Size: 3335955
-Filename: smart-route_1.0.25_mips-3.4.ipk
 
 Package: smart-utils
 Version: 1.0.25
