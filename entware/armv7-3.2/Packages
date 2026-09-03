@@ -1,16 +1,3 @@
-Package: smart-route
-Version: 1.0.30
-Depends: iptables, ipset, ip-full, ca-certificates
-Section: net
-Architecture: armv7-3.2
-Maintainer: Smart-Route Team
-Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
-Priority: optional
-MD5Sum: ab877ddc89279cd4e8fe183810d84694
-SHA256Sum: a17f583bab7fc0e6a6ed5912bf119082b9475c8c1735d58c6d0a9398eb1c0b72
-Size: 3423462
-Filename: smart-route_1.0.30_armv7-3.2.ipk
-
 Package: smart-photo
 Version: 1.0.37
 Depends: ca-certificates
@@ -24,16 +11,29 @@ SHA256Sum: 733e2dc971274f90cf56505c69c67f80a15a814821c6fdb31366f953a648b857
 Size: 3862785
 Filename: smart-photo_1.0.37_armv7-3.2.ipk
 
+Package: smart-route
+Version: 1.0.30
+Depends: iptables, ipset, ip-full, ca-certificates
+Section: net
+Architecture: armv7-3.2
+Maintainer: Smart-Route Team
+Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
+Priority: optional
+MD5Sum: ab877ddc89279cd4e8fe183810d84694
+SHA256Sum: a17f583bab7fc0e6a6ed5912bf119082b9475c8c1735d58c6d0a9398eb1c0b72
+Size: 3423462
+Filename: smart-route_1.0.30_armv7-3.2.ipk
+
 Package: smart-utils
-Version: 1.0.25
+Version: 1.0.26
 Depends: ca-certificates
 Section: admin
 Architecture: armv7-3.2
 Maintainer: Smart-Utils Team
 Description: Modern Web Administration Suite with Web Terminal, Total Commander Dual-Pane File Manager, OPKG Package Manager, CPU/System Analyzer and Backups for Keenetic Entware routers.
 Priority: optional
-MD5Sum: 1017003e9761cd6d91e86c10d2c49969
-SHA256Sum: af9036e1b743182ef93096ca14fa3b30f54f328c3611a28442133492860f326a
-Size: 3486617
-Filename: smart-utils_1.0.25_armv7-3.2.ipk
+MD5Sum: 77a2e044e20e536afa5a77b485ee0e35
+SHA256Sum: 037ae38898c0efeb27f546f37303ef5340613baff5e50fbc195045d4b451f78f
+Size: 3488402
+Filename: smart-utils_1.0.26_armv7-3.2.ipk
 

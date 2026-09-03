@@ -1,16 +1,3 @@
-Package: smart-route
-Version: 1.0.30
-Depends: iptables, ipset, ip-full, ca-certificates
-Section: net
-Architecture: mipsel-3.4
-Maintainer: Smart-Route Team
-Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
-Priority: optional
-MD5Sum: 2a402f09b08b7e0f5e1ec38ef9e7ffb9
-SHA256Sum: a3a708dbdee3c820d53fbdbc6125601fcbb954319864b94b8f597148eef623e4
-Size: 3297648
-Filename: smart-route_1.0.30_mipsel-3.4.ipk
-
 Package: smart-photo
 Version: 1.0.37
 Depends: ca-certificates
@@ -24,16 +11,29 @@ SHA256Sum: 600343a156659ea873d62d2c09f293fbaa0179bd631668e2648f34723b977082
 Size: 3728476
 Filename: smart-photo_1.0.37_mipsel-3.4.ipk
 
+Package: smart-route
+Version: 1.0.30
+Depends: iptables, ipset, ip-full, ca-certificates
+Section: net
+Architecture: mipsel-3.4
+Maintainer: Smart-Route Team
+Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
+Priority: optional
+MD5Sum: 2a402f09b08b7e0f5e1ec38ef9e7ffb9
+SHA256Sum: a3a708dbdee3c820d53fbdbc6125601fcbb954319864b94b8f597148eef623e4
+Size: 3297648
+Filename: smart-route_1.0.30_mipsel-3.4.ipk
+
 Package: smart-utils
-Version: 1.0.25
+Version: 1.0.26
 Depends: ca-certificates
 Section: admin
 Architecture: mipsel-3.4
 Maintainer: Smart-Utils Team
 Description: Modern Web Administration Suite with Web Terminal, Total Commander Dual-Pane File Manager, OPKG Package Manager, CPU/System Analyzer and Backups for Keenetic Entware routers.
 Priority: optional
-MD5Sum: 0a566885048a0e42401e8f1b7834d9ec
-SHA256Sum: 3612ea08e755ffff2be7a64edbd33cd03e08df2cb5018643012c6e0623260a99
-Size: 3352054
-Filename: smart-utils_1.0.25_mipsel-3.4.ipk
+MD5Sum: fff7e813b96fa06dc7453c1384932a81
+SHA256Sum: 097e3a67bc34b942f5221cd0c301f20a3670d52832754f1e55e46b0f500ab687
+Size: 3352247
+Filename: smart-utils_1.0.26_mipsel-3.4.ipk
 

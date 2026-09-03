@@ -1,16 +1,3 @@
-Package: smart-route
-Version: 1.0.30
-Depends: iptables, ipset, ip-full, ca-certificates
-Section: net
-Architecture: aarch64-3.10
-Maintainer: Smart-Route Team
-Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
-Priority: optional
-MD5Sum: 75e8879c079a8b23c340be9c0fb506f5
-SHA256Sum: 88f1705dfe012db83c97c84a7543c2a34ef564a295a3e311ccb3d7dd8d736b4f
-Size: 3208457
-Filename: smart-route_1.0.30_aarch64-3.10.ipk
-
 Package: smart-photo
 Version: 1.0.37
 Depends: ca-certificates
@@ -24,16 +11,29 @@ SHA256Sum: 8d621e59553e6f9ee014de2b91e2162081f93fac138d948aff83ffe8d08951a0
 Size: 3634298
 Filename: smart-photo_1.0.37_aarch64-3.10.ipk
 
+Package: smart-route
+Version: 1.0.30
+Depends: iptables, ipset, ip-full, ca-certificates
+Section: net
+Architecture: aarch64-3.10
+Maintainer: Smart-Route Team
+Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
+Priority: optional
+MD5Sum: 75e8879c079a8b23c340be9c0fb506f5
+SHA256Sum: 88f1705dfe012db83c97c84a7543c2a34ef564a295a3e311ccb3d7dd8d736b4f
+Size: 3208457
+Filename: smart-route_1.0.30_aarch64-3.10.ipk
+
 Package: smart-utils
-Version: 1.0.25
+Version: 1.0.26
 Depends: ca-certificates
 Section: admin
 Architecture: aarch64-3.10
 Maintainer: Smart-Utils Team
 Description: Modern Web Administration Suite with Web Terminal, Total Commander Dual-Pane File Manager, OPKG Package Manager, CPU/System Analyzer and Backups for Keenetic Entware routers.
 Priority: optional
-MD5Sum: e2dfd2ae143785cad109c8e268c1cf82
-SHA256Sum: 22f393f9c507fb036783f25227734c9cea5accd7c4f3a30c8fb77aeae2313828
-Size: 3244539
-Filename: smart-utils_1.0.25_aarch64-3.10.ipk
+MD5Sum: 8cd56b2ed4cb8275719271cd57c50dcf
+SHA256Sum: fe46be58191f856ce9e3338de5762657f857ff64b3dc6f20e146c8c2faaffc9a
+Size: 3245759
+Filename: smart-utils_1.0.26_aarch64-3.10.ipk
 
