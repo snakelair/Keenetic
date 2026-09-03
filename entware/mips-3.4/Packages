@@ -25,15 +25,15 @@ Size: 3344201
 Filename: smart-route_1.0.30_mips-3.4.ipk
 
 Package: smart-utils
-Version: 1.0.26
+Version: 1.0.27
 Depends: ca-certificates
 Section: admin
 Architecture: mips-3.4
 Maintainer: Smart-Utils Team
 Description: Modern Web Administration Suite with Web Terminal, Total Commander Dual-Pane File Manager, OPKG Package Manager, CPU/System Analyzer and Backups for Keenetic Entware routers.
 Priority: optional
-MD5Sum: 5aa0492bb0dbe8094ce166b95e7a0a05
-SHA256Sum: b0bd952146f2b8a390f45e11e86a83d84f8ea3fe1897ea7d06b8d9364e688baf
-Size: 3400447
-Filename: smart-utils_1.0.26_mips-3.4.ipk
+MD5Sum: 6d5db98fdcefaff0b37d0692f604296d
+SHA256Sum: 8a0f4e417cae36df970e2c2f00fb33c9c1dc36291942f332b7c3d0895532adeb
+Size: 3585183
+Filename: smart-utils_1.0.27_mips-3.4.ipk
 
