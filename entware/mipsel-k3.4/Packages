@@ -25,15 +25,15 @@ Size: 3287497
 Filename: smart-route_1.0.25_mipsel-3.4.ipk
 
 Package: smart-utils
-Version: 1.0.22
+Version: 1.0.23
 Depends: ca-certificates
 Section: admin
 Architecture: mipsel-3.4
 Maintainer: Smart-Utils Team
 Description: Modern Web Administration Suite with Web Terminal, Total Commander Dual-Pane File Manager, OPKG Package Manager, CPU/System Analyzer and Backups for Keenetic Entware routers.
 Priority: optional
-MD5Sum: 8d8274765e830f3ae2fc4efea5adfd84
-SHA256Sum: d34c14ee0a4dae3c4220598ca8373311b3ea023bc43061caa31105aeb0563bfe
-Size: 3345199
-Filename: smart-utils_1.0.22_mipsel-3.4.ipk
+MD5Sum: 6da6eeb64c431c13d5d28453ac78dcfd
+SHA256Sum: 6e317859ee5fa63fc6e57da3b019ef569ea8ffe3f0227e997499e075f1ac5b3c
+Size: 3348980
+Filename: smart-utils_1.0.23_mipsel-3.4.ipk
 
