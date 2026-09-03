@@ -47,17 +47,27 @@ echo "[*] Configuring OPKG repository feed: $REPO_URL..."
 mkdir -p /opt/etc/opkg
 echo "src/gz keenetic-custom $REPO_URL" > "$FEED_CONF"
 
-# 4. Auto-heal broken OPKG status database (missing postinst / half-configured packages)
+# 4. Auto-heal broken OPKG status database (missing postinst / prerm permissions)
 for STAT_FILE in /opt/lib/opkg/status /opt/var/lib/opkg/status; do
     if [ -f "$STAT_FILE" ]; then
         INFO_DIR="$(dirname "$STAT_FILE")/info"
         mkdir -p "$INFO_DIR"
+        chmod 755 "$INFO_DIR"/* 2>/dev/null || true
+        for SCRIPT in "$INFO_DIR"/*.prerm "$INFO_DIR"/*.postinst "$INFO_DIR"/*.preinst "$INFO_DIR"/*.postrm; do
+            if [ -f "$SCRIPT" ]; then
+                chmod 755 "$SCRIPT" 2>/dev/null || true
+                if [ ! -s "$SCRIPT" ]; then
+                    printf '#!/bin/sh\nexit 0\n' > "$SCRIPT"
+                    chmod 755 "$SCRIPT" 2>/dev/null || true
+                fi
+            fi
+        done
         awk '/^Package: /{pkg=$2} /^Status: / && ($0 ~ /unpacked/ || $0 ~ /half-configured/ || $0 ~ /half-installed/) {print pkg}' "$STAT_FILE" | while read -r BROKEN_PKG; do
             if [ -n "$BROKEN_PKG" ]; then
                 POSTINST="$INFO_DIR/${BROKEN_PKG}.postinst"
                 if [ ! -f "$POSTINST" ]; then
                     printf '#!/bin/sh\nexit 0\n' > "$POSTINST"
-                    chmod +x "$POSTINST"
+                    chmod 755 "$POSTINST" 2>/dev/null || true
                 fi
             fi
         done
@@ -73,13 +83,22 @@ echo "[*] Updating package lists..."
 for STAT_FILE in /opt/lib/opkg/status /opt/var/lib/opkg/status; do
     if [ -f "$STAT_FILE" ]; then
         INFO_DIR="$(dirname "$STAT_FILE")/info"
-        mkdir -p "$INFO_DIR"
+        chmod 755 "$INFO_DIR"/* 2>/dev/null || true
+        for SCRIPT in "$INFO_DIR"/*.prerm "$INFO_DIR"/*.postinst "$INFO_DIR"/*.preinst "$INFO_DIR"/*.postrm; do
+            if [ -f "$SCRIPT" ]; then
+                chmod 755 "$SCRIPT" 2>/dev/null || true
+                if [ ! -s "$SCRIPT" ]; then
+                    printf '#!/bin/sh\nexit 0\n' > "$SCRIPT"
+                    chmod 755 "$SCRIPT" 2>/dev/null || true
+                fi
+            fi
+        done
         awk '/^Package: /{pkg=$2} /^Status: / && ($0 ~ /unpacked/ || $0 ~ /half-configured/ || $0 ~ /half-installed/) {print pkg}' "$STAT_FILE" | while read -r BROKEN_PKG; do
             if [ -n "$BROKEN_PKG" ]; then
                 POSTINST="$INFO_DIR/${BROKEN_PKG}.postinst"
                 if [ ! -f "$POSTINST" ]; then
                     printf '#!/bin/sh\nexit 0\n' > "$POSTINST"
-                    chmod +x "$POSTINST"
+                    chmod 755 "$POSTINST" 2>/dev/null || true
                 fi
             fi
         done
@@ -88,7 +107,11 @@ for STAT_FILE in /opt/lib/opkg/status /opt/var/lib/opkg/status; do
 done
 
 echo "[*] Installing/upgrading package: $PACKAGE..."
-/opt/bin/opkg install "$PACKAGE" --force-reinstall 2>/dev/null || /opt/bin/opkg install "$PACKAGE" || /opt/bin/opkg upgrade "$PACKAGE"
+/opt/bin/opkg install "$PACKAGE" --force-remove --force-reinstall --force-overwrite 2>/dev/null || \
+/opt/bin/opkg upgrade "$PACKAGE" --force-remove --force-overwrite 2>/dev/null || \
+/opt/bin/opkg install "$PACKAGE" --force-remove 2>/dev/null || \
+/opt/bin/opkg install "$PACKAGE"
+
 
 # 6. Start / Restart service safely (detached in background so remote shell / SSH doesn't hang)
 

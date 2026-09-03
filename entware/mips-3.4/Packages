@@ -32,8 +32,8 @@ Architecture: mips-3.4
 Maintainer: Smart-Utils Team
 Description: Modern Web Administration Suite with Web Terminal, Total Commander Dual-Pane File Manager, OPKG Package Manager, CPU/System Analyzer and Backups for Keenetic Entware routers.
 Priority: optional
-MD5Sum: 6d5db98fdcefaff0b37d0692f604296d
-SHA256Sum: 8a0f4e417cae36df970e2c2f00fb33c9c1dc36291942f332b7c3d0895532adeb
-Size: 3585183
+MD5Sum: e7993c83fd99925b025df4ca2425467f
+SHA256Sum: 140f9c736903acf58f19f2ad6fa4d4cd7d2f14864c8d93cbeab9869362246aa6
+Size: 3586065
 Filename: smart-utils_1.0.27_mips-3.4.ipk
 
