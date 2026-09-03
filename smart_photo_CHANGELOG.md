@@ -1,5 +1,15 @@
 # 📦 Smart-Photo Changelog
 
+## [1.0.39] - 2026-09-03
+
+### Clean OPKG Installation & Unified API Status
+- **Устранение дублирования информации при установке OPKG-скриптом**:
+  - `package/entware/control/postinst` переведён на тихий фоновый запуск (detached graceful restart) без вывода устаревших баннеров с пустым IP.
+  - Добавлен системный эндпоинт `GET /api/status`, возвращающий `status`, `version`, `router_model` и `web_port`.
+  - Модель роутера (`router_model`) теперь корректно детектируется из `/tmp/sysinfo/model`, Device Tree и `ndmc`.
+  - В установочный скрипт `install.sh` добавлена проверка занятости порта и диагностика таймаута старта.
+  - Формат завершения установки полностью приведен в соответствие со **Smart-Utils**.
+
 ## [1.0.38] - 2026-09-02
 
 ### Self-Update System (Smart-Utils Style)

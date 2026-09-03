@@ -1,28 +1,15 @@
-Package: smart-photo
-Version: 1.0.37
-Depends: ca-certificates
-Section: multimedia
-Architecture: mipsel-3.4
-Maintainer: Smart-Photo Team
-Description: Google Photos-like photo manager and viewer daemon for USB storage with modern Web UI on Keenetic Entware routers.
-Priority: optional
-MD5Sum: 3ac827db9f233e54365dd0e3dfa91fef
-SHA256Sum: 600343a156659ea873d62d2c09f293fbaa0179bd631668e2648f34723b977082
-Size: 3728476
-Filename: smart-photo_1.0.37_mipsel-3.4.ipk
-
 Package: smart-route
-Version: 1.0.25
+Version: 1.0.31
 Depends: iptables, ipset, ip-full, ca-certificates
 Section: net
 Architecture: mipsel-3.4
 Maintainer: Smart-Route Team
 Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
 Priority: optional
-MD5Sum: e8a14ee7081b3e75f9d5f7545e03a78d
-SHA256Sum: 39a053eceb8dc356dc71c746a2e20e314c2e260fafc64da030170bd40ee1890d
-Size: 3287497
-Filename: smart-route_1.0.25_mipsel-3.4.ipk
+MD5Sum: 9ac4d013ceadfbd0d86fb0938b42adb9
+SHA256Sum: 17562de431d3ba4ec22230e9edfeb38f2d0405d0880e129a123ebdf46a2f37c6
+Size: 3298270
+Filename: smart-route_1.0.31_mipsel-3.4.ipk
 
 Package: smart-utils
 Version: 1.0.28
@@ -36,4 +23,16 @@ MD5Sum: 5c26237e9843fb0deeca98e6fde6168f
 SHA256Sum: 4b6aac5e3895f217c843eb9f7b87bb3433e35234e766058eb6462ef4472257c2
 Size: 3538135
 Filename: smart-utils_1.0.28_mipsel-3.4.ipk
+
+Package: smart-photo
+Version: 1.0.39
+Depends: ca-certificates
+Section: multimedia
+Architecture: mipsel-3.4
+Maintainer: Smart-Photo Team
+MD5Sum: 22cbcfe1e2f8cbbc676d19298db09339
+SHA256Sum: a39ca6bc89e3739994400eab52947bb2eb7af5ccbd291395b9176edd5b9e0681
+Size: 3748132
+Filename: smart-photo_1.0.39_mipsel-3.4.ipk
+Description: Google Photos-like photo manager and viewer daemon for USB storage with modern Web UI on Keenetic Entware routers.
 

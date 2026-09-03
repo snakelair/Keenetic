@@ -67,6 +67,14 @@ if ( exec 3>/dev/tty 4</dev/tty ) 2>/dev/null; then
 fi
 printf "\033[1;34m[*]\033[0m Порт веб-интерфейса: \033[1;37m%s\033[0m\n" "$SELECTED_PORT"
 
+# Check if selected port is already in use by another process
+if which netstat >/dev/null 2>&1; then
+    LISTEN_PROC=$(netstat -lntp 2>/dev/null | grep ":${SELECTED_PORT} " | awk '{print $7}' | cut -d/ -f2)
+    if [ -n "$LISTEN_PROC" ] && [ "$LISTEN_PROC" != "$PACKAGE" ] && [ "$LISTEN_PROC" != "-" ]; then
+        printf "\033[1;33m[!]\033[0m Внимание: порт %s уже занят процессом '%s'.\n" "$SELECTED_PORT" "$LISTEN_PROC"
+    fi
+fi
+
 # 4. Configure OPKG repository feed
 FEED_CONF="/opt/etc/opkg/keenetic.conf"
 REPO_URL="https://raw.githubusercontent.com/snakelair/Keenetic/main/entware/${ENT_ARCH}"
@@ -221,6 +229,15 @@ for i in 1 2 3 4 5 6 7 8 9 10 11 12; do
         fi
     fi
 done
+
+if [ -z "$ACTIVE_VER" ]; then
+    printf "\033[1;33m[!]\033[0m Предупреждение: сервис не ответил на http://127.0.0.1:%s/api/status за 12 сек.\n" "$SELECTED_PORT"
+    if ! pidof "$PACKAGE" >/dev/null 2>&1; then
+        printf "\033[1;31m[!]\033[0m Процесс %s не найден среди запущенных. Проверьте запуск: /opt/etc/init.d/S99%s start\n" "$PACKAGE" "$PACKAGE"
+    else
+        printf "\033[1;33m[*]\033[0m Процесс %s запущен (PID %s), но порт %s еще инициализируется.\n" "$PACKAGE" "$(pidof "$PACKAGE" | awk '{print $1}')" "$SELECTED_PORT"
+    fi
+fi
 
 if [ -z "$ROUTER_MODEL" ]; then
     ROUTER_MODEL=$(ndmc -c 'show version' 2>/dev/null | grep -i 'model:' | head -n1 | awk -F: '{print $2}' | xargs 2>/dev/null || true)
