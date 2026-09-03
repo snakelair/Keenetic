@@ -134,14 +134,22 @@ printf "\033[1;34m[*]\033[0m Installing/upgrading package: \033[1;37m%s\033[0m..
 
 INSTALL_RES=$?
 
-# 6. Start / Restart service safely (detached in background so remote shell / SSH doesn't hang)
+# 6. Start / Restart service safely
 if [ -x "/opt/etc/init.d/S99smart-utils" ] && [ "$PACKAGE" = "smart-utils" ]; then
-    ( sleep 1; /opt/etc/init.d/S99smart-utils restart >/dev/null 2>&1 || /opt/etc/init.d/S99smart-utils start >/dev/null 2>&1 ) >/dev/null 2>&1 &
+    printf "\033[1;34m[*]\033[0m Restarting Smart-Utils service...\n"
+    /opt/etc/init.d/S99smart-utils restart >/dev/null 2>&1 || {
+        killall -9 smart-utils >/dev/null 2>&1
+        sleep 1
+        /opt/etc/init.d/S99smart-utils start >/dev/null 2>&1
+    }
 elif [ -x "/opt/etc/init.d/S99smart-route" ] && [ "$PACKAGE" = "smart-route" ]; then
-    ( sleep 1; /opt/etc/init.d/S99smart-route restart >/dev/null 2>&1 || /opt/etc/init.d/S99smart-route start >/dev/null 2>&1 ) >/dev/null 2>&1 &
+    printf "\033[1;34m[*]\033[0m Restarting Smart-Route service...\n"
+    /opt/etc/init.d/S99smart-route restart >/dev/null 2>&1 || /opt/etc/init.d/S99smart-route start >/dev/null 2>&1
 elif [ -x "/opt/etc/init.d/S99smart-photo" ] && [ "$PACKAGE" = "smart-photo" ]; then
-    ( sleep 1; /opt/etc/init.d/S99smart-photo restart >/dev/null 2>&1 || /opt/etc/init.d/S99smart-photo start >/dev/null 2>&1 ) >/dev/null 2>&1 &
+    printf "\033[1;34m[*]\033[0m Restarting Smart-Photo service...\n"
+    /opt/etc/init.d/S99smart-photo restart >/dev/null 2>&1 || /opt/etc/init.d/S99smart-photo start >/dev/null 2>&1
 fi
+
 
 LAN_IP=$(ip -4 addr show br0 2>/dev/null | awk '/inet /{print $2}' | cut -d/ -f1 | head -n1)
 [ -z "$LAN_IP" ] && LAN_IP=$(ifconfig br0 2>/dev/null | awk -F'[: ]+' '/inet addr/{print $4}' | head -n1)
