@@ -6,9 +6,9 @@ Architecture: x86_64
 Maintainer: Smart-Route Team
 Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
 Priority: optional
-MD5Sum: 21d4b9ef171d563e304e0dd95d980916
-SHA256Sum: 5ee5bfa7b45424b93f8988a243dd16c1d390ad5126bbb8b684f1c3b625d6f815
-Size: 3549369
+MD5Sum: 189fc569e70c1993901d46e985863e4a
+SHA256Sum: 9257812ddb3d7055fd0d9545a14af9bf97c6b180e0421d0b97ba9f15874c3222
+Size: 3549425
 Filename: smart-route_1.0.30_x86_64.ipk
 
 Package: smart-photo

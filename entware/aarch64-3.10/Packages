@@ -6,8 +6,8 @@ Architecture: aarch64-3.10
 Maintainer: Smart-Route Team
 Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
 Priority: optional
-MD5Sum: 93841d2716a8a3a65663f9dec85fd5bb
-SHA256Sum: 918f9be3c4e1200e618ede115e8bbd946e7171a0fa96eed390a956c31392853d
+MD5Sum: 75e8879c079a8b23c340be9c0fb506f5
+SHA256Sum: 88f1705dfe012db83c97c84a7543c2a34ef564a295a3e311ccb3d7dd8d736b4f
 Size: 3208457
 Filename: smart-route_1.0.30_aarch64-3.10.ipk
 
