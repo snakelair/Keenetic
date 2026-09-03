@@ -55,17 +55,19 @@ if [ -f "$CFG_FILE" ]; then
 fi
 
 SELECTED_PORT="$DEFAULT_PORT"
-if [ -t 0 ] || [ -t 1 ]; then
-    if { [ -c /dev/tty ] && : </dev/tty ; } 2>/dev/null; then
-        printf "\033[1;33m[?]\033[0m Порт веб-интерфейса [%s]: " "$DEFAULT_PORT" >/dev/tty 2>/dev/null
-        read -r USER_INPUT </dev/tty 2>/dev/null || USER_INPUT=""
-        USER_INPUT=$(echo "$USER_INPUT" | tr -dc '0-9')
-        if [ -n "$USER_INPUT" ] && [ "$USER_INPUT" -ge 1 ] && [ "$USER_INPUT" -le 65535 ]; then
-            SELECTED_PORT="$USER_INPUT"
-        fi
+IS_TTY=0
+sh -c 'exec </dev/tty' >/dev/null 2>&1 && IS_TTY=1
+
+if [ "$IS_TTY" = "1" ]; then
+    printf "\033[1;33m[?]\033[0m Порт веб-интерфейса [%s]: " "$DEFAULT_PORT" >/dev/tty 2>/dev/null
+    read -r USER_INPUT </dev/tty 2>/dev/null || USER_INPUT=""
+    USER_INPUT=$(echo "$USER_INPUT" | tr -dc '0-9')
+    if [ -n "$USER_INPUT" ] && [ "$USER_INPUT" -ge 1 ] && [ "$USER_INPUT" -le 65535 ]; then
+        SELECTED_PORT="$USER_INPUT"
     fi
 fi
 printf "\033[1;34m[*]\033[0m Порт веб-интерфейса: \033[1;37m%s\033[0m\n" "$SELECTED_PORT"
+
 
 # 4. Configure OPKG repository feed
 FEED_CONF="/opt/etc/opkg/keenetic.conf"
