@@ -79,16 +79,13 @@ opkg install smart-photo
 
 ---
 
-## 🛠️ Сборка и разработка
+## 📱 Клиентские приложения
 
-Smart-Photo написан на Go и содержит готовые Windows-скрипты:
-
-- `run.bat` — быстрый запуск на Windows (веб-панель на `http://localhost:8089`).
-- `build.bat` — интерактивное меню компиляции для всех архитектур.
-- `build_all.bat` — сборка всех бинарников в папку `dist/`.
-- `deploy_to_router.bat` — сборка и заливка на роутер в 1 клик по SSH.
-- `push_keenetic_repo.bat` — сборка пакетов `.ipk`, обновление репозитория `snakelair/Keenetic` и автоматический push.
-- `git_menu.bat` / `git_push.bat` — управление Git репозиторием `snakelair/SmartPhoto`.
+- **SmartPhotoSync (Android)**: фоновая автоматическая синхронизация фотографий со смартфонов по Wi-Fi.  
+  👉 [Скачать SmartPhotoAndroid.apk](https://github.com/snakelair/Keenetic/raw/main/apk/SmartPhotoAndroid.apk)
+- **SmartPhotoTV (Android TV)**: просмотр фотоархива на экране телевизора с поддержкой пульта ДУ.  
+  👉 [Скачать SmartPhotoTV.apk](https://github.com/snakelair/Keenetic/raw/main/apk/SmartPhotoTV.apk)
+- **WebDAV**: прямое подключение медиатеки на iPhone/iPad (системное приложение «Файлы»), macOS и Windows.
 
 ---
 
