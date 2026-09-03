@@ -47,14 +47,51 @@ echo "[*] Configuring OPKG repository feed: $REPO_URL..."
 mkdir -p /opt/etc/opkg
 echo "src/gz keenetic-custom $REPO_URL" > "$FEED_CONF"
 
-# 4. Update and Install
+# 4. Auto-heal broken OPKG status database (missing postinst / half-configured packages)
+for STAT_FILE in /opt/lib/opkg/status /opt/var/lib/opkg/status; do
+    if [ -f "$STAT_FILE" ]; then
+        INFO_DIR="$(dirname "$STAT_FILE")/info"
+        mkdir -p "$INFO_DIR"
+        awk '/^Package: /{pkg=$2} /^Status: / && ($0 ~ /unpacked/ || $0 ~ /half-configured/ || $0 ~ /half-installed/) {print pkg}' "$STAT_FILE" | while read -r BROKEN_PKG; do
+            if [ -n "$BROKEN_PKG" ]; then
+                POSTINST="$INFO_DIR/${BROKEN_PKG}.postinst"
+                if [ ! -f "$POSTINST" ]; then
+                    printf '#!/bin/sh\nexit 0\n' > "$POSTINST"
+                    chmod +x "$POSTINST"
+                fi
+            fi
+        done
+        /opt/bin/opkg configure >/dev/null 2>&1 || true
+    fi
+done
+
+# 5. Update and Install
 echo "[*] Updating package lists..."
 /opt/bin/opkg update
+
+# Re-run heal after update if needed
+for STAT_FILE in /opt/lib/opkg/status /opt/var/lib/opkg/status; do
+    if [ -f "$STAT_FILE" ]; then
+        INFO_DIR="$(dirname "$STAT_FILE")/info"
+        mkdir -p "$INFO_DIR"
+        awk '/^Package: /{pkg=$2} /^Status: / && ($0 ~ /unpacked/ || $0 ~ /half-configured/ || $0 ~ /half-installed/) {print pkg}' "$STAT_FILE" | while read -r BROKEN_PKG; do
+            if [ -n "$BROKEN_PKG" ]; then
+                POSTINST="$INFO_DIR/${BROKEN_PKG}.postinst"
+                if [ ! -f "$POSTINST" ]; then
+                    printf '#!/bin/sh\nexit 0\n' > "$POSTINST"
+                    chmod +x "$POSTINST"
+                fi
+            fi
+        done
+        /opt/bin/opkg configure >/dev/null 2>&1 || true
+    fi
+done
 
 echo "[*] Installing/upgrading package: $PACKAGE..."
 /opt/bin/opkg install "$PACKAGE" --force-reinstall 2>/dev/null || /opt/bin/opkg install "$PACKAGE" || /opt/bin/opkg upgrade "$PACKAGE"
 
-# 5. Start / Restart service safely (detached in background so remote shell / SSH doesn't hang)
+# 6. Start / Restart service safely (detached in background so remote shell / SSH doesn't hang)
+
 if [ -x "/opt/etc/init.d/S99smart-utils" ] && [ "$PACKAGE" = "smart-utils" ]; then
     ( sleep 1; /opt/etc/init.d/S99smart-utils restart >/dev/null 2>&1 || /opt/etc/init.d/S99smart-utils start >/dev/null 2>&1 ) >/dev/null 2>&1 &
 elif [ -x "/opt/etc/init.d/S99smart-route" ] && [ "$PACKAGE" = "smart-route" ]; then
