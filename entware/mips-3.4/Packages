@@ -6,9 +6,9 @@ Architecture: mips-3.4
 Maintainer: Smart-Route Team
 Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
 Priority: optional
-MD5Sum: 5852152cc86beb4b8d34a09f9f9ad1e5
-SHA256Sum: e75e44c28be92d525193f8e38a3992572a323378fba29fa5a480fca8ec44ecc5
-Size: 3343588
+MD5Sum: 27037091b4c1a2bd82293aab817cb6e3
+SHA256Sum: d49f2a28539d46f0b83be98b24e8a390bd0f1b43b2af373c70db9ede4cd6b289
+Size: 3343593
 Filename: smart-route_1.0.31_mips-3.4.ipk
 
 Package: smart-photo
