@@ -55,9 +55,9 @@ if [ -f "$CFG_FILE" ]; then
 fi
 
 SELECTED_PORT="$DEFAULT_PORT"
-if [ -c /dev/tty ]; then
-    printf "\033[1;33m[?]\033[0m Порт веб-интерфейса [%s]: " "$DEFAULT_PORT" >/dev/tty
-    read -r USER_INPUT </dev/tty || USER_INPUT=""
+if ( : </dev/tty ) 2>/dev/null; then
+    printf "\033[1;33m[?]\033[0m Порт веб-интерфейса [%s]: " "$DEFAULT_PORT" >/dev/tty 2>/dev/null
+    read -r USER_INPUT </dev/tty 2>/dev/null || USER_INPUT=""
     USER_INPUT=$(echo "$USER_INPUT" | tr -dc '0-9')
     if [ -n "$USER_INPUT" ] && [ "$USER_INPUT" -ge 1 ] && [ "$USER_INPUT" -le 65535 ]; then
         SELECTED_PORT="$USER_INPUT"
@@ -113,6 +113,7 @@ done
 
 # 6. Update and Install
 printf "\033[1;34m[*]\033[0m Updating package lists...\n"
+rm -f /opt/var/opkg-lists/keenetic-custom /tmp/opkg-* 2>/dev/null || true
 /opt/bin/opkg update
 
 # Re-clean and ensure prerm is removed before install
@@ -156,8 +157,8 @@ printf "\033[1;34m[*]\033[0m Installing/upgrading package: \033[1;37m%s\033[0m..
 /opt/bin/opkg remove "$PACKAGE" --force-remove --force-depends >/dev/null 2>&1 || true
 /opt/bin/opkg install "$PACKAGE" --force-remove --force-reinstall --force-overwrite 2>/dev/null || \
 /opt/bin/opkg upgrade "$PACKAGE" --force-remove --force-overwrite 2>/dev/null || \
-/opt/bin/opkg install "$PACKAGE" --force-remove 2>/dev/null || \
-/opt/bin/opkg install "$PACKAGE"
+/opt/bin/opkg install "$PACKAGE" --force-remove --force-reinstall --force-overwrite
+
 
 INSTALL_RES=$?
 
