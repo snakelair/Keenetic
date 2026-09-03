@@ -32,8 +32,8 @@ Architecture: armv7-3.2
 Maintainer: Smart-Utils Team
 Description: Modern Web Administration Suite with Web Terminal, Total Commander Dual-Pane File Manager, OPKG Package Manager, CPU/System Analyzer and Backups for Keenetic Entware routers.
 Priority: optional
-MD5Sum: 50c6843ad3de1c6bbf2bd065d9339a0c
-SHA256Sum: 81b706bbef81171133a5c29319344c788967fdd0c15e80d9f354aeebed364a21
-Size: 3712031
+MD5Sum: 4bf107c8890b60c2696fcca756a50901
+SHA256Sum: 56f547c72a2ce63d56e59b2145bcd91c9c824ea43b9636de43b54035ddab7240
+Size: 3712046
 Filename: smart-utils_1.0.29_armv7-3.2.ipk
 
