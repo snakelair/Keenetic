@@ -1,15 +1,15 @@
 Package: smart-route
-Version: 1.0.29
+Version: 1.0.30
 Depends: iptables, ipset, ip-full, ca-certificates
 Section: net
 Architecture: x86_64
 Maintainer: Smart-Route Team
 Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
 Priority: optional
-MD5Sum: de69e1158b056aa5977d3bf56dd49a8a
-SHA256Sum: 94386ce4fabd516642177df05c542a7e7c229aecf803ca8953d3cbd64edbcd22
-Size: 3549306
-Filename: smart-route_1.0.29_x86_64.ipk
+MD5Sum: 21d4b9ef171d563e304e0dd95d980916
+SHA256Sum: 5ee5bfa7b45424b93f8988a243dd16c1d390ad5126bbb8b684f1c3b625d6f815
+Size: 3549369
+Filename: smart-route_1.0.30_x86_64.ipk
 
 Package: smart-photo
 Version: 1.0.37
