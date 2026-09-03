@@ -25,15 +25,15 @@ Size: 3415375
 Filename: smart-route_1.0.25_armv7-3.2.ipk
 
 Package: smart-utils
-Version: 1.0.20
+Version: 1.0.21
 Depends: ca-certificates
 Section: admin
 Architecture: armv7-3.2
 Maintainer: Smart-Utils Team
 Description: Modern Web Administration Suite with Web Terminal, Total Commander Dual-Pane File Manager, OPKG Package Manager, CPU/System Analyzer and Backups for Keenetic Entware routers.
 Priority: optional
-MD5Sum: c95c1670054b454514159389edd33227
-SHA256Sum: 0f525e66a3b02fc398098712d4e3f5bc282a63d303fbb10daf6f3788b09cfb6a
-Size: 3472669
-Filename: smart-utils_1.0.20_armv7-3.2.ipk
+MD5Sum: b61244c39ec40bf206d4c7c429693dd1
+SHA256Sum: 04e172e0c3bf5ea625977c2ff6c674d1a7675e78d58ad9b846696d9364cde901
+Size: 3473678
+Filename: smart-utils_1.0.21_armv7-3.2.ipk
 
