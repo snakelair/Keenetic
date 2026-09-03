@@ -32,8 +32,8 @@ Architecture: x86_64
 Maintainer: Smart-Utils Team
 Description: Modern Web Administration Suite with Web Terminal, Total Commander Dual-Pane File Manager, OPKG Package Manager, CPU/System Analyzer and Backups for Keenetic Entware routers.
 Priority: optional
-MD5Sum: 47b497acc3d28553b4af4943b7eafcee
-SHA256Sum: 8fd6c1d388816688ee64bcb2be8b8f834220ba895bf942978f2714499e820372
+MD5Sum: 0efe1200a2581841f19b72e1342a9c81
+SHA256Sum: ccfe7f2957abfeec15d425455e2242893397005f06d941cddee5a338066a6b7d
 Size: 3586855
 Filename: smart-utils_1.0.23_x86_64.ipk
 
