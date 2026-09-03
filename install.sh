@@ -55,12 +55,14 @@ if [ -f "$CFG_FILE" ]; then
 fi
 
 SELECTED_PORT="$DEFAULT_PORT"
-if ( : </dev/tty ) 2>/dev/null; then
-    printf "\033[1;33m[?]\033[0m Порт веб-интерфейса [%s]: " "$DEFAULT_PORT" >/dev/tty 2>/dev/null
-    read -r USER_INPUT </dev/tty 2>/dev/null || USER_INPUT=""
-    USER_INPUT=$(echo "$USER_INPUT" | tr -dc '0-9')
-    if [ -n "$USER_INPUT" ] && [ "$USER_INPUT" -ge 1 ] && [ "$USER_INPUT" -le 65535 ]; then
-        SELECTED_PORT="$USER_INPUT"
+if [ -t 0 ] || [ -t 1 ]; then
+    if { [ -c /dev/tty ] && : </dev/tty ; } 2>/dev/null; then
+        printf "\033[1;33m[?]\033[0m Порт веб-интерфейса [%s]: " "$DEFAULT_PORT" >/dev/tty 2>/dev/null
+        read -r USER_INPUT </dev/tty 2>/dev/null || USER_INPUT=""
+        USER_INPUT=$(echo "$USER_INPUT" | tr -dc '0-9')
+        if [ -n "$USER_INPUT" ] && [ "$USER_INPUT" -ge 1 ] && [ "$USER_INPUT" -le 65535 ]; then
+            SELECTED_PORT="$USER_INPUT"
+        fi
     fi
 fi
 printf "\033[1;34m[*]\033[0m Порт веб-интерфейса: \033[1;37m%s\033[0m\n" "$SELECTED_PORT"
@@ -72,6 +74,9 @@ REPO_URL="https://raw.githubusercontent.com/snakelair/Keenetic/main/entware/${EN
 printf "\033[1;34m[*]\033[0m Configuring OPKG repository feed: \033[0;36m%s\033[0m...\n" "$REPO_URL"
 mkdir -p /opt/etc/opkg
 echo "src/gz keenetic-custom $REPO_URL" > "$FEED_CONF"
+
+# Clean stale locks
+rm -f /opt/tmp/opkg.lock /opt/var/lock/opkg.lock /opt/lib/opkg/lock 2>/dev/null || true
 
 # 5. Auto-heal broken OPKG status database (clean old prerm & fix postinst)
 rm -f /opt/lib/opkg/info/${PACKAGE}.prerm /opt/var/lib/opkg/info/${PACKAGE}.prerm 2>/dev/null || true
@@ -113,8 +118,9 @@ done
 
 # 6. Update and Install
 printf "\033[1;34m[*]\033[0m Updating package lists...\n"
-rm -f /opt/var/opkg-lists/keenetic-custom /tmp/opkg-* 2>/dev/null || true
+rm -f /opt/var/opkg-lists/keenetic-custom /tmp/opkg-* /opt/tmp/opkg.lock /opt/var/lock/opkg.lock /opt/lib/opkg/lock 2>/dev/null || true
 /opt/bin/opkg update
+
 
 # Re-clean and ensure prerm is removed before install
 rm -f /opt/lib/opkg/info/${PACKAGE}.prerm /opt/var/lib/opkg/info/${PACKAGE}.prerm 2>/dev/null || true
