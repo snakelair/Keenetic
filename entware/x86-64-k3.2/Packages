@@ -25,15 +25,15 @@ Size: 3539417
 Filename: smart-route_1.0.25_x86_64.ipk
 
 Package: smart-utils
-Version: 1.0.24
+Version: 1.0.25
 Depends: ca-certificates
 Section: admin
 Architecture: x86_64
 Maintainer: Smart-Utils Team
 Description: Modern Web Administration Suite with Web Terminal, Total Commander Dual-Pane File Manager, OPKG Package Manager, CPU/System Analyzer and Backups for Keenetic Entware routers.
 Priority: optional
-MD5Sum: 70284cee82cf6af993bba60db6657247
-SHA256Sum: 758a78223404e97af7d8e4516519621ec3f0f8b768f9922329dd05b55f21623b
-Size: 3588360
-Filename: smart-utils_1.0.24_x86_64.ipk
+MD5Sum: 1feefe374b9147b59bee191e71b57555
+SHA256Sum: ed8858d52d11ba5ad3d3506e61127512dcc899af0e2ae3deda13e96b73749a96
+Size: 3588461
+Filename: smart-utils_1.0.25_x86_64.ipk
 
