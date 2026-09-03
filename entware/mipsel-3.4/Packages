@@ -32,8 +32,8 @@ Architecture: mipsel-3.4
 Maintainer: Smart-Utils Team
 Description: Modern Web Administration Suite with Web Terminal, Total Commander Dual-Pane File Manager, OPKG Package Manager, CPU/System Analyzer and Backups for Keenetic Entware routers.
 Priority: optional
-MD5Sum: aba9afc6d299e788b01001688bb2642b
-SHA256Sum: 182ad849dfeb402ce38dc7b4af8d4553546f366f738858ad5a256114a4836827
-Size: 3568291
+MD5Sum: d9da477ed3c5542afde4a46a2924502a
+SHA256Sum: 4ecd71b926d3e30f1691b5c5fcbf5382610361a21b9af0ce602b81a54571dd90
+Size: 3568687
 Filename: smart-utils_1.0.29_mipsel-3.4.ipk
 

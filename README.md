@@ -1,6 +1,6 @@
-# ⚡ Keenetic Entware OPKG Repository
+# ⚡ Snakelair Keenetic Entware OPKG Repository
 
-Официальный публичный репозиторий пакетов **OPKG** для роутеров **Keenetic** с установленной средой **Entware**.
+**Snakelair Keenetic Entware OPKG Repository** — репозиторий пакетов **OPKG** для роутеров **Keenetic** с установленной средой **Entware**.
 
 ---
 
