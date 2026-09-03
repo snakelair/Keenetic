@@ -47,18 +47,28 @@ echo "[*] Configuring OPKG repository feed: $REPO_URL..."
 mkdir -p /opt/etc/opkg
 echo "src/gz keenetic-custom $REPO_URL" > "$FEED_CONF"
 
-# 4. Auto-heal broken OPKG status database (missing postinst / prerm permissions)
+# 4. Auto-heal broken OPKG status database (clean old prerm & fix postinst)
+rm -f /opt/lib/opkg/info/${PACKAGE}.prerm /opt/var/lib/opkg/info/${PACKAGE}.prerm 2>/dev/null || true
+
 for STAT_FILE in /opt/lib/opkg/status /opt/var/lib/opkg/status; do
     if [ -f "$STAT_FILE" ]; then
         INFO_DIR="$(dirname "$STAT_FILE")/info"
         mkdir -p "$INFO_DIR"
-        chmod 755 "$INFO_DIR"/* 2>/dev/null || true
-        for SCRIPT in "$INFO_DIR"/*.prerm "$INFO_DIR"/*.postinst "$INFO_DIR"/*.preinst "$INFO_DIR"/*.postrm; do
+        chmod 777 "$INFO_DIR" 2>/dev/null || true
+        rm -f "$INFO_DIR/${PACKAGE}.prerm" 2>/dev/null || true
+
+        for SCRIPT in "$INFO_DIR"/*.prerm; do
             if [ -f "$SCRIPT" ]; then
-                chmod 755 "$SCRIPT" 2>/dev/null || true
+                printf '#!/bin/sh\nexit 0\n' > "$SCRIPT"
+                chmod 777 "$SCRIPT" 2>/dev/null || true
+            fi
+        done
+        for SCRIPT in "$INFO_DIR"/*.postinst "$INFO_DIR"/*.preinst "$INFO_DIR"/*.postrm; do
+            if [ -f "$SCRIPT" ]; then
+                chmod 777 "$SCRIPT" 2>/dev/null || true
                 if [ ! -s "$SCRIPT" ]; then
                     printf '#!/bin/sh\nexit 0\n' > "$SCRIPT"
-                    chmod 755 "$SCRIPT" 2>/dev/null || true
+                    chmod 777 "$SCRIPT" 2>/dev/null || true
                 fi
             fi
         done
@@ -67,7 +77,7 @@ for STAT_FILE in /opt/lib/opkg/status /opt/var/lib/opkg/status; do
                 POSTINST="$INFO_DIR/${BROKEN_PKG}.postinst"
                 if [ ! -f "$POSTINST" ]; then
                     printf '#!/bin/sh\nexit 0\n' > "$POSTINST"
-                    chmod 755 "$POSTINST" 2>/dev/null || true
+                    chmod 777 "$POSTINST" 2>/dev/null || true
                 fi
             fi
         done
@@ -79,17 +89,27 @@ done
 echo "[*] Updating package lists..."
 /opt/bin/opkg update
 
-# Re-run heal after update if needed
+# Re-clean and ensure prerm is removed before install
+rm -f /opt/lib/opkg/info/${PACKAGE}.prerm /opt/var/lib/opkg/info/${PACKAGE}.prerm 2>/dev/null || true
+
 for STAT_FILE in /opt/lib/opkg/status /opt/var/lib/opkg/status; do
     if [ -f "$STAT_FILE" ]; then
         INFO_DIR="$(dirname "$STAT_FILE")/info"
-        chmod 755 "$INFO_DIR"/* 2>/dev/null || true
-        for SCRIPT in "$INFO_DIR"/*.prerm "$INFO_DIR"/*.postinst "$INFO_DIR"/*.preinst "$INFO_DIR"/*.postrm; do
+        chmod 777 "$INFO_DIR" 2>/dev/null || true
+        rm -f "$INFO_DIR/${PACKAGE}.prerm" 2>/dev/null || true
+
+        for SCRIPT in "$INFO_DIR"/*.prerm; do
             if [ -f "$SCRIPT" ]; then
-                chmod 755 "$SCRIPT" 2>/dev/null || true
+                printf '#!/bin/sh\nexit 0\n' > "$SCRIPT"
+                chmod 777 "$SCRIPT" 2>/dev/null || true
+            fi
+        done
+        for SCRIPT in "$INFO_DIR"/*.postinst "$INFO_DIR"/*.preinst "$INFO_DIR"/*.postrm; do
+            if [ -f "$SCRIPT" ]; then
+                chmod 777 "$SCRIPT" 2>/dev/null || true
                 if [ ! -s "$SCRIPT" ]; then
                     printf '#!/bin/sh\nexit 0\n' > "$SCRIPT"
-                    chmod 755 "$SCRIPT" 2>/dev/null || true
+                    chmod 777 "$SCRIPT" 2>/dev/null || true
                 fi
             fi
         done
@@ -98,7 +118,7 @@ for STAT_FILE in /opt/lib/opkg/status /opt/var/lib/opkg/status; do
                 POSTINST="$INFO_DIR/${BROKEN_PKG}.postinst"
                 if [ ! -f "$POSTINST" ]; then
                     printf '#!/bin/sh\nexit 0\n' > "$POSTINST"
-                    chmod 755 "$POSTINST" 2>/dev/null || true
+                    chmod 777 "$POSTINST" 2>/dev/null || true
                 fi
             fi
         done
@@ -107,10 +127,12 @@ for STAT_FILE in /opt/lib/opkg/status /opt/var/lib/opkg/status; do
 done
 
 echo "[*] Installing/upgrading package: $PACKAGE..."
+/opt/bin/opkg remove "$PACKAGE" --force-remove --force-depends >/dev/null 2>&1 || true
 /opt/bin/opkg install "$PACKAGE" --force-remove --force-reinstall --force-overwrite 2>/dev/null || \
 /opt/bin/opkg upgrade "$PACKAGE" --force-remove --force-overwrite 2>/dev/null || \
 /opt/bin/opkg install "$PACKAGE" --force-remove 2>/dev/null || \
 /opt/bin/opkg install "$PACKAGE"
+
 
 
 # 6. Start / Restart service safely (detached in background so remote shell / SSH doesn't hang)

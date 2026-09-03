@@ -32,8 +32,8 @@ Architecture: aarch64-3.10
 Maintainer: Smart-Utils Team
 Description: Modern Web Administration Suite with Web Terminal, Total Commander Dual-Pane File Manager, OPKG Package Manager, CPU/System Analyzer and Backups for Keenetic Entware routers.
 Priority: optional
-MD5Sum: d77766aa687d4b17329aa25b9220f6ce
-SHA256Sum: d850081b7ccf2510460e60416e3235e3cec531622db9217eacf537ff3b9cb572
-Size: 3434898
+MD5Sum: d5666b255e997caf8efb71739bd56378
+SHA256Sum: d423fa6cb09bb6a31bb190fca51c0ddff6997056c6c473456a2ee25f8de90392
+Size: 3434788
 Filename: smart-utils_1.0.27_aarch64-3.10.ipk
 
