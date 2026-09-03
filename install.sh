@@ -1,17 +1,16 @@
 #!/bin/sh
-set -e
+set +e
 
 PACKAGE="${1:-smart-utils}"
 
-echo "================================================================================"
-echo "          Keenetic Entware OPKG Installer (snakelair/Keenetic)"
-echo "================================================================================"
-echo ""
+printf "\n\033[1;36m================================================================================\033[0m\n"
+printf "\033[1;36m          Keenetic Entware OPKG Installer (snakelair/Keenetic)\033[0m\n"
+printf "\033[1;36m================================================================================\033[0m\n\n"
 
 # 1. Check Entware environment
 if [ ! -d "/opt/bin" ] || [ ! -x "/opt/bin/opkg" ]; then
-    echo "[ERROR] Entware is not installed or /opt/bin/opkg not found!"
-    echo "Please set up Entware on your Keenetic router first."
+    printf "\033[1;31m[ERROR] Entware is not installed or /opt/bin/opkg not found!\033[0m\n"
+    printf "Please set up Entware on your Keenetic router first.\n"
     exit 1
 fi
 
@@ -37,13 +36,13 @@ case "$ARCH" in
         ;;
 esac
 
-echo "[*] Detected router architecture: $ARCH -> Entware feed: $ENT_ARCH"
+printf "\033[1;34m[*]\033[0m Detected router architecture: \033[1;37m%s\033[0m -> Entware feed: \033[1;32m%s\033[0m\n" "$ARCH" "$ENT_ARCH"
 
 # 3. Configure OPKG repository feed
 FEED_CONF="/opt/etc/opkg/keenetic.conf"
 REPO_URL="https://raw.githubusercontent.com/snakelair/Keenetic/main/entware/${ENT_ARCH}"
 
-echo "[*] Configuring OPKG repository feed: $REPO_URL..."
+printf "\033[1;34m[*]\033[0m Configuring OPKG repository feed: \033[0;36m%s\033[0m...\n" "$REPO_URL"
 mkdir -p /opt/etc/opkg
 echo "src/gz keenetic-custom $REPO_URL" > "$FEED_CONF"
 
@@ -86,7 +85,7 @@ for STAT_FILE in /opt/lib/opkg/status /opt/var/lib/opkg/status; do
 done
 
 # 5. Update and Install
-echo "[*] Updating package lists..."
+printf "\033[1;34m[*]\033[0m Updating package lists...\n"
 /opt/bin/opkg update
 
 # Re-clean and ensure prerm is removed before install
@@ -126,17 +125,16 @@ for STAT_FILE in /opt/lib/opkg/status /opt/var/lib/opkg/status; do
     fi
 done
 
-echo "[*] Installing/upgrading package: $PACKAGE..."
+printf "\033[1;34m[*]\033[0m Installing/upgrading package: \033[1;37m%s\033[0m...\n" "$PACKAGE"
 /opt/bin/opkg remove "$PACKAGE" --force-remove --force-depends >/dev/null 2>&1 || true
 /opt/bin/opkg install "$PACKAGE" --force-remove --force-reinstall --force-overwrite 2>/dev/null || \
 /opt/bin/opkg upgrade "$PACKAGE" --force-remove --force-overwrite 2>/dev/null || \
 /opt/bin/opkg install "$PACKAGE" --force-remove 2>/dev/null || \
 /opt/bin/opkg install "$PACKAGE"
 
-
+INSTALL_RES=$?
 
 # 6. Start / Restart service safely (detached in background so remote shell / SSH doesn't hang)
-
 if [ -x "/opt/etc/init.d/S99smart-utils" ] && [ "$PACKAGE" = "smart-utils" ]; then
     ( sleep 1; /opt/etc/init.d/S99smart-utils restart >/dev/null 2>&1 || /opt/etc/init.d/S99smart-utils start >/dev/null 2>&1 ) >/dev/null 2>&1 &
 elif [ -x "/opt/etc/init.d/S99smart-route" ] && [ "$PACKAGE" = "smart-route" ]; then
@@ -145,21 +143,26 @@ elif [ -x "/opt/etc/init.d/S99smart-photo" ] && [ "$PACKAGE" = "smart-photo" ]; 
     ( sleep 1; /opt/etc/init.d/S99smart-photo restart >/dev/null 2>&1 || /opt/etc/init.d/S99smart-photo start >/dev/null 2>&1 ) >/dev/null 2>&1 &
 fi
 
-
 LAN_IP=$(ip -4 addr show br0 2>/dev/null | awk '/inet /{print $2}' | cut -d/ -f1 | head -n1)
 [ -z "$LAN_IP" ] && LAN_IP=$(ifconfig br0 2>/dev/null | awk -F'[: ]+' '/inet addr/{print $4}' | head -n1)
 [ -z "$LAN_IP" ] && LAN_IP=$(ip route show 2>/dev/null | awk '/dev br0/{for(i=1;i<=NF;i++) if($i=="src") print $(i+1); exit}')
 [ -z "$LAN_IP" ] && LAN_IP=$(ip route show 2>/dev/null | awk '/src /{for(i=1;i<=NF;i++) if($i=="src" && $(i+1) ~ /^(192|172|10)\./) {print $(i+1); exit}}')
 [ -z "$LAN_IP" ] && LAN_IP="192.168.1.1"
 
-echo ""
-echo "================================================================================"
-echo " [OK] Installation of $PACKAGE completed successfully!"
-if [ "$PACKAGE" = "smart-utils" ]; then
-    echo " Smart-Utils Web UI: http://${LAN_IP}:8090"
-elif [ "$PACKAGE" = "smart-route" ]; then
-    echo " Smart-Route Web UI: http://${LAN_IP}:8088"
-elif [ "$PACKAGE" = "smart-photo" ]; then
-    echo " Smart-Photo Web UI: http://${LAN_IP}:8089"
+if [ $INSTALL_RES -eq 0 ]; then
+    printf "\n\033[1;32m================================================================================\033[0m\n"
+    printf "\033[1;32m [OK] Installation of %s completed successfully!\033[0m\n" "$PACKAGE"
+    if [ "$PACKAGE" = "smart-utils" ]; then
+        printf " \033[1;37mSmart-Utils Web UI:\033[0m \033[1;36mhttp://%s:8090\033[0m\n" "$LAN_IP"
+    elif [ "$PACKAGE" = "smart-route" ]; then
+        printf " \033[1;37mSmart-Route Web UI:\033[0m \033[1;36mhttp://%s:8088\033[0m\n" "$LAN_IP"
+    elif [ "$PACKAGE" = "smart-photo" ]; then
+        printf " \033[1;37mSmart-Photo Web UI:\033[0m \033[1;36mhttp://%s:8089\033[0m\n" "$LAN_IP"
+    fi
+    printf "\033[1;32m================================================================================\033[0m\n\n"
+else
+    printf "\n\033[1;31m================================================================================\033[0m\n"
+    printf "\033[1;31m [ERROR] Installation of %s encountered an issue. Please check output above.\033[0m\n" "$PACKAGE"
+    printf "\033[1;31m================================================================================\033[0m\n\n"
+    exit 1
 fi
-echo "================================================================================"
