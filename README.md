@@ -21,7 +21,7 @@
 
 ---
 
-### 2. ⚡ `smart-route` (v1.0.25)
+### 2. ⚡ `smart-route` (v1.0.32)
 **Системный сервис динамической многоинтерфейсной маршрутизации, бесшовного перехвата сбойных соединений (Failover Relay) и аппаратной разгрузки ядра (IPSet / NDM):**
 - Автоматический выбор самого быстрого VPN-канала при сбоях и блокировках (Race/Sequential).
 - Аппаратный оффлоад ядра Linux (0% нагрузки на процессор роутера).
@@ -97,3 +97,13 @@ opkg update && opkg upgrade smart-utils smart-route smart-photo
 | **`aarch64-3.10`** | Peak (KN-2710), Ultra (KN-1811), Titan (KN-1812), Hero 4G+ (KN-2311) |
 | **`x86_64`** | x86 Entware / Виртуальные машины |
 | **`mips-3.4`** | Keenetic MIPS Big-Endian |
+
+
+---
+
+## 💬 Сообщество и обратная связь
+
+- 📢 **Telegram-канал и обновления:** [t.me/KeeneticSmartUtils](https://t.me/KeeneticSmartUtils)
+- 💬 **Тема обсуждения на форуме Keenetic:** [Приложения Smart-Utils, Smart-Route, Smart-Photo](https://forum.keenetic.ru/topic/30698-%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F-smart-utils-smart-route-smart-photo-snakelair-keenetic-entware-opkg-repository/)
+- 💻 **Исходный код Smart-Utils:** [github.com/snakelair/SmartUtils](https://github.com/snakelair/SmartUtils)
+

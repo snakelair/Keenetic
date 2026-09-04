@@ -1,7 +1,7 @@
 #!/bin/sh
 set +e
 
-PACKAGE="${1:-smart-utils}"
+PACKAGE="${1:-smart-route}"
 
 printf "\n\033[1;36m================================================================================\033[0m\n"
 printf "\033[1;36m          Keenetic Entware OPKG Installer (snakelair/Keenetic)\033[0m\n"
@@ -67,8 +67,6 @@ if ( exec 3>/dev/tty 4</dev/tty ) 2>/dev/null; then
 fi
 printf "\033[1;34m[*]\033[0m Порт веб-интерфейса: \033[1;37m%s\033[0m\n" "$SELECTED_PORT"
 
-
-
 # 4. Configure OPKG repository feed
 FEED_CONF="/opt/etc/opkg/keenetic.conf"
 REPO_URL="https://raw.githubusercontent.com/snakelair/Keenetic/main/entware/${ENT_ARCH}"
@@ -123,6 +121,11 @@ printf "\033[1;34m[*]\033[0m Updating package lists...\n"
 rm -f /opt/var/opkg-lists/keenetic-custom /tmp/opkg-* /opt/tmp/opkg.lock /opt/var/lock/opkg.lock /opt/lib/opkg/lock 2>/dev/null || true
 /opt/bin/opkg update
 
+# Explicitly ensure core dependencies for smart-route
+if [ "$PACKAGE" = "smart-route" ]; then
+    printf "\033[1;34m[*]\033[0m Ensuring network dependencies (iptables, ipset, ip-full, ca-certificates)...\n"
+    /opt/bin/opkg install iptables ipset ip-full ca-certificates 2>/dev/null || true
+fi
 
 # Re-clean and ensure prerm is removed before install
 rm -f /opt/lib/opkg/info/${PACKAGE}.prerm /opt/var/lib/opkg/info/${PACKAGE}.prerm 2>/dev/null || true
@@ -167,34 +170,15 @@ printf "\033[1;34m[*]\033[0m Installing/upgrading package: \033[1;37m%s\033[0m..
 /opt/bin/opkg upgrade "$PACKAGE" --force-remove --force-overwrite 2>/dev/null || \
 /opt/bin/opkg install "$PACKAGE" --force-remove --force-reinstall --force-overwrite
 
-
 INSTALL_RES=$?
 
 # 7. Apply configured port to config file
 mkdir -p "/opt/etc/${PACKAGE}"
-if [ "$PACKAGE" = "smart-utils" ]; then
-    if [ -f "$CFG_FILE" ]; then
-        if grep -q '"web_port"' "$CFG_FILE"; then
-            sed -i "s/\"web_port\":[ ]*[0-9]*/\"web_port\": $SELECTED_PORT/" "$CFG_FILE"
-        else
-            sed -i "s/{/{\n  \"web_port\": $SELECTED_PORT,/" "$CFG_FILE"
-        fi
+if [ -f "$CFG_FILE" ]; then
+    if grep -q '"web_port"' "$CFG_FILE"; then
+        sed -i "s/\"web_port\":[ ]*[0-9]*/\"web_port\": $SELECTED_PORT/" "$CFG_FILE"
     else
-        cat <<EOF > "$CFG_FILE"
-{
-  "web_bind_addr": "0.0.0.0",
-  "web_port": $SELECTED_PORT,
-  "web_auth_enabled": false,
-  "web_password": "",
-  "log_level": "INFO",
-  "log_target": "ram",
-  "log_file_path": "/tmp/smart-utils.log",
-  "terminal_shell": "",
-  "ssh_port": 222,
-  "default_path": "/opt",
-  "backup_dir": "/opt/var/backups"
-}
-EOF
+        sed -i "s/{/{\n  \"web_port\": $SELECTED_PORT,/" "$CFG_FILE"
     fi
 fi
 
@@ -208,28 +192,41 @@ if [ -x "/opt/etc/init.d/S99smart-utils" ] && [ "$PACKAGE" = "smart-utils" ]; th
     }
 elif [ -x "/opt/etc/init.d/S99smart-route" ] && [ "$PACKAGE" = "smart-route" ]; then
     printf "\033[1;34m[*]\033[0m Перезапуск службы Smart-Route...\n"
-    /opt/etc/init.d/S99smart-route restart >/dev/null 2>&1 || /opt/etc/init.d/S99smart-route start >/dev/null 2>&1
+    /opt/etc/init.d/S99smart-route restart >/dev/null 2>&1 || {
+        killall -9 smart-route >/dev/null 2>&1
+        sleep 1
+        /opt/etc/init.d/S99smart-route start >/dev/null 2>&1
+    }
 elif [ -x "/opt/etc/init.d/S99smart-photo" ] && [ "$PACKAGE" = "smart-photo" ]; then
     printf "\033[1;34m[*]\033[0m Перезапуск службы Smart-Photo...\n"
-    /opt/etc/init.d/S99smart-photo restart >/dev/null 2>&1 || /opt/etc/init.d/S99smart-photo start >/dev/null 2>&1
+    /opt/etc/init.d/S99smart-photo restart >/dev/null 2>&1 || {
+        killall -9 smart-photo >/dev/null 2>&1
+        sleep 1
+        /opt/etc/init.d/S99smart-photo start >/dev/null 2>&1
+    }
 fi
 
 # 9. Wait for service and verify via real API query
 ACTIVE_VER=""
 ROUTER_MODEL=""
-if [ "$PACKAGE" = "smart-utils" ]; then
-    printf "\033[1;34m[*]\033[0m Ожидание запуска и проверка API (http://127.0.0.1:%s/api/status)...\n" "$SELECTED_PORT"
-    for i in 1 2 3 4 5 6 7 8 9 10 11 12; do
-        sleep 1
-        STATUS_JSON=$(curl -s --connect-timeout 2 "http://127.0.0.1:${SELECTED_PORT}/api/status" 2>/dev/null || wget -q -O - -T 2 "http://127.0.0.1:${SELECTED_PORT}/api/status" 2>/dev/null)
-        if [ -n "$STATUS_JSON" ]; then
-            ACTIVE_VER=$(echo "$STATUS_JSON" | grep -o '"version"[^,}]*' | awk -F'"' '{print $4}')
-            ROUTER_MODEL=$(echo "$STATUS_JSON" | grep -o '"router_model"[^,}]*' | awk -F'"' '{print $4}')
-            if [ -n "$ACTIVE_VER" ]; then
-                break
-            fi
+printf "\033[1;34m[*]\033[0m Ожидание запуска и проверка API (http://127.0.0.1:%s/api/status)...\n" "$SELECTED_PORT"
+for i in 1 2 3 4 5 6 7 8 9 10 11 12; do
+    sleep 1
+    STATUS_JSON=$(curl -s --connect-timeout 2 "http://127.0.0.1:${SELECTED_PORT}/api/status" 2>/dev/null || wget -q -O - -T 2 "http://127.0.0.1:${SELECTED_PORT}/api/status" 2>/dev/null)
+    if [ -n "$STATUS_JSON" ]; then
+        ACTIVE_VER=$(echo "$STATUS_JSON" | grep -o '"version"[^,}]*' | awk -F'"' '{print $4}')
+        ROUTER_MODEL=$(echo "$STATUS_JSON" | grep -o '"router_model"[^,}]*' | awk -F'"' '{print $4}')
+        if [ -n "$ACTIVE_VER" ]; then
+            break
         fi
-    done
+    fi
+done
+
+if [ -z "$ROUTER_MODEL" ]; then
+    ROUTER_MODEL=$(ndmc -c 'show version' 2>/dev/null | grep -i 'model:' | head -n1 | awk -F: '{print $2}' | xargs 2>/dev/null || true)
+fi
+if [ -z "$ROUTER_MODEL" ] && [ -f /tmp/sysinfo/model ]; then
+    ROUTER_MODEL=$(cat /tmp/sysinfo/model 2>/dev/null || true)
 fi
 
 LAN_IP=$(ip -4 addr show br0 2>/dev/null | awk '/inet /{print $2}' | cut -d/ -f1 | head -n1)
@@ -238,12 +235,19 @@ LAN_IP=$(ip -4 addr show br0 2>/dev/null | awk '/inet /{print $2}' | cut -d/ -f1
 [ -z "$LAN_IP" ] && LAN_IP=$(ip route show 2>/dev/null | awk '/src /{for(i=1;i<=NF;i++) if($i=="src" && $(i+1) ~ /^(192|172|10)\./) {print $(i+1); exit}}')
 [ -z "$LAN_IP" ] && LAN_IP="192.168.1.1"
 
+PKG_TITLE="Smart-Utils"
+if [ "$PACKAGE" = "smart-route" ]; then
+    PKG_TITLE="Smart-Route"
+elif [ "$PACKAGE" = "smart-photo" ]; then
+    PKG_TITLE="Smart-Photo"
+fi
+
 if [ $INSTALL_RES -eq 0 ]; then
     printf "\n\033[1;32m================================================================================\033[0m\n"
     if [ -n "$ACTIVE_VER" ]; then
-        printf "\033[1;32m [OK] Smart-Utils v%s успешно запущен и работает!\033[0m\n" "$ACTIVE_VER"
+        printf "\033[1;32m [OK] %s v%s успешно запущен и работает!\033[0m\n" "$PKG_TITLE" "$ACTIVE_VER"
     else
-        printf "\033[1;32m [OK] Установка %s завершена успешно!\033[0m\n" "$PACKAGE"
+        printf "\033[1;32m [OK] Установка %s завершена успешно!\033[0m\n" "$PKG_TITLE"
     fi
     if [ -n "$ROUTER_MODEL" ]; then
         printf " \033[1;37mРоутер:\033[0m     \033[1;36m%s\033[0m\n" "$ROUTER_MODEL"
@@ -252,7 +256,7 @@ if [ $INSTALL_RES -eq 0 ]; then
     printf "\033[1;32m================================================================================\033[0m\n\n"
 else
     printf "\n\033[1;31m================================================================================\033[0m\n"
-    printf "\033[1;31m [ERROR] Ошибка установки %s. Пожалуйста, проверьте вывод выше.\033[0m\n" "$PACKAGE"
+    printf "\033[1;31m [ERROR] Ошибка установки %s. Пожалуйста, проверьте вывод выше.\033[0m\n" "$PKG_TITLE"
     printf "\033[1;31m================================================================================\033[0m\n\n"
     exit 1
 fi
