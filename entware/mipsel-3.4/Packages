@@ -1,15 +1,15 @@
 Package: smart-vpn
-Version: 1.0.62
+Version: 1.0.63
 Depends: ca-certificates
 Section: net
 Architecture: mipsel-3.4
 Maintainer: SmartVPN Team
 Description: Modern Web VPN Control Center for Keenetic Entware routers. Supports native WireGuard, SSTP, OpenVPN, IPsec and live metrics.
 Priority: optional
-Filename: smart-vpn_1.0.62_mipsel-3.4.ipk
-Size: 3676682
-MD5Sum: 9514458c010cdac48566ca2908d3809b
-SHA256Sum: 4730a3c69e917c72fda02ef50cdab66dff31b853ecd8b63eace93d5f05758d8f
+Filename: smart-vpn_1.0.63_mipsel-3.4.ipk
+Size: 3679430
+MD5Sum: 23c34b76c7d3fe3953665ae4c2eec2f7
+SHA256Sum: 7aec253ffdacbddc197759bd77a36699818ffd79f36b2ac43ee5347787b2874b
 
 Package: smart-route
 Version: 1.0.32
