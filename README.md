@@ -32,7 +32,7 @@
 
 ---
 
-### 3. 📷 `smart-photo` (v1.0.37)
+### 3. 📷 `smart-photo` (v1.0.39)
 **Персональный домашний фотосервер в стиле Google Photos прямо на роутере Keenetic для подключенных USB-накопителей:**
 - Бесконечная лента фотохроники (Infinite Scroll) с быстрым отображением.
 - Сканирование и просмотр фото и видео с подключенных по USB накопителей (флешки, HDD, SSD).
@@ -41,6 +41,18 @@
 - Автоматическая группировка по датам, папкам и альбомам.
 - **Веб-интерфейс:** `http://192.168.1.1:8089`
 - [📷 **Руководство пользователя Smart-Photo (smart_photo_USER_GUIDE.md)**](smart_photo_USER_GUIDE.md)
+
+---
+
+### 4. 🛡️ `smart-vpn` (v1.0.27)
+**Единый веб-центр управления всеми типами VPN-соединений и антицензурными ядрами для роутеров Keenetic:**
+- **Родные туннели KeeneticOS:** WireGuard, SSTP, OpenVPN, IPsec с асинхронным опросом и кэшированием статусов.
+- **Поддержка AmneziaWG (AWG 2.0 / 3.0):** полное управление обфускацией (Jc, Jmin/Jmax, S1-S4, H1-H4), пресеты «Анти-ТСПУ» и вычисление публичных ключей Curve25519.
+- **Стелс-протокол QuakeLive-VPN:** игровой VPN на базе id Tech 3 NetChan со скорбордом игроков, защитой от зондирования и генерацией токенов.
+- **Подсистема Sing-Box:** визуальный конструктор с 7 вкладками (VLESS Reality, ShadowTLS v3, Trojan), CPU Watchdog и валидатор конфигураций.
+- **Развертывание на VPS по SSH:** автоматическая настройка удаленного сервера в один клик с выбором веб-порта.
+- **Веб-интерфейс:** `http://192.168.1.1:8091` (или IP вашего роутера)
+- [🛡️ **Руководство пользователя Smart-VPN (USER_GUIDE.md)**](https://github.com/snakelair/SmartVpn/blob/main/USER_GUIDE.md)
 
 ---
 
@@ -59,6 +71,9 @@ curl -sSL https://raw.githubusercontent.com/snakelair/Keenetic/main/install.sh |
 
 # Установить Smart-Photo (Персональная фотогалерея на USB):
 curl -sSL https://raw.githubusercontent.com/snakelair/Keenetic/main/install.sh | sh -s smart-photo
+
+# Установить Smart-VPN (WireGuard, AWG, Sing-box, QuakeLive-VPN):
+curl -sSL https://raw.githubusercontent.com/snakelair/Keenetic/main/install.sh | sh -s smart-vpn
 ```
 
 ---
@@ -76,6 +91,7 @@ opkg update
 opkg install smart-utils
 opkg install smart-route
 opkg install smart-photo
+opkg install smart-vpn
 ```
 
 ---
@@ -83,7 +99,7 @@ opkg install smart-photo
 ## 🔄 Обновление пакетов
 
 ```bash
-opkg update && opkg upgrade smart-utils smart-route smart-photo
+opkg update && opkg upgrade smart-utils smart-route smart-photo smart-vpn
 ```
 
 ---

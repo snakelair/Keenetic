@@ -44,6 +44,8 @@ if [ "$PACKAGE" = "smart-route" ]; then
     DEFAULT_PORT=8088
 elif [ "$PACKAGE" = "smart-photo" ]; then
     DEFAULT_PORT=8089
+elif [ "$PACKAGE" = "smart-vpn" ]; then
+    DEFAULT_PORT=8091
 fi
 
 CFG_FILE="/opt/etc/${PACKAGE}/config.json"
@@ -204,6 +206,13 @@ elif [ -x "/opt/etc/init.d/S99smart-photo" ] && [ "$PACKAGE" = "smart-photo" ]; 
         sleep 1
         /opt/etc/init.d/S99smart-photo start >/dev/null 2>&1
     }
+elif [ -x "/opt/etc/init.d/S99smart-vpn" ] && [ "$PACKAGE" = "smart-vpn" ]; then
+    printf "\033[1;34m[*]\033[0m Перезапуск службы Smart-VPN...\n"
+    /opt/etc/init.d/S99smart-vpn restart >/dev/null 2>&1 || {
+        killall -9 smart-vpn >/dev/null 2>&1
+        sleep 1
+        /opt/etc/init.d/S99smart-vpn start >/dev/null 2>&1
+    }
 fi
 
 # 9. Wait for service and verify via real API query
@@ -240,6 +249,8 @@ if [ "$PACKAGE" = "smart-route" ]; then
     PKG_TITLE="Smart-Route"
 elif [ "$PACKAGE" = "smart-photo" ]; then
     PKG_TITLE="Smart-Photo"
+elif [ "$PACKAGE" = "smart-vpn" ]; then
+    PKG_TITLE="Smart-VPN"
 fi
 
 if [ $INSTALL_RES -eq 0 ]; then
