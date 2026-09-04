@@ -1,15 +1,15 @@
 Package: smart-vpn
-Version: 1.0.31
+Version: 1.0.32
 Depends: ca-certificates
 Section: net
 Architecture: armv7-3.2
 Maintainer: SmartVPN Team
 Description: Modern Web VPN Control Center for Keenetic Entware routers. Supports native WireGuard, SSTP, OpenVPN, IPsec and live metrics.
 Priority: optional
-Filename: smart-vpn_1.0.31_armv7-3.2.ipk
-Size: 3718293
-MD5Sum: 2c3c2761f649d4bde23f66cc733a7ab8
-SHA256Sum: 6484b30bf5722cf11ee67fbe318377715f1cbbdf843935324b12759542f5a0a9
+Filename: smart-vpn_1.0.32_armv7-3.2.ipk
+Size: 3718309
+MD5Sum: 60aae2339a8cf7f801b9c8457c9917b3
+SHA256Sum: 6a72ae9dc3a3da436e01aaaad3c3bfde12b69ff98ce0baa7148c60ae5b6070e8
 
 Package: smart-photo
 Version: 1.0.39
