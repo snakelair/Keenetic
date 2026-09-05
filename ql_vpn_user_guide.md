@@ -102,3 +102,137 @@ journalctl -u ql-vpn -f
 # Генерация нового токена через консоль:
 ql-vpn token add -server "ВАШ_IP:27960" -name "PlayerName" -tokens /etc/ql-vpn/tokens.json
 ```
+
+---
+
+## 📂 6. Где на VPS находятся все файлы (подробная карта системы)
+
+После установки на Linux VPS все исполняемые файлы, базы данных, службы автозапуска и системные настройки размещаются по стандартизированным путям Linux:
+
+### 🗺️ Иерархия файлов и директорий
+
+```
+/
+├── usr/local/bin/
+│   └── ql-vpn                         # 🟢 Основной бинарный исполняемый файл
+│
+├── etc/
+│   ├── ql-vpn/                        # 📁 Каталог данных и конфигурации
+│   │   ├── tokens.json                # 🔑 База клиентских токенов и ключей PSK
+│   │   ├── qlvpn-server.json          # ⚙️ Сохраненные настройки сервера и веб-панели
+│   │   └── qlvpn-client-servers.json  # 🌐 Список серверов (для режима клиента)
+│   │
+│   ├── systemd/system/
+│   │   └── ql-vpn.service             # 🚀 Юнит-файл автозапуска службы systemd
+│   │
+│   ├── sysctl.d/
+│   │   └── 99-qlvpn.conf              # 🌐 Включение IPv4 Forwarding в ядре Linux
+│   │
+│   └── iptables/                      # (Debian/Ubuntu)
+│       └── rules.v4                   # 🛡️ Персистентные правила NAT MASQUERADE
+│
+└── tmp/
+    └── ql-vpn.new                     # ⏳ Временный файл при самообновлении
+```
+
+### 📄 Детальное описание каждого файла и компонента
+
+#### 1. Исполняемый файл сервера: `/usr/local/bin/ql-vpn`
+- **Тип:** Скомпилированный бинарный файл Go (`ELF 64-bit LSB executable`, `x86-64` или `ARM aarch64`), без внешних runtime-зависимостей.
+- **Назначение:**
+  - Работает в фоновом режиме как системный демон сервера (UDP порт `:27960`, веб-панель `:8092`).
+  - Служит CLI-утилитой для управления токенами:
+    ```bash
+    /usr/local/bin/ql-vpn token list -tokens /etc/ql-vpn/tokens.json
+    /usr/local/bin/ql-vpn token add -server "IP:27960" -name "Player1" -tokens /etc/ql-vpn/tokens.json
+    /usr/local/bin/ql-vpn token del -name "Player1" -tokens /etc/ql-vpn/tokens.json
+    ```
+  - При запуске обновления через веб-панель заменяется автоматически на свежую версию из репозитория.
+
+#### 2. База клиентских токенов: `/etc/ql-vpn/tokens.json`
+- **Тип:** Файл базы данных в формате JSON.
+- **Пример содержимого:**
+  ```json
+  [
+    {
+      "name": "Ranger",
+      "key": "a61b384becd4b14fe035777d3d5e268e7aba668594ea79b595fe2ffda1b7fdb3",
+      "assigned_ip": "10.80.0.2",
+      "routes": ["0.0.0.0/0"],
+      "dns": ["1.1.1.1", "8.8.8.8"],
+      "created": 1788553827,
+      "exp": 0
+    }
+  ]
+  ```
+- **Назначение:** Хранит список клиентов, их pre-shared ключи (PSK), выделенные статические IP-адреса внутри подсети `10.80.0.0/24`, маршруты и время жизни. Любые изменения в веб-панели (создание, удаление токена) мгновенно атомарно синхронизируются с этим файлом.
+
+#### 3. Настройки сервера: `/etc/ql-vpn/qlvpn-server.json`
+- **Тип:** Файл состояния в формате JSON (создается при изменении параметров через веб-панель).
+- **Пример содержимого:**
+  ```json
+  {
+    "enabled": true,
+    "port": 27960,
+    "web_port": 8092,
+    "web_password": "Pass-ВашПароль",
+    "use_tls": true,
+    "upstream_server": ""
+  }
+  ```
+- **Назначение:** Обеспечивает персистентность настроек веб-панели (порты, пароль администратора, TLS-шифрование и адрес upstream-сервера Quake Live).
+
+#### 4. Служба Systemd: `/etc/systemd/system/ql-vpn.service`
+- **Тип:** Стандартный юнит-файл службы инициализации systemd.
+- **Содержимое:**
+  ```ini
+  [Unit]
+  Description=QuakeLive-VPN Server and Web Control Daemon
+  After=network.target
+
+  [Service]
+  Type=simple
+  User=root
+  ExecStart=/usr/local/bin/ql-vpn -server -port 27960 -web-port 8092 -tls -web-pass "Pass-..." -tun 10.80.0.1/24 -tokens /etc/ql-vpn/tokens.json
+  Restart=always
+  RestartSec=3
+
+  [Install]
+  WantedBy=multi-user.target
+  ```
+- **Назначение:** Обеспечивает автоматический запуск сервиса при загрузке ОС и непрерывный мониторинг процесса (перезапуск через 3 секунды при сбое или штатном перезапуске).
+
+#### 5. Пересылка пакетов ядра (Sysctl): `/etc/sysctl.d/99-qlvpn.conf`
+- **Содержимое:**
+  ```ini
+  net.ipv4.ip_forward = 1
+  ```
+- **Назначение:** Активирует пересылку IPv4-пакетов на уровне ядра Linux между виртуальным туннелем `qlvpn0` и внешним физическим интерфейсом сервера (`eth0` / `ens3`).
+
+#### 6. Правила файрвола (IPTables): `/etc/iptables/rules.v4`
+- **Назначение:** Сохраняет правила трансляции сетевых адресов:
+  - **NAT MASQUERADE:** `iptables -t nat -A POSTROUTING -s 10.80.0.0/24 ! -d 10.80.0.0/24 -j MASQUERADE`
+  - **FORWARD:** пропуск пакетов между `10.80.0.0/24` и внешним интерфейсом.
+  - **INPUT:** открытие входящих портов UDP `:27960` и TCP `:8092`.
+
+#### 7. Сетевой виртуальный интерфейс TUN: `qlvpn0`
+- **Тип:** Виртуальное сетевое устройство ядра Linux (`/dev/net/tun`).
+- **Параметры:** IP `10.80.0.1/24`.
+- **Просмотр:** `ip addr show qlvpn0` или `ip -s link show dev qlvpn0`.
+
+---
+
+### 📋 Шпаргалка по полезным командам администратора
+
+| Операция | Команда на сервере VPS |
+| :--- | :--- |
+| **Проверить статус службы** | `systemctl status ql-vpn` |
+| **Перезапустить сервер** | `systemctl restart ql-vpn` |
+| **Смотреть журнал событий онлайн** | `journalctl -u ql-vpn -f` |
+| **Последние 50 строк журнала** | `journalctl -u ql-vpn -n 50 --no-pager` |
+| **Просмотреть базу токенов** | `cat /etc/ql-vpn/tokens.json` |
+| **Создать токен вручную** | `/usr/local/bin/ql-vpn token add -server "IP:27960" -name "Sarge" -tokens /etc/ql-vpn/tokens.json` |
+| **Удалить токен** | `/usr/local/bin/ql-vpn token del -name "Sarge" -tokens /etc/ql-vpn/tokens.json` |
+| **Проверить сетевой туннель** | `ip addr show qlvpn0` |
+| **Проверить счетчики NAT-трафика** | `iptables -t nat -L POSTROUTING -n -v` |
+
