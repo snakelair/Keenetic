@@ -3,14 +3,24 @@ set +e
 
 PACKAGE="${1:-smart-route}"
 
-printf "\n\033[1;36m================================================================================\033[0m\n"
-printf "\033[1;36m          Keenetic Entware OPKG Installer (snakelair/Keenetic)\033[0m\n"
-printf "\033[1;36m================================================================================\033[0m\n\n"
+# Special handling for ql-vpn (QuakeLive-VPN Server for Linux VPS)
+if [ "$PACKAGE" = "ql-vpn" ] || [ "$PACKAGE" = "qlvpn" ]; then
+    printf "\033[1;34m[*]\033[0m Запуск установщика QuakeLive-VPN Server (Linux VPS)...\n"
+    SCRIPT_DIR="$(dirname "$0")"
+    if [ -f "${SCRIPT_DIR}/install-qlvpn.sh" ]; then
+        exec bash "${SCRIPT_DIR}/install-qlvpn.sh" "$@"
+    else
+        curl -sSL https://raw.githubusercontent.com/snakelair/Keenetic/main/install-qlvpn.sh | bash -s -- "$@"
+        exit $?
+    fi
+fi
 
-# 1. Check Entware environment
+# 1. Check Entware environment (for Keenetic router OPKG packages)
 if [ ! -d "/opt/bin" ] || [ ! -x "/opt/bin/opkg" ]; then
-    printf "\033[1;31m[ERROR] Entware is not installed or /opt/bin/opkg not found!\033[0m\n"
-    printf "Please set up Entware on your Keenetic router first.\n"
+    printf "\033[1;31m[ERROR] Entware не установлена или /opt/bin/opkg не найден!\033[0m\n"
+    printf "Для установки пакетов роутера (smart-utils, smart-route, smart-photo, smart-vpn) требуется среда Entware.\n"
+    printf "Если вы хотите установить сервер QuakeLive-VPN на VPS, выполните:\n"
+    printf "  curl -sSL https://raw.githubusercontent.com/snakelair/Keenetic/main/install-qlvpn.sh | bash\n\n"
     exit 1
 fi
 

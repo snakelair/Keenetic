@@ -56,11 +56,23 @@
 
 ---
 
-## 🚀 Быстрая установка на роутер Keenetic
+### 5. 🎮 `ql-vpn` (v1.0.65)
+**Высокоскоростной стелс-туннель нового поколения на базе протокола id Tech 3 NetChan (Quake Live):**
+- **100% маскировка сетевого трафика:** пакеты неотличимы от реального сетевого мультиплеера Quake Live, устойчивы к анализу ТСПУ и сигнатурным блокировкам DPI.
+- **Поддержка платформ:** Linux VPS (сервер / шлюз) и Windows (клиент с системным треем и GUI).
+- **Сверхнизкий пинг:** прямое UDP-туннелирование, аппаратное шифрование AES-128-GCM и ChaCha20-Poly1305.
+- **Автономный веб-центр управления:** веб-интерфейс (:8092) для мониторинга игроков, генерации токенов `qlvpn://`, замера задержки и управления маршрутизацией.
+- **Встроенная система самообновления:** автоматическое обновление бинарника и службы в один клик прямо из веб-интерфейса.
+- **Веб-интерфейс:** `https://<ip-сервера>:8092`
+- [🎮 **Руководство пользователя QuakeLive-VPN (ql_vpn_user_guide.md)**](ql_vpn_user_guide.md)
+
+---
+
+## 🚀 Быстрая установка
 
 ### 1. Автоматическая установка (в одну команду):
 
-Подключитесь к роутеру по SSH и выполните:
+Подключитесь к роутеру (или VPS) по SSH и выполните:
 
 ```bash
 # Установить Smart-Utils (Веб-панель, Терминалы, Файловый менеджер, OPKG):
@@ -72,8 +84,13 @@ curl -sSL https://raw.githubusercontent.com/snakelair/Keenetic/main/install.sh |
 # Установить Smart-Photo (Персональная фотогалерея на USB):
 curl -sSL https://raw.githubusercontent.com/snakelair/Keenetic/main/install.sh | sh -s smart-photo
 
-# Установить Smart-VPN (WireGuard, AWG, Sing-box, QuakeLive-VPN):
+# Установить Smart-VPN (WireGuard, AWG, Sing-box, QuakeLive-VPN на роутер):
 curl -sSL https://raw.githubusercontent.com/snakelair/Keenetic/main/install.sh | sh -s smart-vpn
+
+# Установить QuakeLive-VPN Server (на Linux VPS / удаленный сервер):
+curl -sSL https://raw.githubusercontent.com/snakelair/Keenetic/main/install-qlvpn.sh | bash
+# или через универсальный установщик:
+curl -sSL https://raw.githubusercontent.com/snakelair/Keenetic/main/install.sh | sh -s ql-vpn
 ```
 
 ---

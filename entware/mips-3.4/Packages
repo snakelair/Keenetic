@@ -1,15 +1,15 @@
 Package: smart-vpn
-Version: 1.0.64
+Version: 1.0.65
 Depends: ca-certificates
 Section: net
 Architecture: mips-3.4
 Maintainer: SmartVPN Team
 Description: Modern Web VPN Control Center for Keenetic Entware routers. Supports native WireGuard, SSTP, OpenVPN, IPsec and live metrics.
 Priority: optional
-Filename: smart-vpn_1.0.64_mips-3.4.ipk
-Size: 3730233
-MD5Sum: 119ff6a928d4ce718e4e36b3f604d8a0
-SHA256Sum: e39fe551053579f00b29888877d4fd2325db1a42cea4c8ae1ec3d15eb108db76
+Filename: smart-vpn_1.0.65_mips-3.4.ipk
+Size: 3730202
+MD5Sum: ddf76c177e48b8c8ed2d63fcf0694d3b
+SHA256Sum: 82c5eabbf7c5d37538af1fb7c9d87b10b428bb449af8277f1a2e312ce7e34b13
 
 Package: smart-route
 Version: 1.0.32
