@@ -1,3 +1,16 @@
+Package: smart-route
+Version: 1.0.36
+Depends: iptables, ipset, ip-full, ca-certificates
+Section: net
+Architecture: mipsel-3.4
+Maintainer: Smart-Route Team
+Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
+Priority: optional
+MD5Sum: 816d1671cf6d4368094ba76a14b4ba0b
+SHA256Sum: 57cb6a0f66dcb7d85fc2305cb07f39ad0fd25db6dcf5eb0890ab8c0076e6909e
+Size: 3429921
+Filename: smart-route_1.0.36_mipsel-3.4.ipk
+
 Package: smart-vpn
 Version: 1.0.65
 Depends: ca-certificates
@@ -10,19 +23,6 @@ Filename: smart-vpn_1.0.65_mipsel-3.4.ipk
 Size: 3679668
 MD5Sum: 21dda9cdca833391c8d1053c6581add2
 SHA256Sum: b825f45f54ea6d9aca6abf6c635cc3b1ddf35397b27af439acfa5dc6ce3c3369
-
-Package: smart-route
-Version: 1.0.32
-Depends: iptables, ipset, ip-full, ca-certificates
-Section: net
-Architecture: mipsel-3.4
-Maintainer: Smart-Route Team
-Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
-Priority: optional
-MD5Sum: f9c5e315e81c5ed8c7b1a3fb32b2b462
-SHA256Sum: ebf4988d11a04c57a7ed82e75fd6e724f69468aec1776f7d1a4fe717fab7aefa
-Size: 3300691
-Filename: smart-route_1.0.32_mipsel-3.4.ipk
 
 Package: smart-photo
 Version: 1.0.39
