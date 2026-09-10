@@ -77,21 +77,3 @@ curl -sSL https://raw.githubusercontent.com/snakelair/Keenetic/main/install.sh |
 # Проверка статуса и логов
 /opt/etc/init.d/S99smart-photo check
 ```
-
----
-
-## 5. Полное удаление Smart-Photo
-
-### Автоматически:
-```bash
-curl -sSL https://raw.githubusercontent.com/snakelair/Keenetic/main/uninstall.sh | sh -s smart-photo
-```
-
-### Вручную через SSH:
-```bash
-/opt/etc/init.d/S99smart-photo stop
-killall -9 smart-photo 2>/dev/null
-opkg remove smart-photo --force-remove --force-depends
-rm -f /opt/etc/init.d/S99smart-photo /tmp/smart-photo.log /opt/var/log/smart-photo.log
-rm -rf /opt/etc/smart-photo /opt/var/cache/smart-photo
-```

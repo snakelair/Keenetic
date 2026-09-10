@@ -32,7 +32,7 @@
 
 ---
 
-### 3. 📷 `smart-photo` (v1.0.39)
+### 3. 📷 `smart-photo` (v1.0.43)
 **Персональный домашний фотосервер в стиле Google Photos прямо на роутере Keenetic для подключенных USB-накопителей:**
 - Бесконечная лента фотохроники (Infinite Scroll) с быстрым отображением.
 - Сканирование и просмотр фото и видео с подключенных по USB накопителей (флешки, HDD, SSD).
@@ -221,7 +221,7 @@ opkg update
 
 ## 💬 Сообщество и обратная связь
 
-- 📢 **Telegram-канал и обновления:** [t.me/KeeneticSmartUtils](https://t.me/KeeneticSmartUtils)
+- 📢 **Telegram-сообщество и обновления:** [t.me/SmartKeenetic](https://t.me/SmartKeenetic)
 - 💬 **Тема обсуждения на форуме Keenetic:** [Приложения Smart-Utils, Smart-Route, Smart-Photo](https://forum.keenetic.ru/topic/30698-%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F-smart-utils-smart-route-smart-photo-snakelair-keenetic-entware-opkg-repository/)
 - 🐞 **Трекер багрепортов и предложений:** [github.com/snakelair/Keenetic/issues](https://github.com/snakelair/Keenetic/issues)
 - 💻 **Исходный код Smart-Utils:** [github.com/snakelair/SmartUtils](https://github.com/snakelair/SmartUtils)
