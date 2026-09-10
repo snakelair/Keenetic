@@ -38,14 +38,14 @@ Size: 3712618
 Filename: smart-utils_1.0.29_armv7-3.2.ipk
 
 Package: smart-photo
-Version: 1.0.44
+Version: 1.0.45
 Depends: ca-certificates
 Section: multimedia
 Architecture: armv7-3.2
 Maintainer: Smart-Photo Team
-MD5Sum: 896788b62727385ec08c4456ff265f84
-SHA256Sum: 59b820ca539b15e563946ea96ee30182c450e7103fdc343d8ed34a5199216721
-Size: 3936406
-Filename: smart-photo_1.0.44_armv7-3.2.ipk
+MD5Sum: 91be9d25ded907c7c10a014c1d53f379
+SHA256Sum: 5223780fbb288118e02cd7a70e1e283046f759fdf4a74af4aae50a274e1b80f5
+Size: 3940719
+Filename: smart-photo_1.0.45_armv7-3.2.ipk
 Description: Google Photos-like photo manager and viewer daemon for USB storage with modern Web UI on Keenetic Entware routers.
 
