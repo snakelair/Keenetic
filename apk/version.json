@@ -1,0 +1,18 @@
+﻿{
+  "smart_photo_android": {
+    "version_code": 2,
+    "version_name": "1.0.1",
+    "apk_name": "SmartPhotoAndroid.apk",
+    "download_url": "https://github.com/snakelair/Keenetic/raw/main/apk/SmartPhotoAndroid.apk",
+    "changelog": "• Поддержка видеофайлов (MP4, MOV, MKV, AVI, WebM)\n• Устранение повторной выгрузки видео при синхронизации\n• Автоматическая проверка обновлений из репозитория Keenetic\n• Улучшение стабильности и скорости работы",
+    "release_date": "2026-09-10"
+  },
+  "smart_photo_tv": {
+    "version_code": 2,
+    "version_name": "1.0.1",
+    "apk_name": "SmartPhotoTV.apk",
+    "download_url": "https://github.com/snakelair/Keenetic/raw/main/apk/SmartPhotoTV.apk",
+    "changelog": "• Воспроизведение видеозаписей на большом экране\n• Автоматическая проверка обновлений из репозитория Keenetic\n• Оптимизация навигации с пульта ДУ",
+    "release_date": "2026-09-10"
+  }
+}

@@ -1,16 +1,3 @@
-Package: smart-route
-Version: 1.0.81
-Depends: iptables, ipset, ip-full, ca-certificates
-Section: net
-Architecture: aarch64-3.10
-Maintainer: Smart-Route Team
-Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
-Priority: optional
-MD5Sum: 97ee6b449f3362eb1c993ed940363278
-SHA256Sum: 7b7929662e9446cc18437b5f42fe8ce528cd584b238896632982e8f361c65267
-Size: 3574536
-Filename: smart-route_1.0.81_aarch64-3.10.ipk
-
 Package: smart-vpn
 Version: 1.0.93
 Depends: ca-certificates
@@ -23,6 +10,19 @@ Filename: smart-vpn_1.0.93_aarch64-3.10.ipk
 Size: 5667113
 MD5Sum: 29aa6ce2cc66e0c31e07cb5a653dbf0b
 SHA256Sum: d295b13e3ba7e203a809b7ee4e8ff1c89833a4785544ec48ab713d1eafbcb603
+
+Package: smart-route
+Version: 1.0.81
+Depends: iptables, ipset, ip-full, ca-certificates
+Section: net
+Architecture: aarch64-3.10
+Maintainer: Smart-Route Team
+Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
+Priority: optional
+MD5Sum: 97ee6b449f3362eb1c993ed940363278
+SHA256Sum: 7b7929662e9446cc18437b5f42fe8ce528cd584b238896632982e8f361c65267
+Size: 3574536
+Filename: smart-route_1.0.81_aarch64-3.10.ipk
 
 Package: smart-utils
 Version: 1.0.29
@@ -38,14 +38,14 @@ Size: 3468573
 Filename: smart-utils_1.0.29_aarch64-3.10.ipk
 
 Package: smart-photo
-Version: 1.0.43
+Version: 1.0.44
 Depends: ca-certificates
 Section: multimedia
 Architecture: aarch64-3.10
 Maintainer: Smart-Photo Team
-MD5Sum: 0b8ec503ac93425ad145a45a8dee50b8
-SHA256Sum: b967ba263dfea6f14146a76d041a551da75430db8357f19a6b4d77b38cdfd030
-Size: 3704375
-Filename: smart-photo_1.0.43_aarch64-3.10.ipk
+MD5Sum: 12e79f48cd9d9f8c9dbb9933c5061a63
+SHA256Sum: 46a8d74acff4b3d1087fd551e634d14ef8c25a8c302e52788cc21a04fb325a18
+Size: 3706962
+Filename: smart-photo_1.0.44_aarch64-3.10.ipk
 Description: Google Photos-like photo manager and viewer daemon for USB storage with modern Web UI on Keenetic Entware routers.
 
