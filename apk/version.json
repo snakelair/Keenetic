@@ -1,10 +1,10 @@
 {
   "smart_photo_android": {
-    "version_code": 3,
-    "version_name": "1.0.2",
+    "version_code": 4,
+    "version_name": "1.0.3",
     "apk_name": "SmartPhotoAndroid.apk",
     "download_url": "https://github.com/snakelair/Keenetic/raw/main/apk/SmartPhotoAndroid.apk",
-    "changelog": "• Отображение процента и объема выгрузки в реальном времени для каждого файла при синхронизации\n• Поддержка видеофайлов (MP4, MOV, MKV, AVI, WebM)\n• Устранение повторной выгрузки видео при синхронизации\n• Автоматическая проверка обновлений из репозитория Keenetic",
+    "changelog": "• Исправлены обрывы выгрузки больших файлов (~250 Мб)\n• Автоматический повтор сбойных чанков (до 3 попыток)\n• Защита от одновременных повторных запусков синхронизации\n• Отображение процента и объема каждого файла в реальном времени",
     "release_date": "2026-09-10"
   },
   "smart_photo_tv": {
