@@ -1,11 +1,11 @@
 {
   "smart_photo_android": {
-    "version_code": 4,
-    "version_name": "1.0.3",
+    "version_code": 5,
+    "version_name": "1.0.4",
     "apk_name": "SmartPhotoAndroid.apk",
     "download_url": "https://github.com/snakelair/Keenetic/raw/main/apk/SmartPhotoAndroid.apk",
-    "changelog": "• Исправлены обрывы выгрузки больших файлов (~250 Мб)\n• Автоматический повтор сбойных чанков (до 3 попыток)\n• Защита от одновременных повторных запусков синхронизации\n• Отображение процента и объема каждого файла в реальном времени",
-    "release_date": "2026-09-10"
+    "changelog": "• Скролл дат в стиле Google Photos с пропорциональной шкалой лет и точками месяцев\n• Плавное автоскрытие шкалы в покое и мгновенный переход к любому месяцу\n• Оптимизация плавной прокрутки ленты до самых ранних снимков",
+    "release_date": "2026-09-11"
   },
   "smart_photo_tv": {
     "version_code": 2,
