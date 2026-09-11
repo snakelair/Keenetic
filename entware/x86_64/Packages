@@ -1,14 +1,15 @@
-Package: smart-utils
-Version: 1.0.31
+Package: smart-vpn
+Version: 1.0.98
 Depends: ca-certificates
-Section: admin
+Section: net
 Architecture: x86_64
-Maintainer: Smart-Utils Team
-MD5Sum: aa9a3d4288614b8382f7a120efccaf5a
-SHA256Sum: a80f03982628667bacf10f9126e483de57f9c57e7d563753f188e3bf49afa573
-Size: 3874677
-Filename: smart-utils_1.0.31_x86_64.ipk
-Description: Modern Web Administration Suite with Web Terminal, Total Commander Dual-Pane File Manager, OPKG Package Manager, CPU/System Analyzer and Backups for Keenetic Entware routers.
+Maintainer: Smart-VPN Team
+Description: Smart-VPN Keenetic Control Center - Modern Web VPN Control Center for Keenetic Entware routers. Supports native WireGuard, SSTP, OpenVPN, IPsec and live metrics.
+Priority: optional
+MD5Sum: 8a09c4a5f9d413944fc82c19c127ac05
+SHA256Sum: 0488ee141ab5fcc4aa7de2225ffa33ad0057fc038b52fe15e8793cda86317f7f
+Size: 6040763
+Filename: smart-vpn_1.0.98_x86_64.ipk
 
 Package: smart-route
 Version: 1.0.88
@@ -23,55 +24,27 @@ SHA256Sum: fb01d4ce7a097fe253eeb7bb432cb3f637b93c8dcfcd3e7bc84a148a668743ec
 Size: 3985347
 Filename: smart-route_1.0.88_x86_64.ipk
 
+Package: smart-utils
+Version: 1.0.31
+Depends: ca-certificates
+Section: admin
+Architecture: x86_64
+Maintainer: Smart-Utils Team
+MD5Sum: aa9a3d4288614b8382f7a120efccaf5a
+SHA256Sum: a80f03982628667bacf10f9126e483de57f9c57e7d563753f188e3bf49afa573
+Size: 3874677
+Filename: smart-utils_1.0.31_x86_64.ipk
+Description: Modern Web Administration Suite with Web Terminal, Total Commander Dual-Pane File Manager, OPKG Package Manager, CPU/System Analyzer and Backups for Keenetic Entware routers.
+
 Package: smart-photo
-Version: 1.0.44
+Version: 1.0.54
 Depends: ca-certificates
 Section: multimedia
 Architecture: x86_64
 Maintainer: Smart-Photo Team
+MD5Sum: f66513b206be3f55b489fd029dd4dc11
+SHA256Sum: 5c9bc77b9645c10bdaed8856189e90a720ed39eb9835a7e10c4bb5f3088eb75c
+Size: 4205074
+Filename: smart-photo_1.0.54_x86_64.ipk
 Description: Google Photos-like photo manager and viewer daemon for USB storage with modern Web UI on Keenetic Entware routers.
-Priority: optional
-MD5Sum: 2a1e4bb3768e59fe5be2713a7a314534
-SHA256Sum: ab15b2257d7f6755e56da24cbb3e94dbce05c7585d1a22f3303926f9e0d629d2
-Size: 4093084
-Filename: smart-photo_1.0.44_x86_64.ipk
-
-Package: smart-photo
-Version: 1.0.45
-Depends: ca-certificates
-Section: multimedia
-Architecture: x86_64
-Maintainer: Smart-Photo Team
-Description: Google Photos-like photo manager and viewer daemon for USB storage with modern Web UI on Keenetic Entware routers.
-Priority: optional
-MD5Sum: d3ec8c0d41d8adf850867ae94afa0d7b
-SHA256Sum: 194b3eb7014636b394670b7a63ecddd3742ec25712cde2a8b4b0d9ed17b0eff2
-Size: 4100569
-Filename: smart-photo_1.0.45_x86_64.ipk
-
-Package: smart-vpn
-Version: 1.0.97
-Depends: ca-certificates
-Section: net
-Architecture: x86_64
-Maintainer: Smart-VPN Team
-Description: Smart-VPN Keenetic Control Center - Modern Web VPN Control Center for Keenetic Entware routers. Supports native WireGuard, SSTP, OpenVPN, IPsec and live metrics.
-Priority: optional
-MD5Sum: 1cd515624d0d6207b7721f0d71b768b5
-SHA256Sum: 51a8446f2987e4c8778e603364e1d1818c9f8ef9aaccd14c2e946729ca49bc22
-Size: 6034043
-Filename: smart-vpn_1.0.97_x86_64.ipk
-
-Package: smart-vpn
-Version: 1.0.98
-Depends: ca-certificates
-Section: net
-Architecture: x86_64
-Maintainer: Smart-VPN Team
-Description: Smart-VPN Keenetic Control Center - Modern Web VPN Control Center for Keenetic Entware routers. Supports native WireGuard, SSTP, OpenVPN, IPsec and live metrics.
-Priority: optional
-MD5Sum: 8a09c4a5f9d413944fc82c19c127ac05
-SHA256Sum: 0488ee141ab5fcc4aa7de2225ffa33ad0057fc038b52fe15e8793cda86317f7f
-Size: 6040763
-Filename: smart-vpn_1.0.98_x86_64.ipk
 

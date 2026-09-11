@@ -1,3 +1,16 @@
+Package: smart-vpn
+Version: 1.0.98
+Depends: ca-certificates
+Section: net
+Architecture: mips-3.4
+Maintainer: Smart-VPN Team
+Description: Smart-VPN Keenetic Control Center - Modern Web VPN Control Center for Keenetic Entware routers. Supports native WireGuard, SSTP, OpenVPN, IPsec and live metrics.
+Priority: optional
+MD5Sum: ce4b71caf6434b96c876f1ba985dce90
+SHA256Sum: d057f762871401731bbdcdab7b0f84af3b27858b5edfe4b108e3d604c6bcb64e
+Size: 5795059
+Filename: smart-vpn_1.0.98_mips-3.4.ipk
+
 Package: smart-route
 Version: 1.0.88
 Depends: iptables, ipset, ip-full, ca-certificates
@@ -11,81 +24,27 @@ SHA256Sum: a6cb7df6c69ede919ae7f0e06288100d7159932160eef1c4cef3051da84ab6f4
 Size: 3743114
 Filename: smart-route_1.0.88_mips-3.4.ipk
 
-Package: smart-photo
-Version: 1.0.44
-Depends: ca-certificates
-Section: multimedia
-Architecture: mips-3.4
-Maintainer: Smart-Photo Team
-Description: Google Photos-like photo manager and viewer daemon for USB storage with modern Web UI on Keenetic Entware routers.
-Priority: optional
-MD5Sum: 0957b7a05c685de1391f8b11e843e53f
-SHA256Sum: 8a4e853255cfc5a2f2de2b3083be4206e12a8d99529aed1231fb4464fdf2dc56
-Size: 3853616
-Filename: smart-photo_1.0.44_mips-3.4.ipk
-
-Package: smart-photo
-Version: 1.0.45
-Depends: ca-certificates
-Section: multimedia
-Architecture: mips-3.4
-Maintainer: Smart-Photo Team
-Description: Google Photos-like photo manager and viewer daemon for USB storage with modern Web UI on Keenetic Entware routers.
-Priority: optional
-MD5Sum: 9f79da0f8a8387585086ac5963b2d883
-SHA256Sum: 6293e3dd3fbf99a1611a03cd79de1c61d76cb87797058f90db30ea9c5a27fd15
-Size: 3858235
-Filename: smart-photo_1.0.45_mips-3.4.ipk
-
 Package: smart-utils
-Version: 1.0.29
+Version: 1.0.31
 Depends: ca-certificates
 Section: admin
 Architecture: mips-3.4
 Maintainer: Smart-Utils Team
+MD5Sum: bd915cbbc5cdb1c42115d41380a778d9
+SHA256Sum: d54e8a94708ee3750d2a0300303547be493804c0a23e9a2dd29925488cde9cff
+Size: 3656850
+Filename: smart-utils_1.0.31_mips-3.4.ipk
 Description: Modern Web Administration Suite with Web Terminal, Total Commander Dual-Pane File Manager, OPKG Package Manager, CPU/System Analyzer and Backups for Keenetic Entware routers.
-Priority: optional
-MD5Sum: 33d9f2c99d971bfad25e7cb68b2bddc7
-SHA256Sum: 9cd2889c3a292ca085cf986aa588c1cb1073f45f4ac7d982d1b5797e18c05753
-Size: 3617181
-Filename: smart-utils_1.0.29_mips-3.4.ipk
 
-Package: smart-utils
-Version: 1.0.30
+Package: smart-photo
+Version: 1.0.54
 Depends: ca-certificates
-Section: admin
+Section: multimedia
 Architecture: mips-3.4
-Maintainer: Smart-Utils Team
-Description: Modern Web Administration Suite with Web Terminal, Total Commander Dual-Pane File Manager, OPKG Package Manager, CPU/System Analyzer and Backups for Keenetic Entware routers.
-Priority: optional
-MD5Sum: 0c9b13a14411c6cf8b4d4f3462ba18eb
-SHA256Sum: 9d4f2e301755f6d245df99c0ad5332e9daeca6f18f44693e78a239a4c0d4c409
-Size: 3645731
-Filename: smart-utils_1.0.30_mips-3.4.ipk
-
-Package: smart-vpn
-Version: 1.0.97
-Depends: ca-certificates
-Section: net
-Architecture: mips-3.4
-Maintainer: Smart-VPN Team
-Description: Smart-VPN Keenetic Control Center - Modern Web VPN Control Center for Keenetic Entware routers. Supports native WireGuard, SSTP, OpenVPN, IPsec and live metrics.
-Priority: optional
-MD5Sum: 4806726c160b3c310e1b0b7a50fd1323
-SHA256Sum: ceef70aa4a649c10d8f5a8933596ef88541c0a0305becf40d00a7ee3f489b68a
-Size: 5790897
-Filename: smart-vpn_1.0.97_mips-3.4.ipk
-
-Package: smart-vpn
-Version: 1.0.98
-Depends: ca-certificates
-Section: net
-Architecture: mips-3.4
-Maintainer: Smart-VPN Team
-Description: Smart-VPN Keenetic Control Center - Modern Web VPN Control Center for Keenetic Entware routers. Supports native WireGuard, SSTP, OpenVPN, IPsec and live metrics.
-Priority: optional
-MD5Sum: ce4b71caf6434b96c876f1ba985dce90
-SHA256Sum: d057f762871401731bbdcdab7b0f84af3b27858b5edfe4b108e3d604c6bcb64e
-Size: 5795059
-Filename: smart-vpn_1.0.98_mips-3.4.ipk
+Maintainer: Smart-Photo Team
+MD5Sum: c7207911262f9f75c70d728240693c5a
+SHA256Sum: 5846dfed4db240a95c73e552413668caa6a19b2d819f64621b75fe2974600c11
+Size: 3948037
+Filename: smart-photo_1.0.54_mips-3.4.ipk
+Description: Google Photos-like photo manager and viewer daemon for USB storage with modern Web UI on Keenetic Entware routers.
 

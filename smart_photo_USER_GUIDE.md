@@ -77,15 +77,3 @@ curl -sSL https://raw.githubusercontent.com/snakelair/Keenetic/main/install.sh |
 # Проверка статуса и логов
 /opt/etc/init.d/S99smart-photo check
 ```
-
----
-
-## 5. Приложения для Android и Android TV
-
-Для удобного доступа к вашей домашней медиатеке доступны мобильное и ТВ-приложения:
-
-| Клиент | Назначение | Скачать APK | QR-код для камеры |
-| :--- | :--- | :---: | :---: |
-| **📱 SmartPhotoSync** | Фоновая автосинхронизация фото и видео со смартфона в домашнее хранилище | [SmartPhotoAndroid.apk](https://github.com/snakelair/Keenetic/raw/main/apk/SmartPhotoAndroid.apk) | <img src="https://api.qrserver.com/v1/create-qr-code/?size=130x130&data=https://github.com/snakelair/Keenetic/raw/main/apk/SmartPhotoAndroid.apk" width="130" alt="QR SmartPhotoAndroid" /> |
-| **📺 SmartPhotoTV** | Просмотр фото и видео на экране телевизора / Android TV с пульта ДУ | [SmartPhotoTV.apk](https://github.com/snakelair/Keenetic/raw/main/apk/SmartPhotoTV.apk) | <img src="https://api.qrserver.com/v1/create-qr-code/?size=130x130&data=https://github.com/snakelair/Keenetic/raw/main/apk/SmartPhotoTV.apk" width="130" alt="QR SmartPhotoTV" /> |
-
