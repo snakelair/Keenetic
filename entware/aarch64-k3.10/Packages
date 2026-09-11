@@ -42,9 +42,9 @@ Depends: ca-certificates
 Section: multimedia
 Architecture: aarch64-3.10
 Maintainer: Smart-Photo Team
-MD5Sum: f33f30bae9b3f24ce1ca0c35a7d183b8
-SHA256Sum: 52e0683f99ae530c402ac23634bc92606998c58b5fe495be13bd6d5d97f51929
-Size: 3806433
+MD5Sum: 122d9245e0a2491fedfbe53ae4726ee8
+SHA256Sum: 2ad93e8596a9306c3e4fe3ff672ad7a0e4ea2db5bef5a3a9b16b56b344c14bec
+Size: 3806452
 Filename: smart-photo_1.0.54_aarch64-3.10.ipk
 Description: Google Photos-like photo manager and viewer daemon for USB storage with modern Web UI on Keenetic Entware routers.
 
