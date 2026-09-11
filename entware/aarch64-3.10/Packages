@@ -1,15 +1,15 @@
 Package: smart-vpn
-Version: 1.0.96
+Version: 1.0.97
 Depends: ca-certificates
 Section: net
 Architecture: aarch64-3.10
 Maintainer: Smart-VPN Team
 Description: Smart-VPN Keenetic Control Center - Modern Web VPN Control Center for Keenetic Entware routers. Supports native WireGuard, SSTP, OpenVPN, IPsec and live metrics.
 Priority: optional
-Filename: smart-vpn_1.0.96_aarch64-3.10.ipk
-Size: 5664020
-MD5Sum: ccaa7359499c7ce2c2a867f0a1db3785
-SHA256Sum: 14acfd385b76aa32974daa0a3e2ad17fedec1a6cc1318cd1d4b8b532dd600e4c
+Filename: smart-vpn_1.0.97_aarch64-3.10.ipk
+Size: 5663561
+MD5Sum: 2e28a48d973ec30ec3b72930ece4735c
+SHA256Sum: 5b8e7448e270fa324df8c9b9474965bdd8300f12144392ff179f9731ca6c3db0
 
 Package: smart-route
 Version: 1.0.84
