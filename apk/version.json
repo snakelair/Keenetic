@@ -1,4 +1,12 @@
 {
+  "ql_vpn_android": {
+    "version_code": 96,
+    "version_name": "1.0.96",
+    "apk_name": "QuakeLiveVPN.apk",
+    "download_url": "https://github.com/snakelair/Keenetic/raw/main/apk/QuakeLiveVPN.apk",
+    "changelog": "• Внедрена система проверки обновлений и самообновления из общего репозитория Keenetic\n• Официальная цифровая подпись релизных APK\n• Исправлен автоматический перезапуск веб-интерфейса VPS после обновления",
+    "release_date": "2026-09-11"
+  },
   "smart_photo_android": {
     "version_code": 6,
     "version_name": "1.0.5",
