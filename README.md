@@ -6,7 +6,7 @@
 
 ## 📦 Доступные пакеты в репозитории
 
-### 1. 🛠️ `smart-utils` (v1.0.29)
+### 1. 🛠️ `smart-utils` (v1.0.30)
 **Универсальный веб-комбайн системного администрирования и управления роутером Keenetic:**
 - **Двухпанельный файловый менеджер:** классический интерфейс в стиле Total Commander, горячие клавиши F3–F10, полноэкранный редактор конфигов с подсветкой синтаксиса, архиватор (tar.gz/zip), смена прав доступа (chmod) и Drag-and-Drop загрузка файлов прямо в браузер.
 - **Два веб-терминала:**
@@ -216,6 +216,18 @@ opkg update
 | **`x86_64`** | x86 Entware / Виртуальные машины |
 | **`mips-3.4`** | Keenetic MIPS Big-Endian |
 
+
+---
+
+## 📱 Приложения для Android и Android TV
+
+Для быстрой установки отсканируйте QR-код камерой смартфона или перейдите по прямой ссылке на APK:
+
+| Приложение | Описание | Скачать APK | QR-код для камеры |
+| :--- | :--- | :---: | :---: |
+| **🎮 QuakeLive-VPN** | Игровой стелс-клиент для Android со сверхнизким пингом и защитой от DPI | [QuakeLiveVPN.apk](https://github.com/snakelair/Keenetic/raw/main/apk/QuakeLiveVPN.apk) | <img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=https://github.com/snakelair/Keenetic/raw/main/apk/QuakeLiveVPN.apk" width="140" alt="QR QuakeLive-VPN" /> |
+| **📸 SmartPhotoSync** | Фоновая автосинхронизация фото и видео со смартфона на USB-накопитель роутера | [SmartPhotoAndroid.apk](https://github.com/snakelair/Keenetic/raw/main/apk/SmartPhotoAndroid.apk) | <img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=https://github.com/snakelair/Keenetic/raw/main/apk/SmartPhotoAndroid.apk" width="140" alt="QR SmartPhotoSync" /> |
+| **📺 SmartPhotoTV** | Фотогалерея и медиаплеер для смарт-телевизоров и приставок Android TV с пультом ДУ | [SmartPhotoTV.apk](https://github.com/snakelair/Keenetic/raw/main/apk/SmartPhotoTV.apk) | <img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=https://github.com/snakelair/Keenetic/raw/main/apk/SmartPhotoTV.apk" width="140" alt="QR SmartPhotoTV" /> |
 
 ---
 

@@ -81,10 +81,11 @@ opkg install smart-photo
 
 ## 📱 Клиентские приложения
 
-- **SmartPhotoSync (Android)**: фоновая автоматическая синхронизация фотографий со смартфонов по Wi-Fi.  
-  👉 [Скачать SmartPhotoAndroid.apk](https://github.com/snakelair/Keenetic/raw/main/apk/SmartPhotoAndroid.apk)
-- **SmartPhotoTV (Android TV)**: просмотр фотоархива на экране телевизора с поддержкой пульта ДУ.  
-  👉 [Скачать SmartPhotoTV.apk](https://github.com/snakelair/Keenetic/raw/main/apk/SmartPhotoTV.apk)
+| Клиент | Назначение | Скачать APK | QR-код для камеры |
+| :--- | :--- | :---: | :---: |
+| **SmartPhotoSync (Android)** | Фоновая автосинхронизация фото и видео со смартфонов по Wi-Fi | [SmartPhotoAndroid.apk](https://github.com/snakelair/Keenetic/raw/main/apk/SmartPhotoAndroid.apk) | <img src="https://api.qrserver.com/v1/create-qr-code/?size=130x130&data=https://github.com/snakelair/Keenetic/raw/main/apk/SmartPhotoAndroid.apk" width="130" alt="QR SmartPhotoAndroid" /> |
+| **SmartPhotoTV (Android TV)** | Просмотр фотоархива на экране ТВ с поддержкой пульта ДУ | [SmartPhotoTV.apk](https://github.com/snakelair/Keenetic/raw/main/apk/SmartPhotoTV.apk) | <img src="https://api.qrserver.com/v1/create-qr-code/?size=130x130&data=https://github.com/snakelair/Keenetic/raw/main/apk/SmartPhotoTV.apk" width="130" alt="QR SmartPhotoTV" /> |
+
 - **WebDAV**: прямое подключение медиатеки на iPhone/iPad (системное приложение «Файлы»), macOS и Windows.
 
 ---

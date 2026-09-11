@@ -50,21 +50,3 @@ curl -sSL https://raw.githubusercontent.com/snakelair/Keenetic/main/install.sh |
 
 После установки откройте веб-интерфейс:
 `http://192.168.1.1:8090` (или IP-адрес вашего роутера)
-
----
-
-## 🗑️ Полное удаление Smart-Utils
-
-### Автоматически (в одну команду):
-```bash
-curl -sSL https://raw.githubusercontent.com/snakelair/Keenetic/main/uninstall.sh | sh -s smart-utils
-```
-
-### Вручную через SSH:
-```bash
-/opt/etc/init.d/S99smart-utils stop
-killall -9 smart-utils 2>/dev/null
-opkg remove smart-utils --force-remove --force-depends
-rm -f /opt/etc/init.d/S99smart-utils /tmp/smart-utils.log /opt/var/log/smart-utils.log
-rm -rf /opt/etc/smart-utils
-```

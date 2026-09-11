@@ -70,6 +70,16 @@ curl -sSL https://raw.githubusercontent.com/snakelair/Keenetic/main/install.sh |
 2. Вставьте токен `qlvpn://...` в поле ввода и нажмите **«Добавить сервер»**.
 3. Роутер установит туннель и сможет направлять домашний трафик через ваш VPS.
 
+### 3.3. Клиент Android (Смартфоны и планшеты)
+
+1. Установите приложение **QuakeLiveVPN.apk** на ваше Android-устройство.
+2. Вставьте ссылку-токен `qlvpn://...` или отсканируйте конфигурацию.
+3. Нажмите кнопку подключения для активации стелс-туннеля.
+
+| Приложение | Файл | QR-код для камеры |
+| :--- | :---: | :---: |
+| **QuakeLive-VPN Android** | [QuakeLiveVPN.apk](https://github.com/snakelair/Keenetic/raw/main/apk/QuakeLiveVPN.apk) | <img src="https://api.qrserver.com/v1/create-qr-code/?size=130x130&data=https://github.com/snakelair/Keenetic/raw/main/apk/QuakeLiveVPN.apk" width="130" alt="QR QuakeLiveVPN" /> |
+
 ---
 
 ## ⚙️ 4. Веб-панель управления сервером (HTTPS)
