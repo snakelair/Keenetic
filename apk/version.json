@@ -1,10 +1,10 @@
 {
   "smart_photo_android": {
-    "version_code": 5,
-    "version_name": "1.0.4",
+    "version_code": 6,
+    "version_name": "1.0.5",
     "apk_name": "SmartPhotoAndroid.apk",
     "download_url": "https://github.com/snakelair/Keenetic/raw/main/apk/SmartPhotoAndroid.apk",
-    "changelog": "• Скролл дат в стиле Google Photos с пропорциональной шкалой лет и точками месяцев\n• Плавное автоскрытие шкалы в покое и мгновенный переход к любому месяцу\n• Оптимизация плавной прокрутки ленты до самых ранних снимков",
+    "changelog": "• Полная поддержка архивов любого размера (85 000+ фото): снято ограничение в 1000 снимков\n• Потоковая пакетная загрузка метаданных прямо в Room DB без расхода памяти\n• Загрузка фото только по мере просмотра в ленте\n• Высокопроизводительная группировка дат на java.time и сохранение оффлайн-кэша",
     "release_date": "2026-09-11"
   },
   "smart_photo_tv": {
