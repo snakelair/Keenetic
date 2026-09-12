@@ -8,11 +8,11 @@
     "release_date": "2026-09-11"
   },
   "smart_photo_android": {
-    "version_code": 7,
-    "version_name": "1.0.6",
+    "version_code": 8,
+    "version_name": "1.0.7",
     "apk_name": "SmartPhotoAndroid.apk",
     "download_url": "https://github.com/snakelair/Keenetic/raw/main/apk/SmartPhotoAndroid.apk",
-    "changelog": "• Поддержка сверхкомпактных сжатых баз данных (/api/v1/sync/db/compact) со стриминговой распаковкой Gzip\n• Моментальное сопряжение по QR-коду камерой (ZXing оффлайн) и выбор изображения из галереи\n• Мгновенная регистрация photo_id при завершении выгрузки без пересканирования\n• Расширенная модель данных с именами файлов и относительными путями",
+    "changelog": "• Устранение сбоя CursorWindow при синхронизации больших галерей (расширение до 100 МБ)\n• Оптимизация параллельной работы SQLite в режиме WAL (Write-Ahead Logging)\n• Легковесная проекция для ленты таймлайна и ускорение группировки дат на 99%\n• Пакетная атомарная вставка сжатых баз данных (до 85 000+ фото без блокировок)\n• Устранение дребезга событий MediaStore ContentObserver",
     "release_date": "2026-09-12"
   },
   "smart_photo_tv": {
