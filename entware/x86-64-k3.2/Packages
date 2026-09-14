@@ -37,14 +37,25 @@ Filename: smart-utils_1.0.31_x86_64.ipk
 Description: Modern Web Administration Suite with Web Terminal, Total Commander Dual-Pane File Manager, OPKG Package Manager, CPU/System Analyzer and Backups for Keenetic Entware routers.
 
 Package: smart-photo
-Version: 1.0.54
+Version: 1.0.63
 Depends: ca-certificates
 Section: multimedia
 Architecture: x86_64
 Maintainer: Smart-Photo Team
-MD5Sum: 2c6c24b6800c2661c9bdecdc980f6c0f
-SHA256Sum: 2239bbd41dc752c2b3ee9113f24ada2fc58f63854e5fae39e4e3b9ce64acf68d
-Size: 4205067
-Filename: smart-photo_1.0.54_x86_64.ipk
+MD5Sum: 299890683d6b77033d0c0887f17cdef6
+SHA256Sum: d71506a087cce6217bdd1e510057e9ace4095a4e07983f2c6c65c6825bac3b5b
+Size: 4311390
+Filename: smart-photo_1.0.63_x86_64.ipk
 Description: Google Photos-like photo manager and viewer daemon for USB storage with modern Web UI on Keenetic Entware routers.
+
+Package: ffmpeg-mini
+Version: 1.0.0
+Section: multimedia
+Architecture: x86_64
+Maintainer: Smart-Photo Team
+MD5Sum: 159fae4af118437249d982b6609a3873
+SHA256Sum: 9fd9439e3713abcce9d81521375bc2e922043d08cec2fad4b9beab0783f4dd87
+Size: 1289336
+Filename: ffmpeg-mini_1.0.0_x86_64.ipk
+Description: Lightweight Pure Go video thumbnail processor and companion cover extractor for Keenetic routers.
 
