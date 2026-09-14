@@ -1,11 +1,11 @@
 {
   "ql_vpn_android": {
-    "version_code": 98,
-    "version_name": "1.0.98",
+    "version_code": 108,
+    "version_name": "1.0.108",
     "apk_name": "QuakeLiveVPN.apk",
     "download_url": "https://github.com/snakelair/Keenetic/raw/main/apk/QuakeLiveVPN.apk",
-    "changelog": "• Стандартизация портов: Smart-VPN (8091), QuakeLive-VPN (8092)\n• Настройка bind-address (127.0.0.1 на Windows, 0.0.0.0 на Linux/VPS)\n• Проверка доступности портов и системные предупреждения при конфликтах",
-    "release_date": "2026-09-11"
+    "changelog": "• Отказоустойчивость локального прокси (DIRECT Fallback при сбоях туннеля)\n• Прямой вызов настроек точек доступа APN из приложения\n• Исправлена верстка полей поиска и отображение placeholder\n• Очистка настроек и оптимизация управления прокси",
+    "release_date": "2026-09-14"
   },
   "smart_photo_android": {
     "version_code": 13,
