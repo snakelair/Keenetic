@@ -37,15 +37,15 @@ Filename: smart-utils_1.0.31_x86_64.ipk
 Description: Modern Web Administration Suite with Web Terminal, Total Commander Dual-Pane File Manager, OPKG Package Manager, CPU/System Analyzer and Backups for Keenetic Entware routers.
 
 Package: smart-photo
-Version: 1.0.64
+Version: 1.0.72
 Depends: ca-certificates
 Section: multimedia
 Architecture: x86_64
 Maintainer: Smart-Photo Team
-MD5Sum: 7a835fead1db2ea6d9179d8def45d45a
-SHA256Sum: de71706f9af09c9efee8d94ccbea6d6b7c944112aea91eae692d20ec19d25173
-Size: 4321464
-Filename: smart-photo_1.0.64_x86_64.ipk
+MD5Sum: 631dd801cfd07b2143e27e5017f0d054
+SHA256Sum: f7a962086cded2f67d6c4bd7ae4c94a9e72c6fb2afa2f0fb33e6d8a3c0c062e9
+Size: 4391819
+Filename: smart-photo_1.0.72_x86_64.ipk
 Description: Google Photos-like photo manager and viewer daemon for USB storage with modern Web UI on Keenetic Entware routers.
 
 Package: ffmpeg-mini
@@ -53,8 +53,8 @@ Version: 1.0.0
 Section: multimedia
 Architecture: x86_64
 Maintainer: Smart-Photo Team
-MD5Sum: 3e44cc50401ef1c8f8c2eae9c1116592
-SHA256Sum: 1e3cd8dcca93ce34efae51aff7945b651b798fd26e047ae6d58dc5fe9a2142d8
+MD5Sum: 2313726241c3a2c1be73bce3f02e1ae6
+SHA256Sum: ab4c04d54a41e02b28e2c451ef7ec0f58863b295c3596d97f38b74812af43726
 Size: 1290360
 Filename: ffmpeg-mini_1.0.0_x86_64.ipk
 Description: Lightweight Pure Go video thumbnail processor and companion cover extractor for Keenetic routers.
