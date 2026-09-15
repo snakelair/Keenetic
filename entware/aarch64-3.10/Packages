@@ -1,3 +1,15 @@
+Package: smart-utils
+Version: 1.0.32
+Depends: ca-certificates
+Section: admin
+Architecture: aarch64-3.10
+Maintainer: Smart-Utils Team
+MD5Sum: cf8624cd757df67690d1473f8dc33401
+SHA256Sum: 6c4ca3de96370e6712d5e21b644863e93c3fe55648d71e88adb88e39dedd34de
+Size: 3508839
+Filename: smart-utils_1.0.32_aarch64-3.10.ipk
+Description: Modern Web Administration Suite with Web Terminal, Total Commander Dual-Pane File Manager, OPKG Package Manager, CPU/System Analyzer and Backups for Keenetic Entware routers.
+
 Package: smart-route
 Version: 1.0.92
 Depends: iptables, ipset, ip-full, ca-certificates
@@ -23,18 +35,6 @@ Filename: smart-vpn_1.0.119_aarch64-3.10.ipk
 Size: 5718874
 MD5Sum: 174177aaf1e6da00062e2012fc2e2960
 SHA256Sum: 4daed9d9ff82550849d1e5d47f6a82033c6d9762d070b72873e95626d06883fe
-
-Package: smart-utils
-Version: 1.0.31
-Depends: ca-certificates
-Section: admin
-Architecture: aarch64-3.10
-Maintainer: Smart-Utils Team
-MD5Sum: fbca812cd67c0e36b53bd48bb98969c4
-SHA256Sum: e78313b3e2db1c1409fad0900de4c61045025d143aced1f4372e0dfd6acab66d
-Size: 3507407
-Filename: smart-utils_1.0.31_aarch64-3.10.ipk
-Description: Modern Web Administration Suite with Web Terminal, Total Commander Dual-Pane File Manager, OPKG Package Manager, CPU/System Analyzer and Backups for Keenetic Entware routers.
 
 Package: smart-photo
 Version: 1.0.72
