@@ -1,11 +1,11 @@
 {
   "ql_vpn_android": {
-    "version_code": 108,
-    "version_name": "1.0.108",
+    "version_code": 119,
+    "version_name": "1.0.119",
     "apk_name": "QuakeLiveVPN.apk",
     "download_url": "https://github.com/snakelair/Keenetic/raw/main/apk/QuakeLiveVPN.apk",
-    "changelog": "• Отказоустойчивость локального прокси (DIRECT Fallback при сбоях туннеля)\n• Прямой вызов настроек точек доступа APN из приложения\n• Исправлена верстка полей поиска и отображение placeholder\n• Очистка настроек и оптимизация управления прокси",
-    "release_date": "2026-09-14"
+    "changelog": "• 3 режима маршрутизации VPN (Все в VPN, По приложениям, По спискам)\n• 2 режима маршрутизации SOCKS (Все в VPN, По спискам)\n• Детект ТСПУ/DPI с автоматическим Fallback в VPN-туннель\n• Переименование серверов и лаконичные карточки подключения\n• В режиме Прокси отображаются IP и Пинг\n• Подвкладка списков переименована в «Списки»",
+    "release_date": "2026-09-15"
   },
   "smart_photo_android": {
     "version_code": 13,
