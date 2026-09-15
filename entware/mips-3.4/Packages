@@ -1,14 +1,15 @@
-Package: smart-utils
-Version: 1.0.32
+Package: smart-vpn
+Version: 1.0.119
 Depends: ca-certificates
-Section: admin
+Section: net
 Architecture: mips-3.4
-Maintainer: Smart-Utils Team
-MD5Sum: 7fba612a2131b393ab735e4b66c518d7
-SHA256Sum: 52a3198fb799baecf7b328a2c1677f6d0866e7b086a388fa83fd50bc9ecf7fdc
-Size: 3659078
-Filename: smart-utils_1.0.32_mips-3.4.ipk
-Description: Modern Web Administration Suite with Web Terminal, Total Commander Dual-Pane File Manager, OPKG Package Manager, CPU/System Analyzer and Backups for Keenetic Entware routers.
+Maintainer: Smart-VPN Team
+Description: Smart-VPN Keenetic Control Center - Modern Web VPN Control Center for Keenetic Entware routers. Supports native WireGuard, SSTP, OpenVPN, IPsec and live metrics.
+Priority: optional
+Filename: smart-vpn_1.0.119_mips-3.4.ipk
+Size: 5851640
+MD5Sum: be02f84a3e99d7c74576d1a4d9a35924
+SHA256Sum: c1c89895b62249ce17d4b67d8fb083c6fcb9a7c72bcf8b481353258425d1f15a
 
 Package: smart-route
 Version: 1.0.92
@@ -23,18 +24,17 @@ SHA256Sum: 0d27abb7eeb5c7ffd6f32d90618a5290f1985ce29c1ac1c096129396cfd02ce6
 Size: 3759784
 Filename: smart-route_1.0.92_mips-3.4.ipk
 
-Package: smart-vpn
-Version: 1.0.119
+Package: smart-utils
+Version: 1.0.32
 Depends: ca-certificates
-Section: net
+Section: admin
 Architecture: mips-3.4
-Maintainer: Smart-VPN Team
-Description: Smart-VPN Keenetic Control Center - Modern Web VPN Control Center for Keenetic Entware routers. Supports native WireGuard, SSTP, OpenVPN, IPsec and live metrics.
-Priority: optional
-Filename: smart-vpn_1.0.119_mips-3.4.ipk
-Size: 5851640
-MD5Sum: be02f84a3e99d7c74576d1a4d9a35924
-SHA256Sum: c1c89895b62249ce17d4b67d8fb083c6fcb9a7c72bcf8b481353258425d1f15a
+Maintainer: Smart-Utils Team
+MD5Sum: 7fba612a2131b393ab735e4b66c518d7
+SHA256Sum: 52a3198fb799baecf7b328a2c1677f6d0866e7b086a388fa83fd50bc9ecf7fdc
+Size: 3659078
+Filename: smart-utils_1.0.32_mips-3.4.ipk
+Description: Modern Web Administration Suite with Web Terminal, Total Commander Dual-Pane File Manager, OPKG Package Manager, CPU/System Analyzer and Backups for Keenetic Entware routers.
 
 Package: smart-photo
 Version: 1.0.72
@@ -42,8 +42,8 @@ Depends: ca-certificates
 Section: multimedia
 Architecture: mips-3.4
 Maintainer: Smart-Photo Team
-MD5Sum: 793e8270edd1df5fd848b5abf168c8f4
-SHA256Sum: a2ba960395026d6a3100dfbff653b4398402d083a855fc549873080a6ed23781
+MD5Sum: 5f6f09e136925dbcb2c71e3d5d814aa5
+SHA256Sum: fabe433f4b6ce832836569500d66a94a0a9f0658c6965b46139d13d681359e18
 Size: 4129108
 Filename: smart-photo_1.0.72_mips-3.4.ipk
 Description: Google Photos-like photo manager and viewer daemon for USB storage with modern Web UI on Keenetic Entware routers.
@@ -53,9 +53,9 @@ Version: 1.0.0
 Section: multimedia
 Architecture: mips-3.4
 Maintainer: Smart-Photo Team
-MD5Sum: 5ceb7eaab06bc7296e1c96059310efc2
-SHA256Sum: 72a2b8f5a0b2b49c7c629e50d6436aaaa712da8b5d9c5005bef4165406bf0235
-Size: 1181930
+MD5Sum: f97c42bfca2038c5b48ec2916115433a
+SHA256Sum: 3e2b9c763751ba80ec68cae0c7657860e319ccc7a9c2f440b77ebfae060664c3
+Size: 1181919
 Filename: ffmpeg-mini_1.0.0_mips-3.4.ipk
 Description: Lightweight Pure Go video thumbnail processor and companion cover extractor for Keenetic routers.
 

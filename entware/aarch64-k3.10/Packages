@@ -1,16 +1,3 @@
-Package: smart-route
-Version: 1.0.92
-Depends: iptables, ipset, ip-full, ca-certificates
-Section: net
-Architecture: aarch64-3.10
-Maintainer: Smart-Route Team
-Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
-Priority: optional
-MD5Sum: 011e64c695d122d2d70abfbe24d6cb5f
-SHA256Sum: 576472954b75c31e5a3addadae687603fbfa2fe6feb3b39734263c532db2ed00
-Size: 3630517
-Filename: smart-route_1.0.92_aarch64-3.10.ipk
-
 Package: smart-vpn
 Version: 1.0.119
 Depends: ca-certificates
@@ -24,16 +11,29 @@ Size: 5718874
 MD5Sum: 174177aaf1e6da00062e2012fc2e2960
 SHA256Sum: 4daed9d9ff82550849d1e5d47f6a82033c6d9762d070b72873e95626d06883fe
 
+Package: smart-route
+Version: 1.0.92
+Depends: iptables, ipset, ip-full, ca-certificates
+Section: net
+Architecture: aarch64-3.10
+Maintainer: Smart-Route Team
+Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
+Priority: optional
+MD5Sum: 011e64c695d122d2d70abfbe24d6cb5f
+SHA256Sum: 576472954b75c31e5a3addadae687603fbfa2fe6feb3b39734263c532db2ed00
+Size: 3630517
+Filename: smart-route_1.0.92_aarch64-3.10.ipk
+
 Package: smart-utils
-Version: 1.0.31
+Version: 1.0.32
 Depends: ca-certificates
 Section: admin
 Architecture: aarch64-3.10
 Maintainer: Smart-Utils Team
-MD5Sum: fbca812cd67c0e36b53bd48bb98969c4
-SHA256Sum: e78313b3e2db1c1409fad0900de4c61045025d143aced1f4372e0dfd6acab66d
-Size: 3507407
-Filename: smart-utils_1.0.31_aarch64-3.10.ipk
+MD5Sum: cf8624cd757df67690d1473f8dc33401
+SHA256Sum: 6c4ca3de96370e6712d5e21b644863e93c3fe55648d71e88adb88e39dedd34de
+Size: 3508839
+Filename: smart-utils_1.0.32_aarch64-3.10.ipk
 Description: Modern Web Administration Suite with Web Terminal, Total Commander Dual-Pane File Manager, OPKG Package Manager, CPU/System Analyzer and Backups for Keenetic Entware routers.
 
 Package: smart-photo
@@ -42,9 +42,9 @@ Depends: ca-certificates
 Section: multimedia
 Architecture: aarch64-3.10
 Maintainer: Smart-Photo Team
-MD5Sum: c412befa61775f04ae6ccdfa274ac0f6
-SHA256Sum: f8a7f27e45504411759d2b686d7f4db8ca749ee7aa109a53cd2eedf606e12e12
-Size: 3982706
+MD5Sum: fbf4b69e1f91c436d2de6949780aec2a
+SHA256Sum: 3e84d1fc1438cac0282762ec3d9bcfa1b8c795ccd30730635c93eb98f32b3528
+Size: 3982678
 Filename: smart-photo_1.0.72_aarch64-3.10.ipk
 Description: Google Photos-like photo manager and viewer daemon for USB storage with modern Web UI on Keenetic Entware routers.
 
@@ -53,9 +53,9 @@ Version: 1.0.0
 Section: multimedia
 Architecture: aarch64-3.10
 Maintainer: Smart-Photo Team
-MD5Sum: 21bc9ed6b412054ba8bd8999597f7e0f
-SHA256Sum: 459f19e8a0f79db8c2fa291a8ebb54a9a79ad41a19be07528acc4ce0e7f93704
-Size: 1171054
+MD5Sum: a1aa48bad583a0c944fc311dac7dfaf9
+SHA256Sum: a9eea701f076a2aba9fc2c3670c675a3c4355a9779be4264f1eb8d4cbd994953
+Size: 1170505
 Filename: ffmpeg-mini_1.0.0_aarch64-3.10.ipk
 Description: Lightweight Pure Go video thumbnail processor and companion cover extractor for Keenetic routers.
 
