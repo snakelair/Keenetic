@@ -2,6 +2,11 @@
 
 All notable changes to the SmartRoute project will be documented in this file.
 
+## [1.0.111] - 2026-09-17 - Синхронизация публичного репозитория и валидация стабильности службы
+- **Релиз и публикация в общий репозиторий Keenetic (Public Repository Sync)** (`snakelair/Keenetic`, `snakelair/SmartRoute`):
+  - Выполнена сборка и валидация кроссплатформенных пакетов `.ipk` под все архитектуры Keenetic Entware (`mipsel-3.4`, `armv7-3.2`, `aarch64-3.10`, `x86_64`, `mips-3.4`).
+  - Проведена проверка стабильности фоновой работы прозрачного прокси и маршрутизатора на реальном оборудовании Keenetic.
+
 ## [1.0.110] - 2026-09-17 - Исправление конфликта маршрутов ServeMux в Go 1.22 при запуске службы и юнит-тестирование роутера
 - **Устранение паники Go 1.22 ServeMux при инициализации HTTP-роутера** (`internal/api/router.go`, `internal/api/api_test.go`):
   - Исправлен сбой и падение службы сразу после старта: паттерн `GET /` в роутере входил в конфликт с `/api/ws/logs` из-за правил `net/http.ServeMux` в Go 1.22+ ("matches fewer methods but has a more general path pattern").
