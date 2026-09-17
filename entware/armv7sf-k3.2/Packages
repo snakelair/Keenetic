@@ -1,16 +1,3 @@
-Package: smart-route
-Version: 1.0.99
-Depends: iptables, ipset, ip-full, ca-certificates
-Section: net
-Architecture: armv7-3.2
-Maintainer: Smart-Route Team
-Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
-Priority: optional
-MD5Sum: cdc928a8c02c518888755b75aef3d1b3
-SHA256Sum: 98bf36045460b276a999c1efa8d2a64dc27e5681874c01d36b7171a8ca45aa7e
-Size: 3896061
-Filename: smart-route_1.0.99_armv7-3.2.ipk
-
 Package: ffmpeg-mini
 Version: 1.0.0
 Section: multimedia
@@ -48,18 +35,31 @@ SHA256Sum: f36aad2eefa9b66a779bc9d5769a08c1984d1712e3218d7d35198e30aed7fd6a
 Size: 4238578
 Filename: smart-photo_1.0.72_armv7-3.2.ipk
 
-Package: smart-utils
-Version: 1.0.32
-Depends: ca-certificates
-Section: admin
+Package: smart-route
+Version: 1.0.98
+Depends: iptables, ipset, ip-full, ca-certificates
+Section: net
 Architecture: armv7-3.2
-Maintainer: Smart-Utils Team
-Description: Modern Web Administration Suite with Web Terminal, Total Commander Dual-Pane File Manager, OPKG Package Manager, CPU/System Analyzer and Backups for Keenetic Entware routers.
+Maintainer: Smart-Route Team
+Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
 Priority: optional
-MD5Sum: fee5f5fe312d3b2e3e1436f1d5ed78d8
-SHA256Sum: 3715f6902845cbed18a58cd1ed860a8ce3cf081d2b8d8e6bf6ff252d223b438a
-Size: 3752081
-Filename: smart-utils_1.0.32_armv7-3.2.ipk
+MD5Sum: 485a6aa8578f8f790048376e016c008f
+SHA256Sum: da88f94ced08a5af40fe832e8cd2e5cabc29122d14307d60c3d3bcbcffcca31b
+Size: 3899549
+Filename: smart-route_1.0.98_armv7-3.2.ipk
+
+Package: smart-route
+Version: 1.0.99
+Depends: iptables, ipset, ip-full, ca-certificates
+Section: net
+Architecture: armv7-3.2
+Maintainer: Smart-Route Team
+Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
+Priority: optional
+MD5Sum: cdc928a8c02c518888755b75aef3d1b3
+SHA256Sum: 98bf36045460b276a999c1efa8d2a64dc27e5681874c01d36b7171a8ca45aa7e
+Size: 3896061
+Filename: smart-route_1.0.99_armv7-3.2.ipk
 
 Package: smart-utils
 Version: 1.0.33
@@ -73,6 +73,19 @@ MD5Sum: 2abe6f0fa7983cf24d33e4a91c3f3703
 SHA256Sum: f63b61b4f3cdb1fe5ff6ec9b02005fe3e31a54cef7244d2cbe92dbb0b1b1fc71
 Size: 3783500
 Filename: smart-utils_1.0.33_armv7-3.2.ipk
+
+Package: smart-utils
+Version: 1.0.34
+Depends: ca-certificates
+Section: admin
+Architecture: armv7-3.2
+Maintainer: Smart-Utils Team
+Description: Modern Web Administration Suite with Web Terminal, Total Commander Dual-Pane File Manager, OPKG Package Manager, CPU/System Analyzer and Backups for Keenetic Entware routers.
+Priority: optional
+MD5Sum: e07dc3547a2616b41a92a0d1cef8b887
+SHA256Sum: 06903843bff0f294fb1ca2c1e7610c6e7e93355826d380293bfcd9a2ec2c6014
+Size: 3784035
+Filename: smart-utils_1.0.34_armv7-3.2.ipk
 
 Package: smart-vpn
 Version: 1.0.119
