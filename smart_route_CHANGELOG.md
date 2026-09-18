@@ -2,6 +2,16 @@
 
 All notable changes to the SmartRoute project will be documented in this file.
 
+## [1.0.128] - 2026-09-18 - Защита KeenDNS / Keenetic Cloud и ограничение перехвата iptables
+- **Защита доменов KeenDNS и облачных ретрансляторов Keenetic Cloud** (`internal/config/config.go`, `internal/routing/manager.go`, `internal/routing/keenetic_ndm.go`, `internal/engine/proxy.go`, `internal/engine/udp_proxy.go`, `internal/api/handler.go`):
+  - Реализован механизм абсолютного системного иммунитета `IsKeeneticCloudTarget`: домены Keenetic (`*.keenetic.link`, `*.keenetic.pro`, `*.keenetic.name`, `*.keenetic.io`, `*.keenetic.com`, `*.keenetic.ru`, `*.keenetic.net`, `*.netcraze.link`, `*.netcraze.pro`, `*.netcraze.io`, `*.netcraze.cloud`, `*.omni.ru`, `*.knt9.xyz`) и официальные IP-адреса серверов-ретрансляторов (`31.135.14.238`, `178.250.154.58`, `95.213.212.50`, `185.162.93.96`, `87.228.71.67`, `5.35.2.42`, а также локальный интерфейс `ezcfg0` `198.51.100.11`) защищены от перехвата и перенаправления.
+  - Метод `FindBestRuleMatch` присваивает облачным целям наивысший приоритет исключения (score 999999), гарантируя прямую маршрутизацию через основной провайдерский шлюз (WAN) без отправки в VPN-туннели.
+  - В `Manager.AddMultiRoute`, `NDM.AddRoute`, `NDM.BatchAddRoutes` и обработчике `autoEntries` заблокировано добавление маршрутов для целей Keenetic Cloud.
+  - В `CleanKeeneticCloudRoutes()` и `PurgeTargetRoutes()` реализована автоматическая очистка любых статических маршрутов `/32` к серверам Keenetic Cloud при старте службы.
+- **Ограничение перехвата входящего трафика в iptables PREROUTING** (`internal/routing/iptables.go`, `internal/config/config.go`):
+  - Правила NAT `REDIRECT --to-ports 10880` теперь строго ограничены локальными интерфейсами (`-i br+` по умолчанию из `cfg.GetInterceptInterfaces()`), исключая перехват входящих внешних соединений с WAN (`eth3`, `ppp0`, внешних белых IP и прямого доступа KeenDNS Direct).
+  - В цепочки `SMART_ROUTE_PREROUTING` и `SMART_ROUTE_MANGLE` добавлен безусловный `-j RETURN` для всех IP-адресов облачных релеев Keenetic Cloud и локального интерфейса `ezcfg0` (`198.51.100.11`).
+
 ## [1.0.127] - 2026-09-18 - Прозрачное отображение статуса, шкалы прогресса и консоли логов при обновлении службы
 - **Интерактивный терминал и пошаговый прогресс-бар в диалоге обновления** (`internal/web/static/index.html`, `internal/web/static/app.js`, `internal/web/static/style.css`):
   - В модальное окно обновления `#modal-update-dialog` добавлены элементы отображения хода процесса (`#update-modal-progress`): пошаговый бейдж этапов, анимированная шкала прогресса с процентами, строка текущей фазы и стилизованный терминал консольного вывода `#update-progress-terminal`.
