@@ -1,3 +1,16 @@
+Package: smart-route
+Version: 1.0.159
+Depends: iptables, ipset, ip-full, ca-certificates
+Section: net
+Architecture: armv7-3.2
+Maintainer: Smart-Route Team
+Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
+Priority: optional
+MD5Sum: 465e77a34dc8d322b635f6f85b6d2cef
+SHA256Sum: 1668de4fea8299ed95434a4106601af54150d2493c637d6e77e2f3276e88d6c7
+Size: 3998930
+Filename: smart-route_1.0.159_armv7-3.2.ipk
+
 Package: ffmpeg-mini
 Version: 1.0.0
 Section: multimedia
@@ -34,32 +47,6 @@ MD5Sum: ce6a05447f34234fddeb39014fe3222f
 SHA256Sum: f36aad2eefa9b66a779bc9d5769a08c1984d1712e3218d7d35198e30aed7fd6a
 Size: 4238578
 Filename: smart-photo_1.0.72_armv7-3.2.ipk
-
-Package: smart-route
-Version: 1.0.127
-Depends: iptables, ipset, ip-full, ca-certificates
-Section: net
-Architecture: armv7-3.2
-Maintainer: Smart-Route Team
-Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
-Priority: optional
-MD5Sum: 095a63c66958e2499c60ab9962434cc0
-SHA256Sum: 3344addbed96771218791e12974f2aa873ba11fab85a5b9a1545085b2a09910c
-Size: 3997767
-Filename: smart-route_1.0.127_armv7-3.2.ipk
-
-Package: smart-route
-Version: 1.0.128
-Depends: iptables, ipset, ip-full, ca-certificates
-Section: net
-Architecture: armv7-3.2
-Maintainer: Smart-Route Team
-Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
-Priority: optional
-MD5Sum: e478e76f56776d06e1413f9a709e443e
-SHA256Sum: cae3e3464b271a5bfea337094e016f9d07e91e6793dface7d8f614f4806cbe7e
-Size: 4006403
-Filename: smart-route_1.0.128_armv7-3.2.ipk
 
 Package: smart-utils
 Version: 1.0.36
