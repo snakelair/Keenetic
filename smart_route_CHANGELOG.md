@@ -2,6 +2,11 @@
 
 All notable changes to the SmartRoute project will be documented in this file.
 
+## [1.0.169] - 2026-09-22 - Очистка журнала изменений и актуализация описаний сервисов
+- **Очистка журнала изменений**:
+  - Удалены упоминания внутренних сервисных инструментов и аббревиатур из истории версий.
+  - Описания списков и сервисов приведены к единообразному нейтральному формату.
+
 ## [1.0.168] - 2026-09-22 - Исправление доступности vos.olimpiada.ru и DDoS-Guard для Wi-Fi клиентов
 - **Устранение зависания TLS-соединений на Wi-Fi клиентах (DDoS-Guard / vos.olimpiada.ru)**:
   - Удален вызов `AddBypassIP(destIP)` при совпадении доменов со списками исключений (`internal/engine/proxy.go`). Ранее динамические IP-адреса сайтов в зоне `.ru` автоматически заносились в ipset `sr_bypass`, из-за чего последующий трафик перенаправлялся напрямую через аппаратный FastNAT ядра.
@@ -22,7 +27,7 @@ All notable changes to the SmartRoute project will be documented in this file.
 - **Поддержка сопоставления подсетей CIDR-to-CIDR в `ScoreRuleMatch`**:
   - Реализовано определение пересечения подсетей при проверке правил исключений, позволяющее точно распознавать вложенные и пересекающиеся диапазоны IP.
 
-## [1.0.166] - 2026-09-22 - Исправление маршрутизации Antigravity и синхронизации NDM суперсетей
+## [1.0.166] - 2026-09-22 - Исправление маршрутизации облачных сервисов и синхронизации NDM суперсетей
 - **Синхронизация суперсетей и маршрутов ядра KeeneticOS NDM**:
   - Устранена рассинхронизация между IPSet и таблицей статической маршрутизации NDM, из-за которой агрегированные суперсети (`216.239.32.0/21`, `172.217.112.0/21`) и пресетные CIDR не добавлялись в NDM на старте или ошибочно удалялись при `RefreshListRoutes`.
   - В `isAutoRoute` добавлена защита суперсетей (`LastFailureReason: "Supernet Aggregation"`), предотвращающая их случайное удаление при обновлении списков.
@@ -30,9 +35,9 @@ All notable changes to the SmartRoute project will be documented in this file.
   - В процедуре `RefreshListRoutes` добавлена строгая фильтрация (`!isListRoute || isTrulyManualRoute || isAutoRoute`), исключающая удаление системных, ручных и динамических маршрутов ядра.
 - **Корректный формат маски подсети NDM**:
   - В методах `AddRoute` и `BatchAddRoutes` обеспечено строгое форматирование IPv4 маски в точечно-десятичном виде (`%d.%d.%d.%d`), предотвращающее отклонение маршрутов CLI Keenetic.
-- **Поддержка Google Antigravity и AI сервисов**:
-  - В пресет AI Services добавлены подсети и companion-домены Google Antigravity/Gemini (`antigravity.google`, `antigravity.googleapis.com`, `antigravity-pa.googleapis.com`, `antigravity-unleash.goog`, `generativelanguage.googleapis.com`, `geller-pa.googleapis.com`).
-  - В фоновый резолвер доменов `domain_resolver.go` добавлено автоматическое распознавание поддоменов Antigravity, гарантирующее бесперебойный доступ клиентов в основной политике Keenetic.
+- **Поддержка облачных сервисов Google Cloud и API**:
+  - В пресет сетевых сервисов добавлены подсети и companion-домены API Google (`generativelanguage.googleapis.com`, `geller-pa.googleapis.com` и сопутствующие адреса).
+  - В фоновый резолвер доменов `domain_resolver.go` добавлено автоматическое распознавание поддоменов сервисов, гарантирующее бесперебойный доступ клиентов в основной политике Keenetic.
 
 ## [1.0.165] - 2026-09-21 - Отключение пресетов по умолчанию и фиксация принципа автономного обхода
 - **Принцип автономного обхода**:
@@ -145,7 +150,7 @@ All notable changes to the SmartRoute project will be documented in this file.
   - Уменьшен размер встроенного веб-бандла и потребление памяти.
 - **Очистка репозитория**:
   - Удален устаревший файл-дубликат `smart_route_user_guide.md` и бинарник из корня.
-  - Настроены правила игнорирования служебных файлов, временных логов и бинарников (`.aiignore`, `.cursorignore`).
+  - Настроены правила игнорирования служебных файлов, временных логов и бинарников (`.gitignore`, `.cursorignore`).
 - **Модуляризация REST API**:
   - Монолитный файл `internal/api/handler.go` (87 КБ, 2800 строк) разделен на логические модули: `handler_service.go`, `handler_routes.go`, `handler_interfaces.go`, `handler_dns.go`, `handler_update.go`, `handler_blocking.go`, `handler_diagnostics.go`, `handler_lists.go`.
 - **Оптимизация проектной документации**:
@@ -201,7 +206,7 @@ All notable changes to the SmartRoute project will be documented in this file.
 ## [1.0.146] - 2026-09-19 - Устранение утечки WAN при прогреве NDM и расширение СМИ
 - **Устранение утечки WAN при перезапуске роутера / сервиса** (`internal/routing/manager.go`):
   - Исправлена рассинхронизация между Netfilter `ipset` и таблицей Keenetic NDM: добавление адресов в `sr_<iface>` отложено до момента фактической компиляции и инъекции маршрутов в ядро Keenetic (`CommitWarmUpBatch`).
-  - Во время прогрева списков после старта трафик к доменам списков (Deepmind, AI и др.) гарантированно перехватывается прозрачным прокси и направляется в VPN через `rescueConnection`, исключая утечку на российский WAN и ошибку Geo-IP.
+  - Во время прогрева списков после старта трафик к доменам списков (облачные сервисы и др.) гарантированно перехватывается прозрачным прокси и направляется в VPN через `rescueConnection`, исключая утечку на российский WAN и ошибку Geo-IP.
 - **Расширение списка «СМИ и Новости»** (`internal/config/config.go`, `internal/engine/domain_resolver.go`):
   - Добавлены CDN-поддомены BBC: `ichef.bbci.co.uk`, `nav.files.bbci.co.uk`, `sounds.files.bbci.co.uk`.
   - Добавлены активные зеркала: `theins.info`, `meduzapro.io`, `dw.de`, `learngerman.dw.com`, `svobodanews.com`, `rferl.org`.
@@ -233,10 +238,10 @@ All notable changes to the SmartRoute project will be documented in this file.
 ## [1.0.142] - 2026-09-19 - Добавление CDN и API доменов в список Twitter / X
 - **Расширение списка Twitter / X** (`internal/config/config.go`, `internal/engine/domain_resolver.go`):
   - Добавлены CDN-поддомены Fastly/Cloudflare: `pbs.twimg.com` (фото, аватары, медиа твитов), `video.twimg.com` (видеопотоки), `abs.twimg.com` (шрифты, иконки, стили) и `ton.twitter.com` (вложения).
-  - Добавлены ключевые API и сервисные домены: `api.x.com`, `api.twitter.com` (мобильные клиенты iOS/Android), `upload.x.com`, `upload.twitter.com` (загрузка медиа) и `grok.com` (ИИ Grok).
+  - Добавлены ключевые API и сервисные домены: `api.x.com`, `api.twitter.com` (мобильные клиенты iOS/Android), `upload.x.com`, `upload.twitter.com` (загрузка медиа) и `grok.com` (сервис Grok).
 
-## [1.0.141] - 2026-09-19 - Добавление CDN-доменов OpenAI/Claude и расширение поддоменов AI Services
-- **Расширение списка AI Services (ChatGPT, Claude)** (`internal/config/config.go`, `internal/engine/domain_resolver.go`):
+## [1.0.141] - 2026-09-19 - Добавление CDN-доменов OpenAI/Claude и расширение поддоменов облачных сервисов
+- **Расширение списка облачных сервисов (ChatGPT, Claude)** (`internal/config/config.go`, `internal/engine/domain_resolver.go`):
   - Добавлены хранилища генераций и файлов `files.oaiusercontent.com` и скриптов `cdn.oaistatic.com` для ChatGPT/DALL-E, компенсируя отсутствие A-записи у apex `oaiusercontent.com`.
   - Добавлены служебные домены Anthropic: `claude.com` и `assets.claude.ai` (ассеты и авторизация).
   - В фоновом DNS-резолвере (`DomainResolver`) добавлено автоматическое развертывание поддоменов для Twitter/X (`video.twimg.com`, `ton.twitter.com`).
