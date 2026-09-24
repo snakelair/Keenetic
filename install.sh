@@ -79,6 +79,9 @@ elif [ "$PACKAGE" = "smart-photo" ]; then
 elif [ "$PACKAGE" = "smart-vpn" ]; then
     DEFAULT_PORT=8091
     PKG_TITLE="Smart-VPN"
+elif [ "$PACKAGE" = "smart-nvr" ] || [ "$PACKAGE" = "smartnvr" ]; then
+    DEFAULT_PORT=8095
+    PKG_TITLE="SmartNVR"
 fi
 
 CFG_FILE="/opt/etc/${PACKAGE}/config.json"

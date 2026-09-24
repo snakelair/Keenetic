@@ -290,6 +290,33 @@
           </div>
         </div>
       </div>
+
+      <!-- SmartNVR Card -->
+      <div class="card">
+        <div>
+          <div class="card-top">
+            <h2 class="card-title">📹 SmartNVR</h2>
+            <span class="badge badge-cyan">v1.0.0</span>
+          </div>
+          <div class="port-pill">Порт: :8095 (http://172.16.1.1:8095)</div>
+          <p class="desc">Высокопроизводительный шлюз видеонаблюдения и веб-центр: безопасный просмотр живого видео и архива с регистраторов Hiseeu / Xiongmai и камер iCSee из внешней сети без перекодирования.</p>
+          <ul class="features">
+            <li>Проксирование видео и архива извне (0% нагрузки на CPU)</li>
+            <li>Автопоиск камер и NVR в локальной сети за 1.5 сек</li>
+            <li>Работа с архивом NVR: таймлайн 24ч и скачивание отрезков</li>
+            <li>PTZ-управление поворотными камерами iCSee прямо в браузере</li>
+            <li>Сверхлегкий сервис Go: 12-18 МБ RAM, логирование в RAM</li>
+          </ul>
+        </div>
+        <div>
+          <div class="cmd-label">Установка в 1 команду по SSH:</div>
+          <div class="cmd-box">curl -sSL https://raw.githubusercontent.com/snakelair/Keenetic/main/install.sh | sh -s smart-nvr</div>
+          <div class="actions">
+            <a href="https://github.com/snakelair/SmartNVR" target="_blank" class="btn btn-primary">GitHub</a>
+            <a href="smart_nvr_user_guide.md" class="btn btn-secondary">Инструкция</a>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Android Apps & QR Codes Section -->
