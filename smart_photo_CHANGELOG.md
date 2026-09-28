@@ -1,5 +1,10 @@
 # 📦 SmartPhoto Changelog
 
+## [1.0.150] - 2026-09-28
+
+### Compact CPU and RAM process metrics badge in mobile view
+- Compact CPU and RAM process metrics badge in mobile view
+
 ## [1.0.149] - 2026-09-28
 
 ### Fix first-start chiptune freeze and add favorites priority with depth dispersion
