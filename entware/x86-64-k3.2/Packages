@@ -38,15 +38,15 @@ Size: 3920675
 Filename: smart-utils_1.0.38_x86_64.ipk
 
 Package: smart-photo
-Version: 1.0.150
+Version: 1.0.151
 Depends: ca-certificates
 Section: multimedia
 Architecture: x86_64
 Maintainer: SmartPhoto Team
-MD5Sum: 85b600cd6464f4f795f432888c5a9d13
-SHA256Sum: 6892b8a8793322695820a4e7172a0f6ac93293bd1795ea0f64bf3ffaba277f08
-Size: 4845871
-Filename: smart-photo_1.0.150_x86_64.ipk
+MD5Sum: a24d5f0916b0ca40beab12a2a6c64eeb
+SHA256Sum: 6f36d093af66c83b3d3d2bbae8027bfec0b47bde27b262aff502cc861d3a0f55
+Size: 4847938
+Filename: smart-photo_1.0.151_x86_64.ipk
 Description: Google Photos-like photo manager and viewer daemon for USB storage with modern Web UI on Keenetic Entware routers.
 
 Package: ffmpeg-mini
@@ -54,9 +54,9 @@ Version: 1.0.0
 Section: multimedia
 Architecture: x86_64
 Maintainer: SmartPhoto Team
-MD5Sum: 0f36cf54daae4dbf710182d3826dd915
-SHA256Sum: 27675ee628cbf98281a1d37b52fe1ee39c0d2b2f37d9c2c9292013e530bdf022
-Size: 1312496
+MD5Sum: a7d5cbd6ac82ad43c9e506ee574cb835
+SHA256Sum: 6d4ed2b1310a4cb40f1fa53b24027435cfb2c71afe3bd1ffade03e8085e15e23
+Size: 1312506
 Filename: ffmpeg-mini_1.0.0_x86_64.ipk
 Description: Lightweight Pure Go video thumbnail processor and companion cover extractor for Keenetic routers.
 

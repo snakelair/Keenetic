@@ -1,5 +1,10 @@
 # 📦 SmartPhoto Changelog
 
+## [1.0.151] - 2026-09-28
+
+### Borderless online status dot in mobile view
+- Borderless online status dot in mobile view
+
 ## [1.0.150] - 2026-09-28
 
 ### Compact CPU and RAM process metrics badge in mobile view

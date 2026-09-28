@@ -38,15 +38,15 @@ Size: 3796278
 Filename: smart-utils_1.0.38_armv7-3.2.ipk
 
 Package: smart-photo
-Version: 1.0.150
+Version: 1.0.151
 Depends: ca-certificates
 Section: multimedia
 Architecture: armv7-3.2
 Maintainer: SmartPhoto Team
-MD5Sum: f351db30cae789a4cdc9b0e8497886d8
-SHA256Sum: 82c10255defa4a2388d426d9e6e0684fd861f530906a085a901c91660f514f81
-Size: 4668887
-Filename: smart-photo_1.0.150_armv7-3.2.ipk
+MD5Sum: ba8af8df399397e5c08789a3ac824d42
+SHA256Sum: 5fea383641a9acde9306eb658a50a5bbc0d9a152b0490731465ad0a0737734f3
+Size: 4667645
+Filename: smart-photo_1.0.151_armv7-3.2.ipk
 Description: Google Photos-like photo manager and viewer daemon for USB storage with modern Web UI on Keenetic Entware routers.
 
 Package: ffmpeg-mini
@@ -54,9 +54,9 @@ Version: 1.0.0
 Section: multimedia
 Architecture: armv7-3.2
 Maintainer: SmartPhoto Team
-MD5Sum: b32070685b8ee90a7bd9005b7bc4cc0d
-SHA256Sum: 510fbb008bb15edd218b67f69d84359f8e5bd62c6d30843b0ae5413c7f62b02b
-Size: 1215245
+MD5Sum: bfa25dfb56d964884890bf758a6e836b
+SHA256Sum: 8e5caf133b46194de6753e699c67e985d6ce028f84af82f4a0c5e9bf9eafd0ce
+Size: 1215254
 Filename: ffmpeg-mini_1.0.0_armv7-3.2.ipk
 Description: Lightweight Pure Go video thumbnail processor and companion cover extractor for Keenetic routers.
 
