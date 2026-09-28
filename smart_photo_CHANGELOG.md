@@ -1,5 +1,90 @@
 # 📦 SmartPhoto Changelog
 
+## [1.0.149] - 2026-09-28
+
+### Fix first-start chiptune freeze and add favorites priority with depth dispersion
+- Fix first-start chiptune freeze and add favorites priority with depth dispersion
+
+## [1.0.148] - 2026-09-28
+
+### UI: pinch-to-zoom on mobile, hide zoom buttons on mobile, fix EXIF contrast, simplify delete text
+- UI: pinch-to-zoom on mobile, hide zoom buttons on mobile, fix EXIF contrast, simplify delete text
+
+## [1.0.147] - 2026-09-28
+
+### UI: display settings subtabs as icons on mobile without horizontal scroll
+- UI: display settings subtabs as icons on mobile without horizontal scroll
+
+## [1.0.146] - 2026-09-28
+
+### UI: compact time, level and category tags in diagnostics logs on mobile
+- UI: compact time, level and category tags in diagnostics logs on mobile
+
+## [1.0.145] - 2026-09-28
+
+### UI: move lightbox photo counter to second line under controls on mobile
+- UI: move lightbox photo counter to second line under controls on mobile
+
+## [1.0.144] - 2026-09-28
+
+### UI: show storage initialization progress on startup and scroll to top on menu selection
+- UI: show storage initialization progress on startup and scroll to top on menu selection
+
+## [1.0.143] - 2026-09-28
+
+### UI: mobile icon-only app menu with auto-hide and top slide-in
+- UI: mobile icon-only app menu with auto-hide and top slide-in
+
+## [1.0.142] - 2026-09-28
+
+### UI: center floating scroll-to-top button at bottom
+- UI: center floating scroll-to-top button at bottom
+
+## [1.0.141] - 2026-09-28
+
+### UI: hide scrollbars in lightbox and fullscreen modes
+- UI: hide scrollbars in lightbox and fullscreen modes
+
+## [1.0.140] - 2026-09-28
+
+### UI: fullscreen lightbox edge-to-edge photo, auto-hiding overlaid controls on mouse inactivity
+- UI: fullscreen lightbox edge-to-edge photo, auto-hiding overlaid controls on mouse inactivity
+
+## [1.0.139] - 2026-09-28
+
+### UI & Config: remove analysis tab, always enable companion API, rename SmartPhotoSync to SmartPhoto (Android), align settings before donate
+- UI & Config: remove analysis tab, always enable companion API, rename SmartPhotoSync to SmartPhoto (Android), align settings before donate
+
+## [1.0.138] - 2026-09-28
+
+### UI: sync & clients tabs refactoring, delete without archive, lightbox space fullscreen/slideshow, wheel min zoom 1.0
+- UI: sync & clients tabs refactoring, delete without archive, lightbox space fullscreen/slideshow, wheel min zoom 1.0
+
+## [1.0.137] - 2026-09-28
+
+### Auth: allow any username with password; Settings: remove duplicate bottom save buttons; AI: keep local Pure Go heuristics always enabled
+- Auth: allow any username with password; Settings: remove duplicate bottom save buttons; AI: keep local Pure Go heuristics always enabled
+
+## [1.0.136] - 2026-09-28
+
+### Move Indexing from main navigation menu to Settings subtab after Folders
+- Move Indexing from main navigation menu to Settings subtab after Folders
+
+## [1.0.135] - 2026-09-28
+
+### Header: match theme button height to 28px; Explore: reorder blocks (Люди, Путешествия, Места, Категории) and rename to 'Категории и сцены'
+- Header: match theme button height to 28px; Explore: reorder blocks (Люди, Путешествия, Места, Категории) and rename to 'Категории и сцены'
+
+## [1.0.134] - 2026-09-28
+
+### Restructure Settings into 7 sub-tabs, move Clients and Diagnostics from main nav, remove theme toggle from settings
+- Restructure Settings into 7 sub-tabs, move Clients and Diagnostics from main nav, remove theme toggle from settings
+
+## [1.0.133] - 2026-09-28
+
+### Header: keep only Telegram icon, remove Forum and Bug report links
+- Header: keep only Telegram icon, remove Forum and Bug report links
+
 ## [1.0.132] - 2026-09-28
 
 ### Refine trip title naming to omit country name fallback when specific cities exist

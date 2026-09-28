@@ -38,15 +38,15 @@ Size: 3698821
 Filename: smart-utils_1.0.38_mips-3.4.ipk
 
 Package: smart-photo
-Version: 1.0.132
+Version: 1.0.149
 Depends: ca-certificates
 Section: multimedia
 Architecture: mips-3.4
 Maintainer: SmartPhoto Team
-MD5Sum: e8210a5f9d20aa3623f814705d132673
-SHA256Sum: 2c08d85351d1f3536eb76562e0b8741d38c229011d865e5b665870fb33a2369f
-Size: 4555488
-Filename: smart-photo_1.0.132_mips-3.4.ipk
+MD5Sum: a49341ad1fc946908fe84c7c2199c16e
+SHA256Sum: 23039882f49c203c6678d62ff57bc217bcb7a834efa18603235e24000e319597
+Size: 4577122
+Filename: smart-photo_1.0.149_mips-3.4.ipk
 Description: Google Photos-like photo manager and viewer daemon for USB storage with modern Web UI on Keenetic Entware routers.
 
 Package: ffmpeg-mini
@@ -54,9 +54,9 @@ Version: 1.0.0
 Section: multimedia
 Architecture: mips-3.4
 Maintainer: SmartPhoto Team
-MD5Sum: 30f106403b7cc1d91abc68ee5b133ae7
-SHA256Sum: 44ef7ad65be82ee20bdd457b521d69c30bc7f078bba3d0879e2d8d393e0adc68
-Size: 1203748
+MD5Sum: 065f7aae314beded52b28acbe7e2a36a
+SHA256Sum: a1140621381d1fb32ad77f683cd884efe1b57ee9b28464327d5152b714f68e19
+Size: 1203757
 Filename: ffmpeg-mini_1.0.0_mips-3.4.ipk
 Description: Lightweight Pure Go video thumbnail processor and companion cover extractor for Keenetic routers.
 
