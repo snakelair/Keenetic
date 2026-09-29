@@ -1,5 +1,20 @@
 # 📦 SmartPhoto Changelog
 
+## [1.0.154] - 2026-09-29
+
+### Prioritize external KeenDNS domain for client connections and config
+- Prioritize external KeenDNS domain for client connections and config
+
+## [1.0.153] - 2026-09-29
+
+### Fix 6-digit pairing: router DNS resolution via 127.0.0.1:53 and direct server pairing fallback
+- Fix 6-digit pairing: router DNS resolution via 127.0.0.1:53 and direct server pairing fallback
+
+## [1.0.152] - 2026-09-28
+
+### Устранение дублирующих цветовых кружков в нижней панели PWA
+- Устранение дублирующих цветовых кружков в нижней панели PWA
+
 ## [1.0.151] - 2026-09-28
 
 ### Borderless online status dot in mobile view
