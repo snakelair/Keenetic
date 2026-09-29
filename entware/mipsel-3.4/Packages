@@ -1,15 +1,52 @@
-Package: smart-vpn
-Version: 1.0.139
+Package: ffmpeg-mini
+Version: 1.0.0
+Section: multimedia
+Architecture: mipsel-3.4
+Maintainer: SmartPhoto Team
+Description: Lightweight Pure Go video thumbnail processor and companion cover extractor for Keenetic routers.
+MD5Sum: 6c63a691b94db806373bb335a4ec7a45
+SHA256Sum: d39d5c82887edeeb5444baed78c82ca8e374ba52ea6f3589562af74667bc9fea
+Size: 1184309
+Filename: ffmpeg-mini_1.0.0_mipsel-3.4.ipk
+
+Package: smart-photo
+Version: 1.0.154
 Depends: ca-certificates
+Section: multimedia
+Architecture: mipsel-3.4
+Maintainer: SmartPhoto Team
+Description: Google Photos-like photo manager and viewer daemon for USB storage with modern Web UI on Keenetic Entware routers.
+Priority: optional
+MD5Sum: 5fd96af32ab65cfcab15986b9a499cfb
+SHA256Sum: b026f05512f97451fff6885b7033d1c8bb2fa0baa715a83a21885492b4bc3489
+Size: 4521325
+Filename: smart-photo_1.0.154_mipsel-3.4.ipk
+
+Package: smart-photo
+Version: 1.0.161
+Depends: ca-certificates
+Section: multimedia
+Architecture: mipsel-3.4
+Maintainer: SmartPhoto Team
+Description: Google Photos-like photo manager and viewer daemon for USB storage with modern Web UI on Keenetic Entware routers.
+Priority: optional
+MD5Sum: 199b86d3e28263ada30249d7c0184b59
+SHA256Sum: 40c832b7f542f2e6b06fd37c6ce4e7ca6d10615fcc5757d5a67ca6cff549d18b
+Size: 4522286
+Filename: smart-photo_1.0.161_mipsel-3.4.ipk
+
+Package: smart-route
+Version: 1.0.185
+Depends: iptables, ipset, ip-full, ca-certificates
 Section: net
 Architecture: mipsel-3.4
-Maintainer: Smart-VPN Team
-Description: Smart-VPN Keenetic Control Center - Modern Web VPN Control Center for Keenetic Entware routers. Supports native WireGuard, SSTP, OpenVPN, IPsec and live metrics.
+Maintainer: Smart-Route Team
+Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
 Priority: optional
-MD5Sum: c140f1f3547b7ed4f456b9d20e6b7e50
-SHA256Sum: 6b0320a496e092544efdb09e0042b479b80dd664d97b00bd293fb474329be298
-Size: 5841507
-Filename: smart-vpn_1.0.139_mipsel-3.4.ipk
+MD5Sum: d2ff4d53c7fd5be973def58d683170b6
+SHA256Sum: 9bca65b14e96c4323de9fe5dd903c45f1f673177210492f684dd5e4d7b0569b4
+Size: 3870741
+Filename: smart-route_1.0.185_mipsel-3.4.ipk
 
 Package: smart-route
 Version: 1.0.187
@@ -37,26 +74,42 @@ SHA256Sum: 295454d04e6db16f7696300c4d0f80b80efbe9728bf4d9732ce8204989f090ac
 Size: 3650955
 Filename: smart-utils_1.0.38_mipsel-3.4.ipk
 
-Package: smart-photo
-Version: 1.0.161
+Package: smart-utils
+Version: 1.0.39
 Depends: ca-certificates
-Section: multimedia
+Section: admin
 Architecture: mipsel-3.4
-Maintainer: SmartPhoto Team
-MD5Sum: 199b86d3e28263ada30249d7c0184b59
-SHA256Sum: 40c832b7f542f2e6b06fd37c6ce4e7ca6d10615fcc5757d5a67ca6cff549d18b
-Size: 4522286
-Filename: smart-photo_1.0.161_mipsel-3.4.ipk
-Description: Google Photos-like photo manager and viewer daemon for USB storage with modern Web UI on Keenetic Entware routers.
+Maintainer: Smart-Utils Team
+Description: Modern Web Administration Suite with Web Terminal, Total Commander Dual-Pane File Manager, OPKG Package Manager, CPU/System Analyzer and Backups for Keenetic Entware routers.
+Priority: optional
+MD5Sum: 4fb44a8b236acfb617f6e98038d473a7
+SHA256Sum: 0a34cb98456a3bd9b8560acda93c042fff3dec2e25ca44c07e8d2831aff4301c
+Size: 3726646
+Filename: smart-utils_1.0.39_mipsel-3.4.ipk
 
-Package: ffmpeg-mini
-Version: 1.0.0
-Section: multimedia
+Package: smart-vpn
+Version: 1.0.120
+Depends: ca-certificates
+Section: net
 Architecture: mipsel-3.4
-Maintainer: SmartPhoto Team
-MD5Sum: 6c63a691b94db806373bb335a4ec7a45
-SHA256Sum: d39d5c82887edeeb5444baed78c82ca8e374ba52ea6f3589562af74667bc9fea
-Size: 1184309
-Filename: ffmpeg-mini_1.0.0_mipsel-3.4.ipk
-Description: Lightweight Pure Go video thumbnail processor and companion cover extractor for Keenetic routers.
+Maintainer: Smart-VPN Team
+Description: Smart-VPN Keenetic Control Center - Modern Web VPN Control Center for Keenetic Entware routers. Supports native WireGuard, SSTP, OpenVPN, IPsec and live metrics.
+Priority: optional
+MD5Sum: 38b49eb0f8f4a36d213a91ad7907bea3
+SHA256Sum: ee020209739ad501be6ca0cade9ec204182dfbe5c0974372bfde48fc1bf7f022
+Size: 5804969
+Filename: smart-vpn_1.0.120_mipsel-3.4.ipk
+
+Package: smart-vpn
+Version: 1.0.139
+Depends: ca-certificates
+Section: net
+Architecture: mipsel-3.4
+Maintainer: Smart-VPN Team
+Description: Smart-VPN Keenetic Control Center - Modern Web VPN Control Center for Keenetic Entware routers. Supports native WireGuard, SSTP, OpenVPN, IPsec and live metrics.
+Priority: optional
+MD5Sum: c140f1f3547b7ed4f456b9d20e6b7e50
+SHA256Sum: 6b0320a496e092544efdb09e0042b479b80dd664d97b00bd293fb474329be298
+Size: 5841507
+Filename: smart-vpn_1.0.139_mipsel-3.4.ipk
 
