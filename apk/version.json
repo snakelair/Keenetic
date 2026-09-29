@@ -8,11 +8,11 @@
     "release_date": "2026-09-16"
   },
   "smart_photo_android": {
-    "version_code": 25,
-    "version_name": "1.0.24",
+    "version_code": 26,
+    "version_name": "1.0.25",
     "apk_name": "SmartPhotoAndroid.apk",
     "download_url": "https://github.com/snakelair/Keenetic/raw/main/apk/SmartPhotoAndroid.apk",
-    "changelog": "• Отображение подключенного сервера (LAN/WAN) в статусе при запуске приложения\n• Исправлено отображение и быстрое редактирование внешнего WAN-адреса\n• Фикс принудительной горизонтальной ориентации сканера QR-кодов (строго portrait)\n• Цветовая схема статуса синхронизации переведена в основной стиль AccentCyan",
+    "changelog": "• В плашке статуса подключения теперь лаконично отображается режим WAN/LAN без громоздкого полного URL\n• Исправлено пакетное удаление: устранены зависания диалога удаления и бесконечные тайм-ауты\n• Поддержка системного подтверждения Scoped Storage (createDeleteRequest) на Android 11+\n• Параллельное удаление с сервера с быстрым тайм-аутом",
     "release_date": "2026-09-29"
   },
   "smart_photo_tv": {
