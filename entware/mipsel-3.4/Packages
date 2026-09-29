@@ -38,15 +38,15 @@ Size: 3650955
 Filename: smart-utils_1.0.38_mipsel-3.4.ipk
 
 Package: smart-photo
-Version: 1.0.154
+Version: 1.0.161
 Depends: ca-certificates
 Section: multimedia
 Architecture: mipsel-3.4
 Maintainer: SmartPhoto Team
-MD5Sum: 5fd96af32ab65cfcab15986b9a499cfb
-SHA256Sum: b026f05512f97451fff6885b7033d1c8bb2fa0baa715a83a21885492b4bc3489
-Size: 4521325
-Filename: smart-photo_1.0.154_mipsel-3.4.ipk
+MD5Sum: 199b86d3e28263ada30249d7c0184b59
+SHA256Sum: 40c832b7f542f2e6b06fd37c6ce4e7ca6d10615fcc5757d5a67ca6cff549d18b
+Size: 4522286
+Filename: smart-photo_1.0.161_mipsel-3.4.ipk
 Description: Google Photos-like photo manager and viewer daemon for USB storage with modern Web UI on Keenetic Entware routers.
 
 Package: ffmpeg-mini
@@ -54,9 +54,9 @@ Version: 1.0.0
 Section: multimedia
 Architecture: mipsel-3.4
 Maintainer: SmartPhoto Team
-MD5Sum: 11080ddb09096627a7d0d6e2c879d6ff
-SHA256Sum: 9dc917fa9b001da48b03c84da653375a8ef7891250ad7a7329d0752f2ba673dc
-Size: 1184306
+MD5Sum: 6c63a691b94db806373bb335a4ec7a45
+SHA256Sum: d39d5c82887edeeb5444baed78c82ca8e374ba52ea6f3589562af74667bc9fea
+Size: 1184309
 Filename: ffmpeg-mini_1.0.0_mipsel-3.4.ipk
 Description: Lightweight Pure Go video thumbnail processor and companion cover extractor for Keenetic routers.
 

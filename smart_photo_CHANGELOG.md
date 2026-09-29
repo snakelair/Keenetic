@@ -1,5 +1,40 @@
 # 📦 SmartPhoto Changelog
 
+## [1.0.161] - 2026-09-29
+
+### PWA header: remove frame counter subtitle and rename slideshow button to Слайдшоу
+- PWA header: remove frame counter subtitle and rename slideshow button to Слайдшоу
+
+## [1.0.160] - 2026-09-29
+
+### PWA: dynamically place loader below actual header bottom bounds
+- PWA: dynamically place loader below actual header bottom bounds
+
+## [1.0.159] - 2026-09-29
+
+### PWA: lower loader position further down below header bar
+- PWA: lower loader position further down below header bar
+
+## [1.0.158] - 2026-09-29
+
+### Ensure PWA loader is always above HUD, correctly positioned, and force-bust PWA SW cache
+- Ensure PWA loader is always above HUD, correctly positioned, and force-bust PWA SW cache
+
+## [1.0.157] - 2026-09-29
+
+### Fix PWA loader visibility: z-index, positioning below header, and bust PWA cache
+- Fix PWA loader visibility: z-index, positioning below header, and bust PWA cache
+
+## [1.0.156] - 2026-09-29
+
+### Original photo loader: clean spinner on transparent background without text
+- Original photo loader: clean spinner on transparent background without text
+
+## [1.0.155] - 2026-09-29
+
+### Open photo preview in full size with top-right loader in Web and PWA
+- Open photo preview in full size with top-right loader in Web and PWA
+
 ## [1.0.154] - 2026-09-29
 
 ### Prioritize external KeenDNS domain for client connections and config
