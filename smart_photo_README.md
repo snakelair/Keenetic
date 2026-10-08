@@ -58,8 +58,9 @@ curl -sSL https://raw.githubusercontent.com/snakelair/Keenetic/main/install.sh |
 
 ```bash
 # 1. Добавьте репозиторий snakelair/Keenetic в Entware:
-ARCH=$(uname -m | sed 's/mips/mipsel-3.4/' | sed 's/aarch64/aarch64-3.10/' | sed 's/armv7l/armv7-3.2/')
-echo "src/gz keenetic-custom https://raw.githubusercontent.com/snakelair/Keenetic/main/entware/${ARCH}" > /opt/etc/opkg/keenetic.conf
+ARCH=$(opkg print-architecture 2>/dev/null | grep -v 'all' | sort -k3 -n | tail -1 | awk '{print $2}')
+[ -z "$ARCH" ] && ARCH=$(uname -m | sed 's/aarch64/aarch64-3.10/' | sed 's/armv7l/armv7-3.2/' | sed 's/mips$/mips-3.4/' | sed 's/mipsel/mipsel-3.4/')
+echo "src/gz snakelair https://raw.githubusercontent.com/snakelair/Keenetic/main/entware/${ARCH}" > /opt/etc/opkg/snakelair.conf
 
 # 2. Обновите список пакетов и установите:
 opkg update

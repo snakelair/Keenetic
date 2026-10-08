@@ -1,4 +1,4 @@
-﻿#!/bin/sh
+#!/bin/sh
 # ==============================================================================
 # Snakelair Keenetic Ecosystem & VPS Packages Uninstaller
 # Репозиторий: snakelair/Keenetic (https://github.com/snakelair/Keenetic)
@@ -105,11 +105,12 @@ uninstall_qlvpn() {
 
 remove_repo_feed() {
     printf "${BLUE}[*]${RESET} Удаление репозитория Snakelair Keenetic из OPKG...\n"
-    rm -f /opt/etc/opkg/keenetic.conf /opt/var/opkg-lists/keenetic-custom
+    rm -f /opt/etc/opkg/snakelair.conf /opt/etc/opkg/keenetic.conf
+    rm -f /opt/var/opkg-lists/snakelair /opt/var/opkg-lists/keenetic-custom
     if [ -x "/opt/bin/opkg" ]; then
         /opt/bin/opkg update >/dev/null 2>&1 || true
     fi
-    printf "${GREEN}[OK]${RESET} Репозиторий keenetic.conf удален и кэш списков обновлен.\n\n"
+    printf "${GREEN}[OK]${RESET} Репозиторий snakelair.conf удален и кэш списков обновлен.\n\n"
 }
 
 # Interactive Menu if no target specified
@@ -122,7 +123,7 @@ if [ -z "$TARGET" ]; then
         printf "  ${CYAN}3${RESET}) Smart-Photo (Персональный фотосервер на USB)\n" >&3
         printf "  ${CYAN}4${RESET}) Smart-VPN (Управление VPN-соединениями на роутере)\n" >&3
         printf "  ${CYAN}5${RESET}) QuakeLive-VPN Server (Служба QL-VPN на Linux VPS)\n" >&3
-        printf "  ${CYAN}6${RESET}) Удалить только репозиторий OPKG (keenetic.conf)\n" >&3
+        printf "  ${CYAN}6${RESET}) Удалить только репозиторий OPKG (snakelair.conf)\n" >&3
         printf "  ${RED}7${RESET}) ${RED}Удалить ВСЕ пакеты Snakelair и репозиторий OPKG${RESET}\n" >&3
         printf "  ${YELLOW}0${RESET}) Отмена\n\n" >&3
 

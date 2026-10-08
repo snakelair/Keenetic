@@ -44,29 +44,86 @@ if [ ! -d "/opt/bin" ] || [ ! -x "/opt/bin/opkg" ]; then
     exit 1
 fi
 
-# 2. Detect CPU architecture
-ARCH=$(uname -m)
+# 2. Detect CPU architecture & compatible Entware feed
+RAW_ARCH=$(uname -m 2>/dev/null || echo "unknown")
 ENT_ARCH=""
 
-case "$ARCH" in
-    mips|mipsel)
-        ENT_ARCH="mipsel-3.4"
-        ;;
-    aarch64|arm64)
-        ENT_ARCH="aarch64-3.10"
-        ;;
-    armv7*|arm)
-        ENT_ARCH="armv7-3.2"
-        ;;
-    x86_64|amd64)
-        ENT_ARCH="x86_64"
-        ;;
-    *)
-        ENT_ARCH="mipsel-3.4"
-        ;;
-esac
+# Level 1: Check native OPKG architecture support (highest accuracy)
+OPKG_ARCH=""
+if [ -x "/opt/bin/opkg" ]; then
+    OPKG_ARCH=$(/opt/bin/opkg print-architecture 2>/dev/null | grep -v "all" | sort -k3 -n | tail -1 | awk '{print $2}' | sed 's/_kn$//')
+fi
+if [ -z "$OPKG_ARCH" ] && [ -f "/opt/etc/opkg.conf" ]; then
+    OPKG_ARCH=$(grep -E "^arch[[:space:]]+" /opt/etc/opkg.conf 2>/dev/null | grep -v "all" | sort -k3 -n | tail -1 | awk '{print $2}' | sed 's/_kn$//')
+fi
 
-printf "\033[1;34m[*]\033[0m Detected router architecture: \033[1;37m%s\033[0m -> Entware feed: \033[1;32m%s\033[0m\n" "$ARCH" "$ENT_ARCH"
+if [ -n "$OPKG_ARCH" ]; then
+    case "$OPKG_ARCH" in
+        mipsel*|mipselsf*)   ENT_ARCH="mipsel-3.4" ;;
+        mips*)               ENT_ARCH="mips-3.4" ;;
+        aarch64*|arm64*)     ENT_ARCH="aarch64-3.10" ;;
+        armv7*|arm*)         ENT_ARCH="armv7-3.2" ;;
+        x86_64*|amd64*|x86*) ENT_ARCH="x86_64" ;;
+    esac
+fi
+
+# Level 2: Check active Entware repository feed URLs in /opt/etc/opkg.conf
+if [ -z "$ENT_ARCH" ]; then
+    CONF_FEEDS=$(grep -E "bin\.entware\.net" /opt/etc/opkg.conf /opt/etc/opkg/*.conf 2>/dev/null)
+    if echo "$CONF_FEEDS" | grep -qE "mipsel"; then
+        ENT_ARCH="mipsel-3.4"
+    elif echo "$CONF_FEEDS" | grep -qE "mipssf|mips-"; then
+        ENT_ARCH="mips-3.4"
+    elif echo "$CONF_FEEDS" | grep -qE "aarch64"; then
+        ENT_ARCH="aarch64-3.10"
+    elif echo "$CONF_FEEDS" | grep -qE "armv7"; then
+        ENT_ARCH="armv7-3.2"
+    elif echo "$CONF_FEEDS" | grep -qE "x86"; then
+        ENT_ARCH="x86_64"
+    fi
+fi
+
+# Level 3: Fallback via uname -m and endianness check
+if [ -z "$ENT_ARCH" ]; then
+    case "$RAW_ARCH" in
+        mipsel)
+            ENT_ARCH="mipsel-3.4"
+            ;;
+        mips)
+            # Differentiate MIPS Big-Endian from MIPSEL Little-Endian
+            IS_LE=""
+            if grep -qiE "MT762|RT3883|RT6856|MediaTek|Ralink|Little Endian" /proc/cpuinfo 2>/dev/null; then
+                IS_LE=1
+            elif lscpu 2>/dev/null | grep -qi "Little Endian"; then
+                IS_LE=1
+            elif [ -f "/opt/bin/opkg" ] && (od -An -j 5 -N 1 -b /opt/bin/opkg 2>/dev/null | grep -q "001"); then
+                IS_LE=1
+            fi
+
+            if [ "$IS_LE" = "1" ]; then
+                ENT_ARCH="mipsel-3.4"
+            else
+                ENT_ARCH="mips-3.4"
+            fi
+            ;;
+        aarch64|arm64)
+            ENT_ARCH="aarch64-3.10"
+            ;;
+        armv7*|arm)
+            ENT_ARCH="armv7-3.2"
+            ;;
+        x86_64|amd64)
+            ENT_ARCH="x86_64"
+            ;;
+        *)
+            ENT_ARCH="mipsel-3.4"
+            ;;
+    esac
+fi
+
+[ -z "$ENT_ARCH" ] && ENT_ARCH="mipsel-3.4"
+
+printf "\033[1;34m[*]\033[0m Detected router architecture: \033[1;37m%s\033[0m -> Entware feed: \033[1;32m%s\033[0m\n" "$RAW_ARCH" "$ENT_ARCH"
 
 # 3. Port configuration & interactive prompt
 DEFAULT_PORT=8090
@@ -126,12 +183,13 @@ if [ $NEED_SSL -eq 1 ]; then
 fi
 
 # 5. Configure OPKG repository feed
-FEED_CONF="/opt/etc/opkg/keenetic.conf"
+FEED_CONF="/opt/etc/opkg/snakelair.conf"
 REPO_URL="https://raw.githubusercontent.com/snakelair/Keenetic/main/entware/${ENT_ARCH}"
 
 printf "\033[1;34m[*]\033[0m Configuring OPKG repository feed: \033[0;36m%s\033[0m...\n" "$REPO_URL"
 mkdir -p /opt/etc/opkg
-echo "src/gz keenetic-custom $REPO_URL" > "$FEED_CONF"
+rm -f /opt/etc/opkg/keenetic.conf /opt/var/opkg-lists/keenetic-custom 2>/dev/null || true
+echo "src/gz snakelair $REPO_URL" > "$FEED_CONF"
 
 # Clean stale locks
 rm -f /opt/tmp/opkg.lock /opt/var/lock/opkg.lock /opt/lib/opkg/lock 2>/dev/null || true
@@ -176,7 +234,7 @@ done
 
 # 7. Update package lists
 printf "\033[1;34m[*]\033[0m Updating package lists...\n"
-rm -f /opt/var/opkg-lists/keenetic-custom /tmp/opkg-* /opt/tmp/opkg.lock /opt/var/lock/opkg.lock /opt/lib/opkg/lock 2>/dev/null || true
+rm -f /opt/var/opkg-lists/snakelair /opt/var/opkg-lists/keenetic-custom /tmp/opkg-* /opt/tmp/opkg.lock /opt/var/lock/opkg.lock /opt/lib/opkg/lock 2>/dev/null || true
 /opt/bin/opkg update
 
 # Explicitly ensure core dependencies for smart-route
