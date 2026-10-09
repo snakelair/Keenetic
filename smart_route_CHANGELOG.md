@@ -2,6 +2,14 @@
 
 All notable changes to the SmartRoute project will be documented in this file.
 
+## [1.0.219] - 2026-10-09 - Маршрутизация клиентов VPN-серверов Keenetic (SSTP, OpenConnect, WireGuard) в PBR
+- **Маршрутизация клиентов встроенных VPN-серверов Keenetic (SSTP, OpenConnect, WireGuard)**:
+  - **Интеграция с PBR KeeneticOS (`internal/routing/iptables.go`, `internal/routing/manager.go`)**: Входящий трафик от клиентов VPN-серверов роутера (SSTP, OpenConnect, WireGuard) теперь маркируется fwmark назначенной политики подключения (`-s <subnet> -m mark --mark 0x0 -j MARK --set-xmark <polMark>/0xffffffff`). Пакеты клиентов автоматически направляются через соответствующие политики роутера и IPSet-таблицы SmartRoute (`sr_<policy>_<iface>`).
+  - **Прозрачный перехват трафика клиентов VPN**: В цепочку `SMART_ROUTE_PREROUTING` добавлен перехват соединений с интерфейсов `sstp+` и `oc+` на локальный порт демона `10880`, обеспечивая бесшовный failover и обход блокировок для удаленных VPN-клиентов.
+  - **Автоопределение серверов Keenetic (`internal/routing/keenetic_ndm.go`)**: Реализован парсер конфигурации роутера (`ndm.DiscoverVPNServers`), автоматически выявляющий активные серверы SSTP (`interface SstpServer`), OpenConnect (`interface OpenConnectServer`) и WireGuard (`interface Wireguard...`) вместе с их адресными пулами.
+  - **Конфигурация и API (`internal/config/config.go`, `internal/api/handler_policies.go`)**: Добавлен блок `vpn_servers` с потокобезопасным хранением и эндпоинты `/api/vpn-servers` (GET/POST) и `/api/vpn-servers/discover` (POST).
+  - **Web UI — Подвкладка «Клиенты» в Настройках**: Карточка «Клиенты VPN-серверов (SSTP, OpenConnect, WireGuard)» размещена во вкладке «Настройки» в удобной подвкладке «Клиенты» с живой таблицей подсетей, переключателями активности, быстрым выбором политики роутера для каждого сервера, кнопкой «Автопоиск серверов» и модальным окном добавления пользовательских подсетей. Из настроек удалена устаревшая избыточная подвкладка «Политики» (полное управление политиками сосредоточено в основном табе «Политики»).
+
 ## [1.0.218] - 2026-10-09 - Настройки порогов выравнивания SLD и распознавание капчи ServicePipe
 - **Детектор блокировок — Распознавание интерактивной капчи ServicePipe (Kuper / Мегамаркет)**:
   - Сигнатуры URL и параметров ServicePipe (`xpvnsulc`, `oirutpspid`, `servicepipe`, фразы капчи «Мы хотим убедиться, что имеем дело именно с вами», «разверните картинку») перенесены из списка жестких тупиковых блокировок Anti-VPN в распознаватель клиентских интерактивных проверок (`IsClientJSChallenge`).
