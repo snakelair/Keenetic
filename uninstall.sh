@@ -23,52 +23,175 @@ printf "\n${CYAN}===============================================================
 printf "${CYAN}    Snakelair Keenetic Packages & Services Full Uninstaller${RESET}\n"
 printf "${CYAN}================================================================================${RESET}\n\n"
 
+export PATH="/opt/usr/sbin:/opt/usr/bin:/opt/sbin:/opt/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH"
+
 # Helper Functions
+force_kill_target() {
+    NAME="$1"
+    
+    # 1. Standard killall
+    killall "$NAME" >/dev/null 2>&1 || true
+    killall -9 "$NAME" >/dev/null 2>&1 || true
+    /opt/bin/killall -9 "$NAME" >/dev/null 2>&1 || true
+    /opt/sbin/killall -9 "$NAME" >/dev/null 2>&1 || true
+
+    # 2. Kill by pidof
+    for pid in $(pidof "$NAME" 2>/dev/null) $(/opt/bin/pidof "$NAME" 2>/dev/null); do
+        if [ -n "$pid" ] && [ "$pid" != "$$" ]; then
+            kill -9 "$pid" >/dev/null 2>&1 || true
+        fi
+    done
+
+    # 3. Direct inspection of /proc to kill processes by comm and cmdline
+    for pdir in /proc/[0-9]*; do
+        pid="${pdir#/proc/}"
+        if [ "$pid" != "$$" ] && [ -d "$pdir" ]; then
+            comm=$(cat "$pdir/comm" 2>/dev/null || true)
+            case "$comm" in
+                "$NAME"|*"$NAME"*)
+                    kill -9 "$pid" >/dev/null 2>&1 || true
+                    ;;
+                *)
+                    cmdline=$(tr '\0' ' ' < "$pdir/cmdline" 2>/dev/null || true)
+                    case "$cmdline" in
+                        *"$NAME"*)
+                            case "$cmdline" in
+                                *"uninstall.sh"*|*"sh -s"*|*"grep"*) ;;
+                                *) kill -9 "$pid" >/dev/null 2>&1 || true ;;
+                            esac
+                            ;;
+                    esac
+                    ;;
+            esac
+        fi
+    done
+}
+
+kill_port_listeners() {
+    PORTS="$@"
+    for port in $PORTS; do
+        [ -z "$port" ] && continue
+        # Find PID via netstat
+        if command -v netstat >/dev/null 2>&1; then
+            pids=$(netstat -tlpn 2>/dev/null | grep -E ":${port}[[:space:]]" | awk '{print $7}' | cut -d'/' -f1 | tr -dc '0-9 ')
+            for pid in $pids; do
+                if [ -n "$pid" ] && [ "$pid" != "$$" ]; then
+                    kill -9 "$pid" >/dev/null 2>&1 || true
+                fi
+            done
+        fi
+        # Fallback via fuser
+        if command -v fuser >/dev/null 2>&1; then
+            fuser -k -9 "${port}/tcp" >/dev/null 2>&1 || true
+            fuser -k -9 "${port}/udp" >/dev/null 2>&1 || true
+        fi
+    done
+}
+
 stop_and_clean_service() {
     PKG_NAME="$1"
     INIT_SCRIPT="/opt/etc/init.d/S99${PKG_NAME}"
     
     printf "${BLUE}[*]${RESET} Остановка и удаление службы ${WHITE}%s${RESET}...\n" "$PKG_NAME"
 
-    if [ -x "$INIT_SCRIPT" ]; then
-        "$INIT_SCRIPT" stop >/dev/null 2>&1 || true
+    # Stop via init script first (graceful)
+    if [ -f "$INIT_SCRIPT" ]; then
+        sh "$INIT_SCRIPT" stop >/dev/null 2>&1 || true
+        sh "$INIT_SCRIPT" kill >/dev/null 2>&1 || true
     fi
-    killall -9 "$PKG_NAME" >/dev/null 2>&1 || true
+
+    # Aggressive force-kill by process name and comm/cmdline
+    force_kill_target "$PKG_NAME"
 
     # Specific cleanups for smart-route
     if [ "$PKG_NAME" = "smart-route" ]; then
         printf "${BLUE}[*]${RESET} Очистка правил маршрутизации iptables и таблиц ipset...\n"
+        kill_port_listeners 8088 10880 10853
+
+        # Netfilter jump hooks
+        iptables -t nat -D PREROUTING -j SMART_ROUTE_PREROUTING 2>/dev/null || true
+        iptables -t nat -D POSTROUTING -j SMART_ROUTE_POSTROUTING 2>/dev/null || true
+        iptables -t mangle -D PREROUTING -j SMART_ROUTE_MANGLE 2>/dev/null || true
+        iptables -t filter -D FORWARD -j SMART_ROUTE_FORWARD 2>/dev/null || true
+
+        # Custom chains flush & delete
+        iptables -t nat -F SMART_ROUTE_PREROUTING 2>/dev/null || true
+        iptables -t nat -X SMART_ROUTE_PREROUTING 2>/dev/null || true
+        iptables -t nat -F SMART_ROUTE_POSTROUTING 2>/dev/null || true
+        iptables -t nat -X SMART_ROUTE_POSTROUTING 2>/dev/null || true
+        iptables -t mangle -F SMART_ROUTE_MANGLE 2>/dev/null || true
+        iptables -t mangle -X SMART_ROUTE_MANGLE 2>/dev/null || true
+        iptables -t filter -F SMART_ROUTE_FORWARD 2>/dev/null || true
+        iptables -t filter -X SMART_ROUTE_FORWARD 2>/dev/null || true
+
+        # Legacy redirects & divert
         iptables -t nat -D PREROUTING -p tcp -m multiport --dports 80,443 -j REDIRECT --to-ports 10880 2>/dev/null || true
         iptables -t nat -D PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 10853 2>/dev/null || true
         iptables -t mangle -F SR_DIVERT 2>/dev/null || true
         iptables -t mangle -D PREROUTING -j SR_DIVERT 2>/dev/null || true
         iptables -t mangle -X SR_DIVERT 2>/dev/null || true
-        
-        # Flush ipsets
-        for SET in $(ipset list -n 2>/dev/null | grep -E '^sr_'); do
+
+        # Policy routing rules & tables
+        for t in 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142; do
+            ip rule del lookup "$t" 2>/dev/null || true
+            ip route flush table "$t" 2>/dev/null || true
+        done
+        ip route flush table 254 proto 188 2>/dev/null || true
+        for t in $(ip rule show 2>/dev/null | awk '/lookup/ {print $NF}'); do
+            case "$t" in
+                4[0-9][0-9][0-9])
+                    ip route flush table "$t" proto 188 2>/dev/null || true
+                    ;;
+            esac
+        done
+
+        # Flush and destroy ipsets
+        for SET in $(ipset list -n 2>/dev/null | grep -E '^sr_|^sr_blk_'); do
             ipset flush "$SET" 2>/dev/null || true
             ipset destroy "$SET" 2>/dev/null || true
         done
-    fi
-
-    # Specific cleanups for smart-vpn
-    if [ "$PKG_NAME" = "smart-vpn" ]; then
-        killall -9 sing-box awg 2>/dev/null || true
+    elif [ "$PKG_NAME" = "smart-utils" ]; then
+        kill_port_listeners 8090
+    elif [ "$PKG_NAME" = "smart-photo" ]; then
+        kill_port_listeners 8089
+    elif [ "$PKG_NAME" = "smart-vpn" ]; then
+        kill_port_listeners 8091
+        force_kill_target sing-box
+        force_kill_target awg
+    elif [ "$PKG_NAME" = "smart-nvr" ]; then
+        kill_port_listeners 8095
     fi
 
     # OPKG Remove
-    if [ -x "/opt/bin/opkg" ]; then
+    if [ -x "/opt/bin/opkg" ] || command -v opkg >/dev/null 2>&1; then
         printf "${BLUE}[*]${RESET} Удаление пакета OPKG ${WHITE}%s${RESET}...\n" "$PKG_NAME"
+        opkg remove "$PKG_NAME" --force-remove --force-depends >/dev/null 2>&1 || true
         /opt/bin/opkg remove "$PKG_NAME" --force-remove --force-depends >/dev/null 2>&1 || true
         rm -f /opt/lib/opkg/info/${PKG_NAME}.* /opt/var/lib/opkg/info/${PKG_NAME}.* 2>/dev/null || true
     fi
 
+    # Final kill pass
+    force_kill_target "$PKG_NAME"
+
+    # Remove binary executables
+    rm -f "/opt/bin/${PKG_NAME}" "/opt/sbin/${PKG_NAME}" "/opt/usr/bin/${PKG_NAME}" "/usr/local/bin/${PKG_NAME}" 2>/dev/null || true
+
     # Remove files, configs, init scripts, and logs
-    rm -f "$INIT_SCRIPT" "/opt/etc/init.d/K01${PKG_NAME}" 2>/dev/null || true
-    rm -rf "/opt/etc/${PKG_NAME}" "/opt/var/cache/${PKG_NAME}" "/opt/var/run/${PKG_NAME}.pid" 2>/dev/null || true
+    rm -f "$INIT_SCRIPT" "/opt/etc/init.d/K01${PKG_NAME}" "/opt/etc/init.d/*${PKG_NAME}*" 2>/dev/null || true
+    rm -rf "/opt/etc/${PKG_NAME}" "/opt/var/cache/${PKG_NAME}" "/opt/var/run/${PKG_NAME}.pid" "/opt/var/run/${PKG_NAME}" 2>/dev/null || true
     rm -f "/tmp/${PKG_NAME}.log" "/opt/var/log/${PKG_NAME}.log" 2>/dev/null || true
 
-    printf "${GREEN}[OK]${RESET} %s полностью удален!\n\n" "$PKG_NAME"
+    # Verify process termination
+    sleep 1
+    REMAINING=$(pidof "$PKG_NAME" 2>/dev/null || /opt/bin/pidof "$PKG_NAME" 2>/dev/null || true)
+    if [ -n "$REMAINING" ]; then
+        for rpid in $REMAINING; do
+            kill -9 "$rpid" 2>/dev/null || true
+        done
+        printf "${YELLOW}[!]${RESET} Принудительно завершен зависший процесс %s (PID: %s)\n" "$PKG_NAME" "$REMAINING"
+    fi
+
+    printf "${GREEN}[OK]${RESET} %s полностью удален и служба остановлена!\n\n" "$PKG_NAME"
 }
 
 uninstall_qlvpn() {
