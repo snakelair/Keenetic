@@ -288,6 +288,17 @@ if [ -f "$CFG_FILE" ]; then
     cp -a "$CFG_FILE" "$CFG_BACKUP" 2>/dev/null || true
 fi
 
+# Stop and terminate any running instance of the service before installing new files
+if [ -f "/opt/etc/init.d/S99${PACKAGE}" ]; then
+    sh "/opt/etc/init.d/S99${PACKAGE}" stop >/dev/null 2>&1 || true
+    sh "/opt/etc/init.d/S99${PACKAGE}" kill >/dev/null 2>&1 || true
+fi
+for pid in $(pidof "$PACKAGE" 2>/dev/null) $(/opt/bin/pidof "$PACKAGE" 2>/dev/null); do
+    kill -9 "$pid" 2>/dev/null || true
+done
+killall -9 "$PACKAGE" >/dev/null 2>&1 || true
+/opt/bin/killall -9 "$PACKAGE" >/dev/null 2>&1 || true
+
 printf "\033[1;34m[*]\033[0m Installing/upgrading package: \033[1;37m%s\033[0m...\n" "$PACKAGE"
 /opt/bin/opkg remove "$PACKAGE" --force-remove --force-depends >/dev/null 2>&1 || true
 /opt/bin/opkg install "$PACKAGE" --force-remove --force-reinstall --force-overwrite 2>/dev/null || \
@@ -321,36 +332,41 @@ else
 fi
 
 # 9. Start / Restart service safely
-sleep 2
+chmod +x /opt/etc/init.d/* /opt/bin/* 2>/dev/null || true
+sleep 1
 
-if [ -x "/opt/etc/init.d/S99smart-utils" ] && [ "$PACKAGE" = "smart-utils" ]; then
+if [ -f "/opt/etc/init.d/S99smart-utils" ] && [ "$PACKAGE" = "smart-utils" ]; then
     printf "\033[1;34m[*]\033[0m Перезапуск службы Smart-Utils...\n"
-    /opt/etc/init.d/S99smart-utils stop >/dev/null 2>&1 || true
+    sh /opt/etc/init.d/S99smart-utils stop >/dev/null 2>&1 || true
     for pid in $(pidof smart-utils 2>/dev/null) $(/opt/bin/pidof smart-utils 2>/dev/null); do kill -9 "$pid" 2>/dev/null || true; done
     killall -9 smart-utils >/dev/null 2>&1 || true
+    /opt/bin/killall -9 smart-utils >/dev/null 2>&1 || true
     sleep 1
-    /opt/etc/init.d/S99smart-utils start >/dev/null 2>&1
-elif [ -x "/opt/etc/init.d/S99smart-route" ] && [ "$PACKAGE" = "smart-route" ]; then
+    sh /opt/etc/init.d/S99smart-utils start >/dev/null 2>&1
+elif [ -f "/opt/etc/init.d/S99smart-route" ] && [ "$PACKAGE" = "smart-route" ]; then
     printf "\033[1;34m[*]\033[0m Перезапуск службы Smart-Route...\n"
-    /opt/etc/init.d/S99smart-route stop >/dev/null 2>&1 || true
+    sh /opt/etc/init.d/S99smart-route stop >/dev/null 2>&1 || true
     for pid in $(pidof smart-route 2>/dev/null) $(/opt/bin/pidof smart-route 2>/dev/null); do kill -9 "$pid" 2>/dev/null || true; done
     killall -9 smart-route >/dev/null 2>&1 || true
+    /opt/bin/killall -9 smart-route >/dev/null 2>&1 || true
     sleep 1
-    /opt/etc/init.d/S99smart-route start >/dev/null 2>&1
-elif [ -x "/opt/etc/init.d/S99smart-photo" ] && [ "$PACKAGE" = "smart-photo" ]; then
+    sh /opt/etc/init.d/S99smart-route start >/dev/null 2>&1
+elif [ -f "/opt/etc/init.d/S99smart-photo" ] && [ "$PACKAGE" = "smart-photo" ]; then
     printf "\033[1;34m[*]\033[0m Перезапуск службы Smart-Photo...\n"
-    /opt/etc/init.d/S99smart-photo stop >/dev/null 2>&1 || true
+    sh /opt/etc/init.d/S99smart-photo stop >/dev/null 2>&1 || true
     for pid in $(pidof smart-photo 2>/dev/null) $(/opt/bin/pidof smart-photo 2>/dev/null); do kill -9 "$pid" 2>/dev/null || true; done
     killall -9 smart-photo >/dev/null 2>&1 || true
+    /opt/bin/killall -9 smart-photo >/dev/null 2>&1 || true
     sleep 1
-    /opt/etc/init.d/S99smart-photo start >/dev/null 2>&1
-elif [ -x "/opt/etc/init.d/S99smart-vpn" ] && [ "$PACKAGE" = "smart-vpn" ]; then
+    sh /opt/etc/init.d/S99smart-photo start >/dev/null 2>&1
+elif [ -f "/opt/etc/init.d/S99smart-vpn" ] && [ "$PACKAGE" = "smart-vpn" ]; then
     printf "\033[1;34m[*]\033[0m Перезапуск службы Smart-VPN...\n"
-    /opt/etc/init.d/S99smart-vpn stop >/dev/null 2>&1 || true
+    sh /opt/etc/init.d/S99smart-vpn stop >/dev/null 2>&1 || true
     for pid in $(pidof smart-vpn 2>/dev/null) $(/opt/bin/pidof smart-vpn 2>/dev/null); do kill -9 "$pid" 2>/dev/null || true; done
     killall -9 smart-vpn >/dev/null 2>&1 || true
+    /opt/bin/killall -9 smart-vpn >/dev/null 2>&1 || true
     sleep 1
-    /opt/etc/init.d/S99smart-vpn start >/dev/null 2>&1
+    sh /opt/etc/init.d/S99smart-vpn start >/dev/null 2>&1
 fi
 
 # 10. Wait for service and verify via real API query
