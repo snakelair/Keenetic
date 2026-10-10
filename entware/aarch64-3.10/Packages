@@ -1,15 +1,15 @@
 Package: smart-route
-Version: 1.0.222
+Version: 1.0.223
 Depends: iptables, ipset, ip-full, ca-certificates
 Section: net
 Architecture: aarch64-3.10
 Maintainer: Smart-Route Team
 Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
 Priority: optional
-MD5Sum: 48171f5b47f5d9f80f91846a3b4470e3
-SHA256Sum: 06c14306dcfd2fcd7cd4c06a7cae50774883ba4a8267fe635c61a56299a31c7e
-Size: 4543901
-Filename: smart-route_1.0.222_aarch64-3.10.ipk
+MD5Sum: 3f262f03e44af5190c238df6680cea31
+SHA256Sum: 44e65d65a4f651edb1f3ca14504f353c86c185de3f44b105ba6f4bed7c0819c5
+Size: 4548101
+Filename: smart-route_1.0.223_aarch64-3.10.ipk
 
 Package: ffmpeg-mini
 Version: 1.0.0
