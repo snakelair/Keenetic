@@ -173,7 +173,7 @@ printf "\033[1;34m[*]\033[0m Detected router architecture: \033[1;37m%s\033[0m -
 DEFAULT_PORT=8001
 PKG_TITLE="Smart-Utils"
 if [ "$PACKAGE" = "smart-route" ]; then
-    DEFAULT_PORT=8088
+    DEFAULT_PORT=8002
     PKG_TITLE="Smart-Route"
 elif [ "$PACKAGE" = "smart-photo" ]; then
     DEFAULT_PORT=8089

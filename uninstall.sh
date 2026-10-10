@@ -106,7 +106,7 @@ stop_and_clean_service() {
     # Specific cleanups for smart-route
     if [ "$PKG_NAME" = "smart-route" ]; then
         printf "${BLUE}[*]${RESET} Очистка правил маршрутизации iptables и таблиц ipset...\n"
-        kill_port_listeners 8088 10880 10853
+        kill_port_listeners 8002 8088 10880 10853
 
         # Netfilter jump hooks
         iptables -t nat -D PREROUTING -j SMART_ROUTE_PREROUTING 2>/dev/null || true
