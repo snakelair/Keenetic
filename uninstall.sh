@@ -151,7 +151,7 @@ stop_and_clean_service() {
             ipset destroy "$SET" 2>/dev/null || true
         done
     elif [ "$PKG_NAME" = "smart-utils" ]; then
-        kill_port_listeners 8090
+        kill_port_listeners 8001 8090
     elif [ "$PKG_NAME" = "smart-photo" ]; then
         kill_port_listeners 8089
     elif [ "$PKG_NAME" = "smart-vpn" ]; then
