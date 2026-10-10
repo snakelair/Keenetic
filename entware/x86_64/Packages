@@ -1,3 +1,53 @@
+Package: ffmpeg-mini
+Version: 1.0.0
+Section: multimedia
+Architecture: x86_64
+Maintainer: SmartPhoto Team
+Description: Lightweight Pure Go video thumbnail processor and companion cover extractor for Keenetic routers.
+MD5Sum: 161bd4549a146749db141da693006369
+SHA256Sum: 721391d15c4ba3f1da8e434145d0a1ffee6d7f348048dc8a69ae0a4576515c27
+Size: 1312402
+Filename: ffmpeg-mini_1.0.0_x86_64.ipk
+
+Package: smart-photo
+Version: 1.0.154
+Depends: ca-certificates
+Section: multimedia
+Architecture: x86_64
+Maintainer: SmartPhoto Team
+Description: Google Photos-like photo manager and viewer daemon for USB storage with modern Web UI on Keenetic Entware routers.
+Priority: optional
+MD5Sum: 0c9c18e27842c732ed915f23bf04150c
+SHA256Sum: 15c181f1a1cc4ae0439a6e5a509fe25c4926a13b7e0b9fe2b820894509daf9ea
+Size: 4853102
+Filename: smart-photo_1.0.154_x86_64.ipk
+
+Package: smart-photo
+Version: 1.0.161
+Depends: ca-certificates
+Section: multimedia
+Architecture: x86_64
+Maintainer: SmartPhoto Team
+Description: Google Photos-like photo manager and viewer daemon for USB storage with modern Web UI on Keenetic Entware routers.
+Priority: optional
+MD5Sum: 0ef27c043cd5401951a3b1f4a04fb069
+SHA256Sum: b37a11ef19c5cbf343ab396a849d958da555783770892cb947b142cfd7f7b166
+Size: 4849986
+Filename: smart-photo_1.0.161_x86_64.ipk
+
+Package: smart-route
+Version: 1.0.220
+Depends: iptables, ipset, ip-full, ca-certificates
+Section: net
+Architecture: x86_64
+Maintainer: Smart-Route Team
+Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
+Priority: optional
+MD5Sum: 97734cafdd96a5998d5aadaeeb60a8b0
+SHA256Sum: 901a91a8483e115ad84943d28b10f74ddefac31774a9697511f6a0f0f6f38aa9
+Size: 4987155
+Filename: smart-route_1.0.220_x86_64.ipk
+
 Package: smart-route
 Version: 1.0.221
 Depends: iptables, ipset, ip-full, ca-certificates
@@ -17,11 +67,38 @@ Depends: ca-certificates
 Section: admin
 Architecture: x86_64
 Maintainer: Smart-Utils Team
+Description: Modern Web Administration Suite with Web Terminal, Total Commander Dual-Pane File Manager, OPKG Package Manager, CPU/System Analyzer and Backups for Keenetic Entware routers.
+Priority: optional
 MD5Sum: 07a124d632754e40e1bfd32aa508c39f
 SHA256Sum: b6bdc6a5128c86444b114a25bef63d84a86223053e48a56bb9b56aff68df4c40
 Size: 4002092
 Filename: smart-utils_1.0.40_x86_64.ipk
+
+Package: smart-utils
+Version: 1.0.41
+Depends: ca-certificates
+Section: admin
+Architecture: x86_64
+Maintainer: Smart-Utils Team
 Description: Modern Web Administration Suite with Web Terminal, Total Commander Dual-Pane File Manager, OPKG Package Manager, CPU/System Analyzer and Backups for Keenetic Entware routers.
+Priority: optional
+MD5Sum: a2779abc309984a950e75b60b7d60074
+SHA256Sum: 4b1c769784823d0766cd007f964c4c94afb9a51ef1f4681ef753b82aa142c824
+Size: 4007915
+Filename: smart-utils_1.0.41_x86_64.ipk
+
+Package: smart-vpn
+Version: 1.0.120
+Depends: ca-certificates
+Section: net
+Architecture: x86_64
+Maintainer: Smart-VPN Team
+Description: Smart-VPN Keenetic Control Center - Modern Web VPN Control Center for Keenetic Entware routers. Supports native WireGuard, SSTP, OpenVPN, IPsec and live metrics.
+Priority: optional
+MD5Sum: 2d4117f34611c873a6b6faa42e4c5ee9
+SHA256Sum: fbce6593529e579c2aeb978559053c479e9af4dc8c15f530cadc84083b879a6b
+Size: 6102852
+Filename: smart-vpn_1.0.120_x86_64.ipk
 
 Package: smart-vpn
 Version: 1.0.139
@@ -35,27 +112,4 @@ MD5Sum: 5d358a757fee55acfb642c94d7cd00f4
 SHA256Sum: 801e700d324a43ea3fb87c6ae8df3978244f99d66241d600927d7c2882df3019
 Size: 6150634
 Filename: smart-vpn_1.0.139_x86_64.ipk
-
-Package: smart-photo
-Version: 1.0.161
-Depends: ca-certificates
-Section: multimedia
-Architecture: x86_64
-Maintainer: SmartPhoto Team
-MD5Sum: 0ef27c043cd5401951a3b1f4a04fb069
-SHA256Sum: b37a11ef19c5cbf343ab396a849d958da555783770892cb947b142cfd7f7b166
-Size: 4849986
-Filename: smart-photo_1.0.161_x86_64.ipk
-Description: Google Photos-like photo manager and viewer daemon for USB storage with modern Web UI on Keenetic Entware routers.
-
-Package: ffmpeg-mini
-Version: 1.0.0
-Section: multimedia
-Architecture: x86_64
-Maintainer: SmartPhoto Team
-MD5Sum: 161bd4549a146749db141da693006369
-SHA256Sum: 721391d15c4ba3f1da8e434145d0a1ffee6d7f348048dc8a69ae0a4576515c27
-Size: 1312402
-Filename: ffmpeg-mini_1.0.0_x86_64.ipk
-Description: Lightweight Pure Go video thumbnail processor and companion cover extractor for Keenetic routers.
 
