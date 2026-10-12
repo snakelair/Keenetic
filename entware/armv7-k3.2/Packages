@@ -1,15 +1,52 @@
-Package: smart-vpn
-Version: 1.0.139
+Package: ffmpeg-mini
+Version: 1.0.0
+Section: multimedia
+Architecture: armv7-3.2
+Maintainer: SmartPhoto Team
+Description: Lightweight Pure Go video thumbnail processor and companion cover extractor for Keenetic routers.
+MD5Sum: 0cd184f0ba32f04e32c38133b1745c30
+SHA256Sum: f13ae93910ab8263fd3b75fffbc5fab4068da39b49301ada063b4235d327465d
+Size: 1215163
+Filename: ffmpeg-mini_1.0.0_armv7-3.2.ipk
+
+Package: smart-photo
+Version: 1.0.161
 Depends: ca-certificates
+Section: multimedia
+Architecture: armv7-3.2
+Maintainer: SmartPhoto Team
+Description: Google Photos-like photo manager and viewer daemon for USB storage with modern Web UI on Keenetic Entware routers.
+Priority: optional
+MD5Sum: 5ef7be82a22eba441823b09a978cef1c
+SHA256Sum: f94574222933f5462cbd421ecea3a649d934e334fbe290e9f8c078c167593281
+Size: 4676462
+Filename: smart-photo_1.0.161_armv7-3.2.ipk
+
+Package: smart-photo
+Version: 1.0.163
+Depends: ca-certificates
+Section: multimedia
+Architecture: armv7-3.2
+Maintainer: SmartPhoto Team
+Description: Google Photos-like photo manager and viewer daemon for USB storage with modern Web UI on Keenetic Entware routers.
+Priority: optional
+MD5Sum: 6b80fe65655dfe4615f564362ec57120
+SHA256Sum: 09a84a558189bf06cb4a3ce3edc57f384b8338ff2786e46304f96c166082cef7
+Size: 4693305
+Filename: smart-photo_1.0.163_armv7-3.2.ipk
+
+Package: smart-route
+Version: 1.0.223
+Depends: iptables, ipset, ip-full, ca-certificates
 Section: net
 Architecture: armv7-3.2
-Maintainer: Smart-VPN Team
-Description: Smart-VPN Keenetic Control Center - Modern Web VPN Control Center for Keenetic Entware routers. Supports native WireGuard, SSTP, OpenVPN, IPsec and live metrics.
+Maintainer: Smart-Route Team
+Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
 Priority: optional
-MD5Sum: af0a8b1f636a8551765694396b41c9c0
-SHA256Sum: 6c5d2e0698e603e4acd74715474d174505c960d7f29121f135e906797a4be50b
-Size: 6007204
-Filename: smart-vpn_1.0.139_armv7-3.2.ipk
+MD5Sum: 1168d800e39c9c48f658ffc10ab9e3b2
+SHA256Sum: 6fff36deb0cf2a569ac48e5e5b134617da21d1ca54a71d7b3c87d28db9546cb1
+Size: 4804283
+Filename: smart-route_1.0.223_armv7-3.2.ipk
 
 Package: smart-route
 Version: 1.0.224
@@ -37,26 +74,42 @@ SHA256Sum: 3ce907ca4e8355e2b484b568a8e3d3d6db53c82ccbddeba756137012c0341a38
 Size: 3884528
 Filename: smart-utils_1.0.42_armv7-3.2.ipk
 
-Package: smart-photo
-Version: 1.0.163
+Package: smart-utils
+Version: 1.0.43
 Depends: ca-certificates
-Section: multimedia
+Section: admin
 Architecture: armv7-3.2
-Maintainer: SmartPhoto Team
-MD5Sum: 6b80fe65655dfe4615f564362ec57120
-SHA256Sum: 09a84a558189bf06cb4a3ce3edc57f384b8338ff2786e46304f96c166082cef7
-Size: 4693305
-Filename: smart-photo_1.0.163_armv7-3.2.ipk
-Description: Google Photos-like photo manager and viewer daemon for USB storage with modern Web UI on Keenetic Entware routers.
+Maintainer: Smart-Utils Team
+Description: Modern Web Administration Suite with Web Terminal, Total Commander Dual-Pane File Manager, OPKG Package Manager, CPU/System Analyzer and Backups for Keenetic Entware routers.
+Priority: optional
+MD5Sum: c40af070337c2e56dea24a03313509b1
+SHA256Sum: 85f576deca4335d7afcfefd82e4ded78e634b097df01ea4bc4bf07e502652f66
+Size: 3885135
+Filename: smart-utils_1.0.43_armv7-3.2.ipk
 
-Package: ffmpeg-mini
-Version: 1.0.0
-Section: multimedia
+Package: smart-vpn
+Version: 1.0.120
+Depends: ca-certificates
+Section: net
 Architecture: armv7-3.2
-Maintainer: SmartPhoto Team
-MD5Sum: 0cd184f0ba32f04e32c38133b1745c30
-SHA256Sum: f13ae93910ab8263fd3b75fffbc5fab4068da39b49301ada063b4235d327465d
-Size: 1215163
-Filename: ffmpeg-mini_1.0.0_armv7-3.2.ipk
-Description: Lightweight Pure Go video thumbnail processor and companion cover extractor for Keenetic routers.
+Maintainer: Smart-VPN Team
+Description: Smart-VPN Keenetic Control Center - Modern Web VPN Control Center for Keenetic Entware routers. Supports native WireGuard, SSTP, OpenVPN, IPsec and live metrics.
+Priority: optional
+MD5Sum: 5b0cc6d424d9cc0111125f2e671f40ca
+SHA256Sum: 3871c653c7fb0d3f2febb6809178238dff2b5d8dcf67dda9815c89df15bc04f7
+Size: 5959643
+Filename: smart-vpn_1.0.120_armv7-3.2.ipk
+
+Package: smart-vpn
+Version: 1.0.139
+Depends: ca-certificates
+Section: net
+Architecture: armv7-3.2
+Maintainer: Smart-VPN Team
+Description: Smart-VPN Keenetic Control Center - Modern Web VPN Control Center for Keenetic Entware routers. Supports native WireGuard, SSTP, OpenVPN, IPsec and live metrics.
+Priority: optional
+MD5Sum: af0a8b1f636a8551765694396b41c9c0
+SHA256Sum: 6c5d2e0698e603e4acd74715474d174505c960d7f29121f135e906797a4be50b
+Size: 6007204
+Filename: smart-vpn_1.0.139_armv7-3.2.ipk
 
