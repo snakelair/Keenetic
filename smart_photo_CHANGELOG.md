@@ -1,5 +1,15 @@
 # 📦 SmartPhoto Changelog
 
+## [1.0.163] - 2026-10-12
+
+### Переименование кнопки в 'Сохранить' и дублирование внизу раздела настроек
+- Переименование кнопки в 'Сохранить' и дублирование внизу раздела настроек
+
+## [1.0.162] - 2026-10-12
+
+### feat: auto-detect and recover stalled unmounted USB storage in KeeneticOS and System Doctor
+- feat: auto-detect and recover stalled unmounted USB storage in KeeneticOS and System Doctor
+
 ## [1.0.161] - 2026-09-29
 
 ### PWA header: remove frame counter subtitle and rename slideshow button to Слайдшоу

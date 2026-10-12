@@ -19,7 +19,7 @@ curl -sSL https://raw.githubusercontent.com/snakelair/Keenetic/main/install.sh |
 
 ### Шаг 3: Открытие веб-интерфейса
 Откройте браузер и перейдите по адресу:
-👉 `http://192.168.1.1:8089`
+👉 `http://192.168.1.1:8003`
 
 ---
 
@@ -33,7 +33,7 @@ curl -sSL https://raw.githubusercontent.com/snakelair/Keenetic/main/install.sh |
 3. **Потоки генерации миниатюр (CPU Throttle)**:
    - Для роутеров с MIPS процессором (Viva, Extra, Speedster, Omni, Giga) рекомендуется **1-2 потока**.
    - Для Hero, Titan, Ultra, Peak можно установить **2-4 потока**.
-4. Нажмите **«Сохранить настройки»**.
+4. Нажмите **«Сохранить»**.
 
 ---
 

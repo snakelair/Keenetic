@@ -1,7 +1,7 @@
 # 📷 SmartPhoto for Keenetic Entware
 
 [![Build & Publish OPKG Packages](https://github.com/snakelair/SmartPhoto/actions/workflows/deploy-packages.yml/badge.svg)](https://github.com/snakelair/SmartPhoto/actions)
-[![Release](https://img.shields.io/badge/release-v1.0.161-blue.svg)](https://github.com/snakelair/SmartPhoto/releases)
+[![Release](https://img.shields.io/badge/release-v1.0.163-blue.svg)](https://github.com/snakelair/SmartPhoto/releases)
 [![Keenetic Entware](https://img.shields.io/badge/Keenetic-Entware-38d39f.svg)](https://github.com/snakelair/Keenetic)
 
 **SmartPhoto** — это легковесный, быстрый персональный фотосервер в стиле **Google Photos**, созданный специально для роутеров **Keenetic** с USB-портом и средой **Entware** (а также для Linux и Windows).
@@ -50,7 +50,7 @@ curl -sSL https://raw.githubusercontent.com/snakelair/Keenetic/main/install.sh |
 ```
 
 После завершения установки веб-интерфейс будет доступен по адресу:
-👉 **`http://192.168.1.1:8089`** (или IP вашего роутера).
+👉 **`http://192.168.1.1:8003`** (или IP вашего роутера).
 
 ---
 
