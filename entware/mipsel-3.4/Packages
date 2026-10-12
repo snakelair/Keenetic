@@ -1,16 +1,3 @@
-Package: smart-route
-Version: 1.0.224
-Depends: iptables, ipset, ip-full, ca-certificates
-Section: net
-Architecture: mipsel-3.4
-Maintainer: Smart-Route Team
-Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
-Priority: optional
-MD5Sum: a1a7f4a11255ee1d40b485d3e97eced4
-SHA256Sum: 53984e1ae0f83306e9ef755b5ec3a587fba96c65e4f069531a4b1dc58cde64ba
-Size: 4611132
-Filename: smart-route_1.0.224_mipsel-3.4.ipk
-
 Package: ffmpeg-mini
 Version: 1.0.0
 Section: multimedia
@@ -48,18 +35,31 @@ SHA256Sum: 48abd657819a388a5e1df785053210b3f9f6f2d44381e6426830432b039465cd
 Size: 4522286
 Filename: smart-photo_1.0.161_mipsel-3.4.ipk
 
-Package: smart-utils
-Version: 1.0.40
-Depends: ca-certificates
-Section: admin
+Package: smart-route
+Version: 1.0.223
+Depends: iptables, ipset, ip-full, ca-certificates
+Section: net
 Architecture: mipsel-3.4
-Maintainer: Smart-Utils Team
-Description: Modern Web Administration Suite with Web Terminal, Total Commander Dual-Pane File Manager, OPKG Package Manager, CPU/System Analyzer and Backups for Keenetic Entware routers.
+Maintainer: Smart-Route Team
+Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
 Priority: optional
-MD5Sum: 7ad6822e97c74da22bec740e49112386
-SHA256Sum: 2c5945d681446640c535fec82ec9b36aa0ca74f4df35eab459802553c30836fc
-Size: 3725094
-Filename: smart-utils_1.0.40_mipsel-3.4.ipk
+MD5Sum: 7cf6d27eb79a6c3c6158f5e288b5d9ff
+SHA256Sum: 91725dd9c88f2442b063e4447501c82f943b82d6f854091c3ff2420137d298ab
+Size: 4598666
+Filename: smart-route_1.0.223_mipsel-3.4.ipk
+
+Package: smart-route
+Version: 1.0.224
+Depends: iptables, ipset, ip-full, ca-certificates
+Section: net
+Architecture: mipsel-3.4
+Maintainer: Smart-Route Team
+Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
+Priority: optional
+MD5Sum: a1a7f4a11255ee1d40b485d3e97eced4
+SHA256Sum: 53984e1ae0f83306e9ef755b5ec3a587fba96c65e4f069531a4b1dc58cde64ba
+Size: 4611132
+Filename: smart-route_1.0.224_mipsel-3.4.ipk
 
 Package: smart-utils
 Version: 1.0.41
@@ -73,6 +73,19 @@ MD5Sum: 881c9a9023fbc79c1d50ab4637a0d234
 SHA256Sum: 8cd29073b98d12a4ac9843c8fa7cce8d38d05937179a23b989be62ecbde5fadd
 Size: 3735345
 Filename: smart-utils_1.0.41_mipsel-3.4.ipk
+
+Package: smart-utils
+Version: 1.0.42
+Depends: ca-certificates
+Section: admin
+Architecture: mipsel-3.4
+Maintainer: Smart-Utils Team
+Description: Modern Web Administration Suite with Web Terminal, Total Commander Dual-Pane File Manager, OPKG Package Manager, CPU/System Analyzer and Backups for Keenetic Entware routers.
+Priority: optional
+MD5Sum: 09b6571201b668810873d56acddbf6ca
+SHA256Sum: 0079b2fb1a79d18fb73e51dc24229452604366b4c84e8ef788104e196eb615d2
+Size: 3735814
+Filename: smart-utils_1.0.42_mipsel-3.4.ipk
 
 Package: smart-vpn
 Version: 1.0.120
