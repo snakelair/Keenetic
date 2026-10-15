@@ -245,12 +245,13 @@ if [ -z "$TARGET" ]; then
         printf "  ${CYAN}2${RESET}) Smart-Route (Служба динамической маршрутизации и обхода блокировок)\n" >&3
         printf "  ${CYAN}3${RESET}) Smart-Photo (Персональный фотосервер на USB)\n" >&3
         printf "  ${CYAN}4${RESET}) Smart-VPN (Управление VPN-соединениями на роутере)\n" >&3
-        printf "  ${CYAN}5${RESET}) QuakeLive-VPN Server (Служба QL-VPN на Linux VPS)\n" >&3
-        printf "  ${CYAN}6${RESET}) Удалить только репозиторий OPKG (snakelair.conf)\n" >&3
-        printf "  ${RED}7${RESET}) ${RED}Удалить ВСЕ пакеты Snakelair и репозиторий OPKG${RESET}\n" >&3
+        printf "  ${CYAN}5${RESET}) SmartNVR (Шлюз видеонаблюдения Hiseeu/iCSee и веб-центр NVR)\n" >&3
+        printf "  ${CYAN}6${RESET}) QuakeLive-VPN Server (Служба QL-VPN на Linux VPS)\n" >&3
+        printf "  ${CYAN}7${RESET}) Удалить только репозиторий OPKG (snakelair.conf)\n" >&3
+        printf "  ${RED}8${RESET}) ${RED}Удалить ВСЕ пакеты Snakelair и репозиторий OPKG${RESET}\n" >&3
         printf "  ${YELLOW}0${RESET}) Отмена\n\n" >&3
 
-        printf "${YELLOW}[?]${RESET} Введите номер пункта [0-7]: " >&3
+        printf "${YELLOW}[?]${RESET} Введите номер пункта [0-8]: " >&3
         read -r CHOICE <&4 || CHOICE=""
         exec 3>&- 4<&-
 
@@ -259,9 +260,10 @@ if [ -z "$TARGET" ]; then
             2) TARGET="smart-route" ;;
             3) TARGET="smart-photo" ;;
             4) TARGET="smart-vpn" ;;
-            5) TARGET="ql-vpn" ;;
-            6) TARGET="repo" ;;
-            7) TARGET="all" ;;
+            5) TARGET="smart-nvr" ;;
+            6) TARGET="ql-vpn" ;;
+            7) TARGET="repo" ;;
+            8) TARGET="all" ;;
             *)
                 printf "\n${YELLOW}[!]${RESET} Отменено пользователем.\n\n"
                 exit 0
@@ -286,6 +288,9 @@ case "$TARGET" in
     smart-vpn)
         stop_and_clean_service "smart-vpn"
         ;;
+    smart-nvr|smartnvr)
+        stop_and_clean_service "smart-nvr"
+        ;;
     ql-vpn|qlvpn)
         uninstall_qlvpn
         ;;
@@ -298,6 +303,7 @@ case "$TARGET" in
         stop_and_clean_service "smart-route"
         stop_and_clean_service "smart-photo"
         stop_and_clean_service "smart-vpn"
+        stop_and_clean_service "smart-nvr"
         remove_repo_feed
         if [ -f "/usr/local/bin/ql-vpn" ] || [ -f "/etc/systemd/system/ql-vpn.service" ]; then
             uninstall_qlvpn
@@ -308,7 +314,7 @@ case "$TARGET" in
         ;;
     *)
         printf "${RED}[ERROR] Неизвестный пакет: %s${RESET}\n" "$TARGET"
-        printf "Доступные варианты: smart-utils, smart-route, smart-photo, smart-vpn, ql-vpn, repo, all\n\n"
+        printf "Доступные варианты: smart-utils, smart-route, smart-photo, smart-vpn, smart-nvr, ql-vpn, repo, all\n\n"
         exit 1
         ;;
 esac

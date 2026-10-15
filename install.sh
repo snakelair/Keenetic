@@ -43,10 +43,11 @@ if [ -z "$PACKAGE" ]; then
         printf "  \033[1;36m2\033[0m) \033[1;32mSmart-Route\033[0m (Служба динамической маршрутизации и обхода блокировок)\n" >&3
         printf "  \033[1;36m3\033[0m) \033[1;32mSmart-Photo\033[0m (Персональный фотосервер в стиле Google Photos для USB)\n" >&3
         printf "  \033[1;36m4\033[0m) \033[1;32mSmart-VPN\033[0m   (Управление VPN-соединениями на роутере)\n" >&3
-        printf "  \033[1;36m5\033[0m) \033[1;32mQuakeLive-VPN Server\033[0m (Служба QL-VPN на Linux VPS)\n" >&3
+        printf "  \033[1;36m5\033[0m) \033[1;32mSmartNVR\033[0m    (Шлюз видеонаблюдения Hiseeu/iCSee и веб-центр NVR)\n" >&3
+        printf "  \033[1;36m6\033[0m) \033[1;32mQuakeLive-VPN Server\033[0m (Служба QL-VPN на Linux VPS)\n" >&3
         printf "  \033[1;33m0\033[0m) Отмена\n\n" >&3
 
-        printf "\033[1;33m[?]\033[0m Введите номер пункта [1-5]: " >&3
+        printf "\033[1;33m[?]\033[0m Введите номер пункта [1-6]: " >&3
         read -r CHOICE <&4 || CHOICE=""
         exec 3>&- 4<&-
 
@@ -55,7 +56,8 @@ if [ -z "$PACKAGE" ]; then
             2) PACKAGE="smart-route" ;;
             3) PACKAGE="smart-photo" ;;
             4) PACKAGE="smart-vpn" ;;
-            5)
+            5) PACKAGE="smart-nvr" ;;
+            6)
                 printf "\033[1;34m[*]\033[0m Запуск установщика QuakeLive-VPN Server (Linux VPS)...\n"
                 SCRIPT_DIR="$(dirname "$0")"
                 if [ -f "${SCRIPT_DIR}/install-qlvpn.sh" ]; then
@@ -354,10 +356,13 @@ printf "\033[1;34m[*]\033[0m Updating package lists...\n"
 rm -f /opt/var/opkg-lists/snakelair /opt/var/opkg-lists/keenetic-custom /tmp/opkg-* /opt/tmp/opkg.lock /opt/var/lock/opkg.lock /opt/lib/opkg/lock 2>/dev/null || true
 /opt/bin/opkg update
 
-# Explicitly ensure core dependencies for smart-route
+# Explicitly ensure core dependencies for smart-route and smart-nvr
 if [ "$PACKAGE" = "smart-route" ]; then
     printf "\033[1;34m[*]\033[0m Ensuring network dependencies (iptables, ipset, ip-full, ca-certificates)...\n"
     /opt/bin/opkg install iptables ipset ip-full ca-certificates 2>/dev/null || true
+elif [ "$PACKAGE" = "smart-nvr" ] || [ "$PACKAGE" = "smartnvr" ]; then
+    printf "\033[1;34m[*]\033[0m Ensuring dependencies (ca-certificates)...\n"
+    /opt/bin/opkg install ca-certificates 2>/dev/null || true
 fi
 
 # Re-clean and ensure prerm is removed before install
@@ -484,6 +489,14 @@ elif [ -f "/opt/etc/init.d/S99smart-vpn" ] && [ "$PACKAGE" = "smart-vpn" ]; then
     /opt/bin/killall -9 smart-vpn >/dev/null 2>&1 || true
     sleep 1
     sh /opt/etc/init.d/S99smart-vpn start >/dev/null 2>&1
+elif [ -f "/opt/etc/init.d/S99smart-nvr" ] && ([ "$PACKAGE" = "smart-nvr" ] || [ "$PACKAGE" = "smartnvr" ]); then
+    printf "\033[1;34m[*]\033[0m Перезапуск службы SmartNVR...\n"
+    sh /opt/etc/init.d/S99smart-nvr stop >/dev/null 2>&1 || true
+    for pid in $(pidof smart-nvr 2>/dev/null) $(/opt/bin/pidof smart-nvr 2>/dev/null); do kill -9 "$pid" 2>/dev/null || true; done
+    killall -9 smart-nvr >/dev/null 2>&1 || true
+    /opt/bin/killall -9 smart-nvr >/dev/null 2>&1 || true
+    sleep 1
+    sh /opt/etc/init.d/S99smart-nvr start >/dev/null 2>&1
 fi
 
 # 10. Wait for service and verify via real API query

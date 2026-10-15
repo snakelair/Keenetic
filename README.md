@@ -104,6 +104,9 @@ curl -sSL https://raw.githubusercontent.com/snakelair/Keenetic/main/install.sh |
 # Установить Smart-VPN (WireGuard, AWG, Sing-box, QuakeLive-VPN на роутер):
 curl -sSL https://raw.githubusercontent.com/snakelair/Keenetic/main/install.sh | sh -s smart-vpn
 
+# Установить SmartNVR (Шлюз видеонаблюдения Hiseeu/iCSee и веб-центр NVR):
+curl -sSL https://raw.githubusercontent.com/snakelair/Keenetic/main/install.sh | sh -s smart-nvr
+
 # Установить QuakeLive-VPN Server (на Linux VPS / удаленный сервер):
 curl -sSL https://raw.githubusercontent.com/snakelair/Keenetic/main/install-qlvpn.sh | bash
 # или через универсальный установщик:
@@ -127,6 +130,7 @@ opkg install smart-utils
 opkg install smart-route
 opkg install smart-photo
 opkg install smart-vpn
+opkg install smart-nvr
 ```
 
 ---
@@ -134,7 +138,7 @@ opkg install smart-vpn
 ## 🔄 Обновление пакетов
 
 ```bash
-opkg update && opkg upgrade smart-utils smart-route smart-photo smart-vpn
+opkg update && opkg upgrade smart-utils smart-route smart-photo smart-vpn smart-nvr
 ```
 
 ---
