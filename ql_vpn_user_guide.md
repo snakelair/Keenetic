@@ -33,7 +33,7 @@ curl -sSL https://raw.githubusercontent.com/snakelair/Keenetic/main/install.sh |
 
 ### Что делает скрипт установки:
 1. Автоматически определяет архитектуру процессора сервера (`x86_64` или `aarch64/arm64`).
-2. Запрашивает порты (по умолчанию: игровой UDP `:27960`, веб-панель HTTPS `:8092`) и пароль администратора.
+2. Запрашивает порты (по умолчанию: игровой UDP `:27960`, веб-панель HTTPS `:8005`) и пароль администратора.
 3. Включает пересылку пакетов в ядре Linux (`net.ipv4.ip_forward = 1`).
 4. Настраивает правила межсетевого экрана `iptables` (NAT MASQUERADE для подсети `10.80.0.0/24`, цепочки FORWARD и порты INPUT).
 5. Загружает оптимизированный бинарник `ql-vpn` в `/usr/local/bin/ql-vpn`.
@@ -48,7 +48,7 @@ curl -sSL https://raw.githubusercontent.com/snakelair/Keenetic/main/install.sh |
 
 1. Запустите `ql-vpn.exe` от имени администратора на вашем компьютере.
 2. Приложение свернется в системный трей Windows (иконка с готической эмблемой Quake Live).
-3. Откройте панель управления (`http://127.0.0.1:8092`) или кликните по иконке в трее.
+3. Откройте панель управления (`http://127.0.0.1:8005`) или кликните по иконке в трее.
 4. Вставьте полученный при установке токен `qlvpn://...` и нажмите кнопку **Подключить**.
 5. Выберите режим маршрутизации:
    - **Весь трафик (0.0.0.0/0):** Весь интернет-трафик вашего ПК защищен и идет через туннель.
@@ -65,27 +65,17 @@ curl -sSL https://raw.githubusercontent.com/snakelair/Keenetic/main/install.sh |
 
 ### 3.2. Роутеры Keenetic (Smart-VPN)
 
-Если на роутере установлен пакет **Smart-VPN** (`http://192.168.1.1:8091`):
+Если на роутере установлен пакет **Smart-VPN** (`http://192.168.1.1:8004`):
 1. Перейдите во вкладку **«QuakeLive-VPN»**.
 2. Вставьте токен `qlvpn://...` в поле ввода и нажмите **«Добавить сервер»**.
 3. Роутер установит туннель и сможет направлять домашний трафик через ваш VPS.
-
-### 3.3. Клиент Android (Смартфоны и планшеты)
-
-1. Установите приложение **QuakeLiveVPN.apk** на ваше Android-устройство.
-2. Вставьте ссылку-токен `qlvpn://...` или отсканируйте конфигурацию.
-3. Нажмите кнопку подключения для активации стелс-туннеля.
-
-| Приложение | Файл | QR-код для камеры |
-| :--- | :---: | :---: |
-| **QuakeLive-VPN Android** | [QuakeLiveVPN.apk](https://github.com/snakelair/Keenetic/raw/main/apk/QuakeLiveVPN.apk) | <img src="https://api.qrserver.com/v1/create-qr-code/?size=130x130&data=https://github.com/snakelair/Keenetic/raw/main/apk/QuakeLiveVPN.apk" width="130" alt="QR QuakeLiveVPN" /> |
 
 ---
 
 ## ⚙️ 4. Веб-панель управления сервером (HTTPS)
 
 На сервере VPS функционирует независимый веб-центр администрирования:
-- **URL:** `https://<IP_сервера>:8092`
+- **URL:** `https://<IP_сервера>:8005`
 - **Логин:** `admin`
 - **Пароль:** указанный при установке
 
@@ -150,7 +140,7 @@ ql-vpn token add -server "ВАШ_IP:27960" -name "PlayerName" -tokens /etc/ql-vp
 #### 1. Исполняемый файл сервера: `/usr/local/bin/ql-vpn`
 - **Тип:** Скомпилированный бинарный файл Go (`ELF 64-bit LSB executable`, `x86-64` или `ARM aarch64`), без внешних runtime-зависимостей.
 - **Назначение:**
-  - Работает в фоновом режиме как системный демон сервера (UDP порт `:27960`, веб-панель `:8092`).
+  - Работает в фоновом режиме как системный демон сервера (UDP порт `:27960`, веб-панель `:8005`).
   - Служит CLI-утилитой для управления токенами:
     ```bash
     /usr/local/bin/ql-vpn token list -tokens /etc/ql-vpn/tokens.json
@@ -184,7 +174,7 @@ ql-vpn token add -server "ВАШ_IP:27960" -name "PlayerName" -tokens /etc/ql-vp
   {
     "enabled": true,
     "port": 27960,
-    "web_port": 8092,
+    "web_port": 8005,
     "web_password": "Pass-ВашПароль",
     "use_tls": true,
     "upstream_server": ""
@@ -203,7 +193,7 @@ ql-vpn token add -server "ВАШ_IP:27960" -name "PlayerName" -tokens /etc/ql-vp
   [Service]
   Type=simple
   User=root
-  ExecStart=/usr/local/bin/ql-vpn -server -port 27960 -web-port 8092 -tls -web-pass "Pass-..." -tun 10.80.0.1/24 -tokens /etc/ql-vpn/tokens.json
+  ExecStart=/usr/local/bin/ql-vpn -server -port 27960 -web-port 8005 -tls -web-pass "Pass-..." -tun 10.80.0.1/24 -tokens /etc/ql-vpn/tokens.json
   Restart=always
   RestartSec=3
 
@@ -223,7 +213,7 @@ ql-vpn token add -server "ВАШ_IP:27960" -name "PlayerName" -tokens /etc/ql-vp
 - **Назначение:** Сохраняет правила трансляции сетевых адресов:
   - **NAT MASQUERADE:** `iptables -t nat -A POSTROUTING -s 10.80.0.0/24 ! -d 10.80.0.0/24 -j MASQUERADE`
   - **FORWARD:** пропуск пакетов между `10.80.0.0/24` и внешним интерфейсом.
-  - **INPUT:** открытие входящих портов UDP `:27960` и TCP `:8092`.
+  - **INPUT:** открытие входящих портов UDP `:27960` и TCP `:8005`.
 
 #### 7. Сетевой виртуальный интерфейс TUN: `qlvpn0`
 - **Тип:** Виртуальное сетевое устройство ядра Linux (`/dev/net/tun`).
@@ -245,23 +235,4 @@ ql-vpn token add -server "ВАШ_IP:27960" -name "PlayerName" -tokens /etc/ql-vp
 | **Удалить токен** | `/usr/local/bin/ql-vpn token del -name "Sarge" -tokens /etc/ql-vpn/tokens.json` |
 | **Проверить сетевой туннель** | `ip addr show qlvpn0` |
 | **Проверить счетчики NAT-трафика** | `iptables -t nat -L POSTROUTING -n -v` |
-| **Полное удаление сервера с VPS** | `curl -sSL https://raw.githubusercontent.com/snakelair/Keenetic/main/uninstall.sh \| sh -s ql-vpn` |
-
----
-
-## 🗑️ 6. Полное удаление QuakeLive-VPN с сервера VPS
-
-### Автоматически:
-```bash
-curl -sSL https://raw.githubusercontent.com/snakelair/Keenetic/main/uninstall.sh | sh -s ql-vpn
-```
-
-### Вручную:
-```bash
-systemctl stop ql-vpn && systemctl disable ql-vpn
-killall -9 ql-vpn 2>/dev/null
-rm -f /usr/local/bin/ql-vpn /etc/systemd/system/ql-vpn.service /etc/sysctl.d/99-qlvpn.conf
-rm -rf /etc/ql-vpn
-systemctl daemon-reload
-```
 

@@ -70,7 +70,7 @@ for arg in "$@"; do
 done
 
 DEFAULT_SERVER_PORT=27960
-DEFAULT_WEB_PORT=8092
+DEFAULT_WEB_PORT=8005
 
 # Generate random secure 8-char password
 GEN_PASS=$(tr -dc 'A-Za-z0-9' </dev/urandom 2>/dev/null | head -c 8 || true)

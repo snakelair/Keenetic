@@ -181,7 +181,7 @@ elif [ "$PACKAGE" = "smart-photo" ]; then
     DEFAULT_PORT=8003
     PKG_TITLE="Smart-Photo"
 elif [ "$PACKAGE" = "smart-vpn" ]; then
-    DEFAULT_PORT=8091
+    DEFAULT_PORT=8004
     PKG_TITLE="Smart-VPN"
 elif [ "$PACKAGE" = "smart-nvr" ] || [ "$PACKAGE" = "smartnvr" ]; then
     DEFAULT_PORT=8006

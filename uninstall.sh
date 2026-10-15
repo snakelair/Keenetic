@@ -155,7 +155,7 @@ stop_and_clean_service() {
     elif [ "$PKG_NAME" = "smart-photo" ]; then
         kill_port_listeners 8003 8089 18003 18089
     elif [ "$PKG_NAME" = "smart-vpn" ]; then
-        kill_port_listeners 8091
+        kill_port_listeners 8004 8091
         force_kill_target sing-box
         force_kill_target awg
     elif [ "$PKG_NAME" = "smart-nvr" ]; then
@@ -210,6 +210,7 @@ uninstall_qlvpn() {
     iptables -D FORWARD -d 10.80.0.0/24 -j ACCEPT 2>/dev/null || true
     iptables -D FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT 2>/dev/null || true
     iptables -D INPUT -p udp --dport 27960 -j ACCEPT 2>/dev/null || true
+    iptables -D INPUT -p tcp --dport 8005 -j ACCEPT 2>/dev/null || true
     iptables -D INPUT -p tcp --dport 8092 -j ACCEPT 2>/dev/null || true
     if command -v netfilter-persistent >/dev/null 2>&1; then
         netfilter-persistent save >/dev/null 2>&1 || true
