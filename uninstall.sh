@@ -153,7 +153,7 @@ stop_and_clean_service() {
     elif [ "$PKG_NAME" = "smart-utils" ]; then
         kill_port_listeners 8001 8090
     elif [ "$PKG_NAME" = "smart-photo" ]; then
-        kill_port_listeners 8089
+        kill_port_listeners 8003 8089 18003 18089
     elif [ "$PKG_NAME" = "smart-vpn" ]; then
         kill_port_listeners 8091
         force_kill_target sing-box
