@@ -68,8 +68,8 @@ Architecture: mips-3.4
 Maintainer: SmartNVR Team
 Description: SmartNVR Keenetic Gateway Video Proxy & NVR Suite with Web UI.
 Priority: optional
-MD5Sum: 8d9a85d456c56995f7beea32bbb12787
-SHA256Sum: 7965ccae1aaf74b18156f36f1d47598374a6a661ae3debfe8c58148893574032
-Size: 3333937
+MD5Sum: 0bf55d813879bf9177999cd1c55ab5b3
+SHA256Sum: 87a5ce29002e10052665e686105d43f15b3b7b26ce895a4a9c463729864aff1c
+Size: 3434998
 Filename: smart-nvr_1.0.0_mips-3.4.ipk
 

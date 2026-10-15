@@ -68,8 +68,8 @@ Architecture: aarch64-3.10
 Maintainer: SmartNVR Team
 Description: SmartNVR Keenetic Gateway Video Proxy & NVR Suite with Web UI.
 Priority: optional
-MD5Sum: e9ac285a88c755aad1218a64fb58ceff
-SHA256Sum: 3e43e6a647cfde1eb3cd11a10c3eb5fa054528b287bf4cfee6e6393a07f6a4cc
-Size: 3196165
+MD5Sum: f7cb7cc6ae58e3030666976855340557
+SHA256Sum: 33bb7a50f465e511a38f4f216826469c086296b22ddb8d829dbf7f38d7973ab7
+Size: 3297269
 Filename: smart-nvr_1.0.0_aarch64-3.10.ipk
 

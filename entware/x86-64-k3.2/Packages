@@ -68,8 +68,8 @@ Architecture: x86_64
 Maintainer: SmartNVR Team
 Description: SmartNVR Keenetic Gateway Video Proxy & NVR Suite with Web UI.
 Priority: optional
-MD5Sum: da35edf5a90386b762d88d505df43cec
-SHA256Sum: 84dce9e9cb15be61716013404c57c8574408e6b465619510e78278f686f9ac53
-Size: 3536674
+MD5Sum: 3e1031c25ff386615cc45bcf19a71065
+SHA256Sum: 492d8a85e7212b3294f498ccacb23cd467287bf8b324c6563d4fa1a4db3abf64
+Size: 3650348
 Filename: smart-nvr_1.0.0_x86_64.ipk
 

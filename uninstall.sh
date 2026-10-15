@@ -159,7 +159,7 @@ stop_and_clean_service() {
         force_kill_target sing-box
         force_kill_target awg
     elif [ "$PKG_NAME" = "smart-nvr" ]; then
-        kill_port_listeners 8095
+        kill_port_listeners 8006 8095
     fi
 
     # OPKG Remove
