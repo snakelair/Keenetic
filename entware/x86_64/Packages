@@ -1,3 +1,16 @@
+Package: smart-route
+Version: 1.0.227
+Depends: iptables, ipset, ip-full, ca-certificates
+Section: net
+Architecture: x86_64
+Maintainer: Smart-Route Team
+Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
+Priority: optional
+MD5Sum: 08d95b50b2301bd5c25c088967e5f3d6
+SHA256Sum: f75558bcbe47a98390cfaf573cd9abc27e93886777eb3827b47483896c7cda64
+Size: 5017790
+Filename: smart-route_1.0.227_x86_64.ipk
+
 Package: smart-vpn
 Version: 1.0.144
 Depends: ca-certificates
@@ -10,19 +23,6 @@ Filename: smart-vpn_1.0.144_x86_64.ipk
 Size: 6161981
 MD5Sum: c5c46fcc9b0a3dbb17c7a314b80d6389
 SHA256Sum: 0f7ab64368986d24ced29626898954a6fbd989282618b41b64e280710a1f3685
-
-Package: smart-route
-Version: 1.0.226
-Depends: iptables, ipset, ip-full, ca-certificates
-Section: net
-Architecture: x86_64
-Maintainer: Smart-Route Team
-Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
-Priority: optional
-MD5Sum: 53af0ff395664b22bde0d2496bddc0ac
-SHA256Sum: 73259f0ff642721b9dc34af608162ad0cf3877146be64c83ce84286a288618de
-Size: 5022739
-Filename: smart-route_1.0.226_x86_64.ipk
 
 Package: smart-utils
 Version: 1.0.43
