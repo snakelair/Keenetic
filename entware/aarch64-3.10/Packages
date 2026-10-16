@@ -6,9 +6,9 @@ Architecture: aarch64-3.10
 Maintainer: Smart-Route Team
 Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
 Priority: optional
-MD5Sum: bdde8401168bc348698c761d508fc64c
-SHA256Sum: 21cd0e153abfa2ec5b93a563d49794de10088e4945875fd180b1b6caa5007a24
-Size: 4568916
+MD5Sum: 81a9acfe4361af277742b2a15c2c0423
+SHA256Sum: abc96da0e016cbfde6b0df66506a3e3b9abea7e0eebfccb30d8ffe0da1f8927f
+Size: 4528821
 Filename: smart-route_1.0.227_aarch64-3.10.ipk
 
 Package: smart-vpn

@@ -6,9 +6,9 @@ Architecture: mipsel-3.4
 Maintainer: Smart-Route Team
 Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
 Priority: optional
-MD5Sum: 38688bdc9c945d553af7802fdfe9b5c5
-SHA256Sum: b6efad6d702320f1ca3c41f6404b17dbe8e496bc7c09a396bd16285e0f0d5f65
-Size: 4614694
+MD5Sum: 87e495ab1ffa4cb712ebcd664be79b73
+SHA256Sum: c50dedd5bca9a7bddfa1bab0831b6a97e67a29bfa3e84649d9b3da4e6deb0bb5
+Size: 4579155
 Filename: smart-route_1.0.227_mipsel-3.4.ipk
 
 Package: smart-vpn
