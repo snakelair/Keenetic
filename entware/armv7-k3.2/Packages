@@ -6,9 +6,9 @@ Architecture: armv7-3.2
 Maintainer: Smart-Route Team
 Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
 Priority: optional
-MD5Sum: 36f8872b2c2286ce62d730a8c9982cb7
-SHA256Sum: 033ae82e7f67627537839ef5b7e0055f56877fa316e3871ce2603ed484454097
-Size: 4789621
+MD5Sum: 716b949af38a992d47f13f3a336517e2
+SHA256Sum: ffefb33fd6e5e54e4c2b595e60bf92fab40726555aa745c5979e962e40dacc31
+Size: 4752053
 Filename: smart-route_1.0.227_armv7-3.2.ipk
 
 Package: smart-vpn
