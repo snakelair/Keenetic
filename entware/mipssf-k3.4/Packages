@@ -1,3 +1,16 @@
+Package: smart-vpn
+Version: 1.0.144
+Depends: ca-certificates
+Section: net
+Architecture: mips-3.4
+Maintainer: Smart-VPN Team
+Description: Smart-VPN Keenetic Control Center - Modern Web VPN Control Center for Keenetic Entware routers. Supports native WireGuard, SSTP, OpenVPN, IPsec and live metrics.
+Priority: optional
+Filename: smart-vpn_1.0.144_mips-3.4.ipk
+Size: 5900966
+MD5Sum: a7b3118fda23352b86f0708e169abcea
+SHA256Sum: a17b8357da94d9016316e6bc0063207ee689c6b7a71aa51707937404d0f2e2f1
+
 Package: smart-route
 Version: 1.0.229
 Depends: iptables, ipset, ip-full, ca-certificates
@@ -10,19 +23,6 @@ MD5Sum: a9ca24053580cbfcd39a5fbca735cbc1
 SHA256Sum: 2d93d3ff8f16f7078164d0512bffb7f07a38001def0c92ea7a7be9649c9a0f4b
 Size: 4609774
 Filename: smart-route_1.0.229_mips-3.4.ipk
-
-Package: smart-vpn
-Version: 1.0.139
-Depends: ca-certificates
-Section: net
-Architecture: mips-3.4
-Maintainer: Smart-VPN Team
-Description: Smart-VPN Keenetic Control Center - Modern Web VPN Control Center for Keenetic Entware routers. Supports native WireGuard, SSTP, OpenVPN, IPsec and live metrics.
-Priority: optional
-MD5Sum: 38aaccbff9dffffeff8baf2dd5f40115
-SHA256Sum: 1f3ca26be557dd83b6c232f915b538f8186b7a8e7974ec0d35f224852a7121ac
-Size: 5894533
-Filename: smart-vpn_1.0.139_mips-3.4.ipk
 
 Package: smart-utils
 Version: 1.0.43
@@ -61,15 +61,15 @@ Filename: ffmpeg-mini_1.0.0_mips-3.4.ipk
 Description: Lightweight Pure Go video thumbnail processor and companion cover extractor for Keenetic routers.
 
 Package: smart-nvr
-Version: 1.0.0
+Version: 1.0.1
 Depends: ca-certificates
 Section: multimedia
 Architecture: mips-3.4
 Maintainer: SmartNVR Team
 Description: SmartNVR Keenetic Gateway Video Proxy & NVR Suite with Web UI.
 Priority: optional
-MD5Sum: 0bf55d813879bf9177999cd1c55ab5b3
-SHA256Sum: 87a5ce29002e10052665e686105d43f15b3b7b26ce895a4a9c463729864aff1c
-Size: 3434998
-Filename: smart-nvr_1.0.0_mips-3.4.ipk
+MD5Sum: d1ef028d932ae29d876e8644e7a9690d
+SHA256Sum: 602e00a5d5d886a6f996ddea55f37b66a972597a2a09939d41fda20166677b0a
+Size: 3605305
+Filename: smart-nvr_1.0.1_mips-3.4.ipk
 

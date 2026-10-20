@@ -1,16 +1,3 @@
-Package: smart-route
-Version: 1.0.229
-Depends: iptables, ipset, ip-full, ca-certificates
-Section: net
-Architecture: mipsel-3.4
-Maintainer: Smart-Route Team
-Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
-Priority: optional
-MD5Sum: 2f9f4fe258cf716fc7e1edfb3aaf748b
-SHA256Sum: b43d4680026d02e5b01b9560719b960b87166b7770e1abb5564d5b8eeb914de4
-Size: 4543443
-Filename: smart-route_1.0.229_mipsel-3.4.ipk
-
 Package: smart-vpn
 Version: 1.0.144
 Depends: ca-certificates
@@ -23,6 +10,19 @@ Filename: smart-vpn_1.0.144_mipsel-3.4.ipk
 Size: 5846893
 MD5Sum: 6256db5d90fc3bf7ae1c6f761251e8f8
 SHA256Sum: 87ee84f07f19446dee74adce0df66ba1d3a30409fdcc22c39ee3c7a86b110544
+
+Package: smart-route
+Version: 1.0.229
+Depends: iptables, ipset, ip-full, ca-certificates
+Section: net
+Architecture: mipsel-3.4
+Maintainer: Smart-Route Team
+Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
+Priority: optional
+MD5Sum: 2f9f4fe258cf716fc7e1edfb3aaf748b
+SHA256Sum: b43d4680026d02e5b01b9560719b960b87166b7770e1abb5564d5b8eeb914de4
+Size: 4543443
+Filename: smart-route_1.0.229_mipsel-3.4.ipk
 
 Package: smart-utils
 Version: 1.0.43
@@ -61,15 +61,15 @@ Filename: ffmpeg-mini_1.0.0_mipsel-3.4.ipk
 Description: Lightweight Pure Go video thumbnail processor and companion cover extractor for Keenetic routers.
 
 Package: smart-nvr
-Version: 1.0.0
+Version: 1.0.1
 Depends: ca-certificates
 Section: multimedia
 Architecture: mipsel-3.4
 Maintainer: SmartNVR Team
 Description: SmartNVR Keenetic Gateway Video Proxy & NVR Suite with Web UI.
 Priority: optional
-MD5Sum: 4025db486ebeca026d0fe32a300f9d47
-SHA256Sum: 0ec387c8503abaa1d6863e4279536e2641bac505f6855467b5d4a06302074dde
-Size: 3385095
-Filename: smart-nvr_1.0.0_mipsel-3.4.ipk
+MD5Sum: 45f6cf1ae88d242e724ff27803ad9325
+SHA256Sum: a71b3f806fd561a52cad86828123a9016d84bb6ea8b95565a11536d521e8f8ff
+Size: 3553660
+Filename: smart-nvr_1.0.1_mipsel-3.4.ipk
 

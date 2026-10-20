@@ -1,16 +1,3 @@
-Package: smart-route
-Version: 1.0.229
-Depends: iptables, ipset, ip-full, ca-certificates
-Section: net
-Architecture: x86_64
-Maintainer: Smart-Route Team
-Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
-Priority: optional
-MD5Sum: dd323fd449f7a8adcdb9cfdeeabd2b27
-SHA256Sum: ef2874dc9106b31a338469c7a74f0b178024d1c1be1844539aecddfe7694e595
-Size: 4948539
-Filename: smart-route_1.0.229_x86_64.ipk
-
 Package: smart-vpn
 Version: 1.0.144
 Depends: ca-certificates
@@ -23,6 +10,19 @@ Filename: smart-vpn_1.0.144_x86_64.ipk
 Size: 6161981
 MD5Sum: c5c46fcc9b0a3dbb17c7a314b80d6389
 SHA256Sum: 0f7ab64368986d24ced29626898954a6fbd989282618b41b64e280710a1f3685
+
+Package: smart-route
+Version: 1.0.229
+Depends: iptables, ipset, ip-full, ca-certificates
+Section: net
+Architecture: x86_64
+Maintainer: Smart-Route Team
+Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
+Priority: optional
+MD5Sum: dd323fd449f7a8adcdb9cfdeeabd2b27
+SHA256Sum: ef2874dc9106b31a338469c7a74f0b178024d1c1be1844539aecddfe7694e595
+Size: 4948539
+Filename: smart-route_1.0.229_x86_64.ipk
 
 Package: smart-utils
 Version: 1.0.43
@@ -61,15 +61,15 @@ Filename: ffmpeg-mini_1.0.0_x86_64.ipk
 Description: Lightweight Pure Go video thumbnail processor and companion cover extractor for Keenetic routers.
 
 Package: smart-nvr
-Version: 1.0.0
+Version: 1.0.1
 Depends: ca-certificates
 Section: multimedia
 Architecture: x86_64
 Maintainer: SmartNVR Team
 Description: SmartNVR Keenetic Gateway Video Proxy & NVR Suite with Web UI.
 Priority: optional
-MD5Sum: 3e1031c25ff386615cc45bcf19a71065
-SHA256Sum: 492d8a85e7212b3294f498ccacb23cd467287bf8b324c6563d4fa1a4db3abf64
-Size: 3650348
-Filename: smart-nvr_1.0.0_x86_64.ipk
+MD5Sum: 07fc138e2e264de3d61c1dabb878370f
+SHA256Sum: 10239c9eeb359b039d8f766c6590886473277751e1ac29c001a46e2b48828a69
+Size: 3844945
+Filename: smart-nvr_1.0.1_x86_64.ipk
 

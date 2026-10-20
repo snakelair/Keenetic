@@ -1,16 +1,3 @@
-Package: smart-route
-Version: 1.0.229
-Depends: iptables, ipset, ip-full, ca-certificates
-Section: net
-Architecture: aarch64-3.10
-Maintainer: Smart-Route Team
-Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
-Priority: optional
-MD5Sum: 9e472c3106e9262b760d1c59665ec585
-SHA256Sum: 9e249531df60bf77fbf0270f2c24ecbd2bb5679fc6627a568127b9aef27498c3
-Size: 4493677
-Filename: smart-route_1.0.229_aarch64-3.10.ipk
-
 Package: smart-vpn
 Version: 1.0.144
 Depends: ca-certificates
@@ -23,6 +10,19 @@ Filename: smart-vpn_1.0.144_aarch64-3.10.ipk
 Size: 5770073
 MD5Sum: 14e2ab063e1adf20f53809225304ee25
 SHA256Sum: dab2a274342027c31b139451f122cb36cff2fe69e38f76a797f99b99f5ffd688
+
+Package: smart-route
+Version: 1.0.229
+Depends: iptables, ipset, ip-full, ca-certificates
+Section: net
+Architecture: aarch64-3.10
+Maintainer: Smart-Route Team
+Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
+Priority: optional
+MD5Sum: 9e472c3106e9262b760d1c59665ec585
+SHA256Sum: 9e249531df60bf77fbf0270f2c24ecbd2bb5679fc6627a568127b9aef27498c3
+Size: 4493677
+Filename: smart-route_1.0.229_aarch64-3.10.ipk
 
 Package: smart-utils
 Version: 1.0.43
@@ -61,15 +61,15 @@ Filename: ffmpeg-mini_1.0.0_aarch64-3.10.ipk
 Description: Lightweight Pure Go video thumbnail processor and companion cover extractor for Keenetic routers.
 
 Package: smart-nvr
-Version: 1.0.0
+Version: 1.0.1
 Depends: ca-certificates
 Section: multimedia
 Architecture: aarch64-3.10
 Maintainer: SmartNVR Team
 Description: SmartNVR Keenetic Gateway Video Proxy & NVR Suite with Web UI.
 Priority: optional
-MD5Sum: f7cb7cc6ae58e3030666976855340557
-SHA256Sum: 33bb7a50f465e511a38f4f216826469c086296b22ddb8d829dbf7f38d7973ab7
-Size: 3297269
-Filename: smart-nvr_1.0.0_aarch64-3.10.ipk
+MD5Sum: d8a7714892ffe3bed4cdf62bd3603e76
+SHA256Sum: 31c30652c5708b0935f90bde57feddba94d3eedc3ef1125f387d4a921c28a540
+Size: 3475846
+Filename: smart-nvr_1.0.1_aarch64-3.10.ipk
 
