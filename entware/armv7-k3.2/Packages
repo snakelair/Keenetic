@@ -1,16 +1,3 @@
-Package: smart-route
-Version: 1.0.230
-Depends: iptables, ipset, ip-full, ca-certificates
-Section: net
-Architecture: armv7-3.2
-Maintainer: Smart-Route Team
-Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
-Priority: optional
-MD5Sum: 0a0200e1975c3ba24794536260b67b25
-SHA256Sum: d5f2c45cd03fb10d69863e881b4d42f12470bfe92417a1493a9d4ab6b3ac9764
-Size: 4818437
-Filename: smart-route_1.0.230_armv7-3.2.ipk
-
 Package: smart-vpn
 Version: 1.0.144
 Depends: ca-certificates
@@ -23,6 +10,19 @@ Filename: smart-vpn_1.0.144_armv7-3.2.ipk
 Size: 6011806
 MD5Sum: c7a6f69099e5158e308fbe53f11786d0
 SHA256Sum: 5246478306d7fa97a36d66144727d04a555fa22a0d610f8a262f09cd1acb80a5
+
+Package: smart-route
+Version: 1.0.230
+Depends: iptables, ipset, ip-full, ca-certificates
+Section: net
+Architecture: armv7-3.2
+Maintainer: Smart-Route Team
+Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
+Priority: optional
+MD5Sum: 0a0200e1975c3ba24794536260b67b25
+SHA256Sum: d5f2c45cd03fb10d69863e881b4d42f12470bfe92417a1493a9d4ab6b3ac9764
+Size: 4818437
+Filename: smart-route_1.0.230_armv7-3.2.ipk
 
 Package: smart-utils
 Version: 1.0.43
@@ -61,15 +61,15 @@ Filename: ffmpeg-mini_1.0.0_armv7-3.2.ipk
 Description: Lightweight Pure Go video thumbnail processor and companion cover extractor for Keenetic routers.
 
 Package: smart-nvr
-Version: 1.0.1
+Version: 1.0.3
 Depends: ca-certificates
 Section: multimedia
 Architecture: armv7-3.2
 Maintainer: SmartNVR Team
 Description: SmartNVR Keenetic Gateway Video Proxy & NVR Suite with Web UI.
 Priority: optional
-MD5Sum: 25fb087552a6ce59421c2199dcd0706d
-SHA256Sum: 10183ca9e2a985b2424981debe5d34882634da626a5b280b382f84e053cb9dd5
-Size: 3703634
-Filename: smart-nvr_1.0.1_armv7-3.2.ipk
+MD5Sum: 41de393ee0e172d32fc173d840ff304e
+SHA256Sum: 8fe21cc7950263157a1a20bf25fbf37c9210dbf997fe7fa68eb93dba34b3c0d4
+Size: 4216372
+Filename: smart-nvr_1.0.3_armv7-3.2.ipk
 

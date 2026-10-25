@@ -296,15 +296,15 @@
         <div>
           <div class="card-top">
             <h2 class="card-title">📹 SmartNVR</h2>
-            <span class="badge badge-cyan">v1.0.0</span>
+            <span class="badge badge-cyan">v1.0.3</span>
           </div>
           <div class="port-pill">Порт: :8006 (http://172.16.1.1:8006)</div>
-          <p class="desc">Высокопроизводительный шлюз видеонаблюдения и веб-центр: безопасный просмотр живого видео и архива с регистраторов Hiseeu / Xiongmai и камер iCSee из внешней сети без перекодирования.</p>
+          <p class="desc">Высокопроизводительный шлюз видеонаблюдения и веб-центр: автономный NVR, безопасный просмотр живого видео, ONVIF Profile S/G/T/M, зум колесиком мыши и склейка двухлинзовых камер без перекодирования.</p>
           <ul class="features">
-            <li>Проксирование видео и архива извне (0% нагрузки на CPU)</li>
-            <li>Автопоиск камер и NVR в локальной сети за 1.5 сек</li>
-            <li>Работа с архивом NVR: таймлайн 24ч и скачивание отрезков</li>
-            <li>PTZ-управление поворотными камерами iCSee прямо в браузере</li>
+            <li>Автономный NVR: циклическая и событийная запись на USB-диск Keenetic</li>
+            <li>Поддержка ONVIF S/G/T/M и NetSDK (Xiongmai / iCSee / Hikvision)</li>
+            <li>Редактирование видеопараметров и маски детектора ActiveCells с чувствительностью 1-10</li>
+            <li>Плеер архива с таймлайном 24ч, зумом колесиком мыши и PTZ</li>
             <li>Сверхлегкий сервис Go: 12-18 МБ RAM, логирование в RAM</li>
           </ul>
         </div>
@@ -312,7 +312,7 @@
           <div class="cmd-label">Установка в 1 команду по SSH:</div>
           <div class="cmd-box">curl -sSL https://raw.githubusercontent.com/snakelair/Keenetic/main/install.sh | sh -s smart-nvr</div>
           <div class="actions">
-            <a href="https://github.com/snakelair/SmartNVR" target="_blank" class="btn btn-primary">GitHub</a>
+            <a href="https://github.com/snakelair/SmartNvr" target="_blank" class="btn btn-primary">GitHub</a>
             <a href="smart_nvr_user_guide.md" class="btn btn-secondary">Инструкция</a>
           </div>
         </div>
