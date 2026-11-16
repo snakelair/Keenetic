@@ -1,16 +1,3 @@
-Package: smart-route
-Version: 1.0.231
-Depends: iptables, ipset, ip-full, ca-certificates
-Section: net
-Architecture: mips-3.4
-Maintainer: Smart-Route Team
-Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
-Priority: optional
-MD5Sum: fa26b5e2b1284a27d055ecfa13dfb6aa
-SHA256Sum: 1c06ab44ba479bb49d4b1a0d3a8ca934a9d33aa69ea563e2f00ef40e4363b5d2
-Size: 4670433
-Filename: smart-route_1.0.231_mips-3.4.ipk
-
 Package: smart-vpn
 Version: 1.0.144
 Depends: ca-certificates
@@ -23,6 +10,19 @@ Filename: smart-vpn_1.0.144_mips-3.4.ipk
 Size: 5900966
 MD5Sum: a7b3118fda23352b86f0708e169abcea
 SHA256Sum: a17b8357da94d9016316e6bc0063207ee689c6b7a71aa51707937404d0f2e2f1
+
+Package: smart-route
+Version: 1.0.231
+Depends: iptables, ipset, ip-full, ca-certificates
+Section: net
+Architecture: mips-3.4
+Maintainer: Smart-Route Team
+Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
+Priority: optional
+MD5Sum: fa26b5e2b1284a27d055ecfa13dfb6aa
+SHA256Sum: 1c06ab44ba479bb49d4b1a0d3a8ca934a9d33aa69ea563e2f00ef40e4363b5d2
+Size: 4670433
+Filename: smart-route_1.0.231_mips-3.4.ipk
 
 Package: smart-utils
 Version: 1.0.43
@@ -61,15 +61,15 @@ Filename: ffmpeg-mini_1.0.0_mips-3.4.ipk
 Description: Lightweight Pure Go video thumbnail processor and companion cover extractor for Keenetic routers.
 
 Package: smart-nvr
-Version: 1.0.3
+Version: 1.0.4
 Depends: ca-certificates
 Section: multimedia
 Architecture: mips-3.4
 Maintainer: SmartNVR Team
 Description: SmartNVR Keenetic Gateway Video Proxy & NVR Suite with Web UI.
 Priority: optional
-MD5Sum: af3c7cac954c185dd8d7ebdf109c5d00
-SHA256Sum: 87dad8d7f793bcdeaa4488d7f93b8e786e77b5b690a2e6f66497de9511781c21
-Size: 4097554
-Filename: smart-nvr_1.0.3_mips-3.4.ipk
+MD5Sum: 418dda797f692a0b65e85f50a58f01bf
+SHA256Sum: 6c7cfa633077d8a9d45b7a19f6f950133b0c3f9a8cececbd998081cd0cc97043
+Size: 4115664
+Filename: smart-nvr_1.0.4_mips-3.4.ipk
 
