@@ -68,8 +68,8 @@ Architecture: mipsel-3.4
 Maintainer: SmartNVR Team
 Description: SmartNVR Keenetic Gateway Video Proxy & NVR Suite with Web UI.
 Priority: optional
-MD5Sum: 6486c798911041a3f5f475d4c03f29c4
-SHA256Sum: d3548af6e469fd0efc6d45798827941fb3783ef09d01b6e9f5de9e0c0afb0038
-Size: 4056906
+MD5Sum: 9158bb9b0fa1cb028c498bc05e59edae
+SHA256Sum: 9d03a82cb8247ee5a52cf68c708c09d3c868249f15bb25086b0ff7e409293141
+Size: 4073727
 Filename: smart-nvr_1.0.4_mipsel-3.4.ipk
 
