@@ -68,8 +68,8 @@ Architecture: armv7-3.2
 Maintainer: SmartNVR Team
 Description: SmartNVR Keenetic Gateway Video Proxy & NVR Suite with Web UI.
 Priority: optional
-MD5Sum: 56dae332379cf62ed48e89a8c36f0ae0
-SHA256Sum: cf6a22fec80dbbec266741cde55b737c1402c4eb6598c9d8a600ba7ee8091113
-Size: 4258088
+MD5Sum: 8a77f573d0d2262b2b938a18eada61bd
+SHA256Sum: bb4716503aff520eb6593175d77106e79b394bf6114806d4c41d78b8bb52993e
+Size: 4259532
 Filename: smart-nvr_1.0.4_armv7-3.2.ipk
 
