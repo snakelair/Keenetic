@@ -22,12 +22,12 @@
 ---
 
 ### 2. ⚡ `smart-route` (v1.1.0)
-**Системный сервис динамической многоинтерфейсной маршрутизации, бесшовного перехвата сбойных соединений (Failover Relay) и аппаратной разгрузки ядра (IPSet / NDM):**
-- Автоматический выбор самого быстрого VPN-канала при сбоях и блокировках (Race/Sequential).
-- Аппаратный оффлоад ядра Linux (0% нагрузки на процессор роутера).
-- Поддержка списков исключений (.ru, .рф, банки, госуслуги) для прямого WAN-доступа.
-- Встроенные ядра Sing-box, Xray, Shadowsocks, WireGuard.
-- **Веб-интерфейс:** `http://192.168.1.1:8002`
+**Системный сервис автономного обхода блокировок, динамической многоинтерфейсной маршрутизации (Failover Relay), встроенного DNS-прокси и аппаратной разгрузки ядра для роутеров Keenetic (KeeneticOS 5.2 / 4.x):**
+- **Автономный обход блокировок и бесшовный Failover:** автоматический перехват сбойных TCP-соединений (таймаут, RST, 16 КБ-блокировки ТСПУ/DPI, геоблокировки `403`/`451`) и мгновенное переключение на уже настроенные на роутере интерфейсы (WireGuard, AmneziaWG, OpenVPN, SSTP, `tun*`, резервный WAN/4G) без обрыва соединения; стратегии `Priority`/`Race`, приоритетный SLD-пробинг и L7 `MicroProbe`.
+- **Живые политики KeeneticOS (5.2 / 4.x) и аппаратный Fastpath:** чтение политик маршрутизации напрямую из RAM, строгая изоляция политик с Drag-and-Drop управлением приоритетами и клиентами, выгрузка выученных IP/подсетей в `ipset` и таблицы маршрутизации (`proto 188`) с аппаратным оффлоадом (~0% нагрузки CPU) и поддержкой HTTP/3 (QUIC) через VPN.
+- **Встроенный DNS-прокси и аппаратная блокировка трафика:** DoH/DoT/UDP аплинки с маршрутизацией по зонам и интерфейсам, режимы `dns_override` (`:53`) и `iptables_hijack` (`53 → 530`, включая входящие VPN-серверы и локальный форвардинг в `ndnproxy`), DNSBL/AdGuard фильтры, блокировка устройств и ресурсов по расписанию (Firewall) и интерфейс BlackHole.
+- **Опциональные списки ресурсов и диагностика:** ручные и онлайн-списки доменов/подсетей (включая каталог v2fly) для принудительного направления трафика в нужный интерфейс (отключены по умолчанию — обход работает автономно), детальный тест маршрута по политикам (Probe), сетевой инспектор и защита от OOM-Killer (`7–15 МБ RAM`).
+- **Автономный веб-интерфейс (Vue 3, 13 языков):** `http://192.168.1.1:8002` (или IP вашего роутера)
 - [📘 **Полное руководство пользователя Smart-Route (smart_route_user_guide.md)**](smart_route_user_guide.md)
 
 ---
@@ -185,12 +185,18 @@ rm -rf /opt/etc/smart-utils
 /opt/etc/init.d/S99smart-route stop
 killall -9 smart-route 2>/dev/null
 opkg remove smart-route --force-remove --force-depends
-rm -f /opt/etc/init.d/S99smart-route /tmp/smart-route.log /opt/var/log/smart-route.log
+rm -f /opt/etc/init.d/S99smart-route /opt/etc/ndm/netfilter.d/01-smartroute.sh /tmp/smart-route.log /opt/var/log/smart-route.log /tmp/sr_ndm_dirty
 rm -rf /opt/etc/smart-route
-# Сброс правил iptables и ipset:
-iptables -t nat -D PREROUTING -p tcp -m multiport --dports 80,443 -j REDIRECT --to-ports 10880 2>/dev/null
-iptables -t nat -D PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 10853 2>/dev/null
-for s in $(ipset list -n 2>/dev/null | grep -E '^sr_'); do ipset flush "$s"; ipset destroy "$s"; done
+# Сброс правил iptables/ip6tables, таблиц маршрутизации и ipset:
+for t in $(seq 110 142) 188; do ip rule del lookup "$t" 2>/dev/null; ip route flush table "$t" 2>/dev/null; done
+ip route flush table 254 proto 188 2>/dev/null
+for t in $(ip rule show 2>/dev/null | awk '/lookup/ {print $NF}'); do case "$t" in 4[0-9][0-9][0-9]) ip route flush table "$t" proto 188 2>/dev/null;; esac; done
+for ch in SMART_ROUTE_PREROUTING SMART_ROUTE_DNS SMART_ROUTE_BLOCK_NAT; do iptables -t nat -D PREROUTING -j "$ch" 2>/dev/null; iptables -t nat -F "$ch" 2>/dev/null; iptables -t nat -X "$ch" 2>/dev/null; done
+iptables -t nat -D POSTROUTING -j SMART_ROUTE_POSTROUTING 2>/dev/null; iptables -t nat -F SMART_ROUTE_POSTROUTING 2>/dev/null; iptables -t nat -X SMART_ROUTE_POSTROUTING 2>/dev/null
+for ch in SMART_ROUTE_MANGLE SMART_ROUTE_BLOCK_MANGLE; do iptables -t mangle -D PREROUTING -j "$ch" 2>/dev/null; iptables -t mangle -F "$ch" 2>/dev/null; iptables -t mangle -X "$ch" 2>/dev/null; done
+for ch in SMART_ROUTE_FORWARD SMART_ROUTE_BLOCK; do iptables -t filter -D FORWARD -j "$ch" 2>/dev/null; iptables -t filter -F "$ch" 2>/dev/null; iptables -t filter -X "$ch" 2>/dev/null; done
+iptables -t filter -D INPUT -j SMART_ROUTE_DNS 2>/dev/null; iptables -t filter -F SMART_ROUTE_DNS 2>/dev/null; iptables -t filter -X SMART_ROUTE_DNS 2>/dev/null
+for s in $(ipset list -n 2>/dev/null | grep -E '^sr_|^sr_blk_'); do ipset flush "$s"; ipset destroy "$s"; done
 ```
 
 #### Удаление `smart-photo`:
@@ -261,5 +267,6 @@ opkg update
 - 💬 **Тема обсуждения на форуме Keenetic:** [Приложения Smart-Utils, Smart-Route, Smart-Photo](https://forum.keenetic.ru/topic/30698-%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F-smart-utils-smart-route-smart-photo-snakelair-keenetic-entware-opkg-repository/)
 - 🐞 **Трекер багрепортов и предложений:** [github.com/snakelair/Keenetic/issues](https://github.com/snakelair/Keenetic/issues)
 - 💻 **Исходный код Smart-Utils:** [github.com/snakelair/SmartUtils](https://github.com/snakelair/SmartUtils)
+- 💻 **Исходный код Smart-Route:** [github.com/snakelair/SmartRoute](https://github.com/snakelair/SmartRoute)
 
 

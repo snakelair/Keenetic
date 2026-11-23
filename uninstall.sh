@@ -106,23 +106,44 @@ stop_and_clean_service() {
     # Specific cleanups for smart-route
     if [ "$PKG_NAME" = "smart-route" ]; then
         printf "${BLUE}[*]${RESET} Очистка правил маршрутизации iptables и таблиц ipset...\n"
-        kill_port_listeners 8002 8088 10880 10853
+        kill_port_listeners 8002 8088 10880 10853 530
 
-        # Netfilter jump hooks
-        iptables -t nat -D PREROUTING -j SMART_ROUTE_PREROUTING 2>/dev/null || true
+        # Netfilter jump hooks & custom chains
+        for ch in SMART_ROUTE_PREROUTING SMART_ROUTE_DNS SMART_ROUTE_BLOCK_NAT; do
+            iptables -t nat -D PREROUTING -j "$ch" 2>/dev/null || true
+            iptables -t nat -F "$ch" 2>/dev/null || true
+            iptables -t nat -X "$ch" 2>/dev/null || true
+        done
         iptables -t nat -D POSTROUTING -j SMART_ROUTE_POSTROUTING 2>/dev/null || true
-        iptables -t mangle -D PREROUTING -j SMART_ROUTE_MANGLE 2>/dev/null || true
-        iptables -t filter -D FORWARD -j SMART_ROUTE_FORWARD 2>/dev/null || true
-
-        # Custom chains flush & delete
-        iptables -t nat -F SMART_ROUTE_PREROUTING 2>/dev/null || true
-        iptables -t nat -X SMART_ROUTE_PREROUTING 2>/dev/null || true
         iptables -t nat -F SMART_ROUTE_POSTROUTING 2>/dev/null || true
         iptables -t nat -X SMART_ROUTE_POSTROUTING 2>/dev/null || true
-        iptables -t mangle -F SMART_ROUTE_MANGLE 2>/dev/null || true
-        iptables -t mangle -X SMART_ROUTE_MANGLE 2>/dev/null || true
-        iptables -t filter -F SMART_ROUTE_FORWARD 2>/dev/null || true
-        iptables -t filter -X SMART_ROUTE_FORWARD 2>/dev/null || true
+
+        for ch in SMART_ROUTE_MANGLE SMART_ROUTE_BLOCK_MANGLE; do
+            iptables -t mangle -D PREROUTING -j "$ch" 2>/dev/null || true
+            iptables -t mangle -F "$ch" 2>/dev/null || true
+            iptables -t mangle -X "$ch" 2>/dev/null || true
+        done
+
+        for ch in SMART_ROUTE_FORWARD SMART_ROUTE_BLOCK; do
+            iptables -t filter -D FORWARD -j "$ch" 2>/dev/null || true
+            iptables -t filter -F "$ch" 2>/dev/null || true
+            iptables -t filter -X "$ch" 2>/dev/null || true
+        done
+        iptables -t filter -D INPUT -j SMART_ROUTE_DNS 2>/dev/null || true
+        iptables -t filter -F SMART_ROUTE_DNS 2>/dev/null || true
+        iptables -t filter -X SMART_ROUTE_DNS 2>/dev/null || true
+
+        if command -v ip6tables >/dev/null 2>&1; then
+            ip6tables -t nat -D PREROUTING -j SMART_ROUTE_DNS 2>/dev/null || true
+            ip6tables -t nat -F SMART_ROUTE_DNS 2>/dev/null || true
+            ip6tables -t nat -X SMART_ROUTE_DNS 2>/dev/null || true
+            ip6tables -t filter -D INPUT -j SMART_ROUTE_DNS 2>/dev/null || true
+            ip6tables -t filter -D FORWARD -j SMART_ROUTE_BLOCK 2>/dev/null || true
+            for ch in SMART_ROUTE_BLOCK SMART_ROUTE_DNS; do
+                ip6tables -t filter -F "$ch" 2>/dev/null || true
+                ip6tables -t filter -X "$ch" 2>/dev/null || true
+            done
+        fi
 
         # Legacy redirects & divert
         iptables -t nat -D PREROUTING -p tcp -m multiport --dports 80,443 -j REDIRECT --to-ports 10880 2>/dev/null || true
@@ -131,8 +152,8 @@ stop_and_clean_service() {
         iptables -t mangle -D PREROUTING -j SR_DIVERT 2>/dev/null || true
         iptables -t mangle -X SR_DIVERT 2>/dev/null || true
 
-        # Policy routing rules & tables
-        for t in 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142; do
+        # Policy routing rules & tables (110..142, BlackHole 188)
+        for t in 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 188; do
             ip rule del lookup "$t" 2>/dev/null || true
             ip route flush table "$t" 2>/dev/null || true
         done
@@ -150,6 +171,9 @@ stop_and_clean_service() {
             ipset flush "$SET" 2>/dev/null || true
             ipset destroy "$SET" 2>/dev/null || true
         done
+
+        # Remove netfilter.d hook & state marker
+        rm -f /opt/etc/ndm/netfilter.d/01-smartroute.sh /tmp/sr_ndm_dirty 2>/dev/null || true
     elif [ "$PKG_NAME" = "smart-utils" ]; then
         kill_port_listeners 8001 8090
     elif [ "$PKG_NAME" = "smart-photo" ]; then

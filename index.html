@@ -187,13 +187,13 @@
             <span class="badge badge-blue">v1.1.0</span>
           </div>
           <div class="port-pill">Порт: :8002 (http://192.168.1.1:8002)</div>
-          <p class="desc">Сервис динамической многоинтерфейсной маршрутизации, бесшовного перехвата сбойных соединений (Failover Relay) и аппаратной разгрузки ядра.</p>
+          <p class="desc">Сервис автономного обхода блокировок, динамической многоинтерфейсной маршрутизации (Failover Relay), встроенного DNS-прокси и аппаратной разгрузки ядра для KeeneticOS 5.2 / 4.x.</p>
           <ul class="features">
-            <li>Автоматический выбор самого быстрого VPN/WAN канала</li>
-            <li>Аппаратный оффлоад ядра Linux (IPSet / NDM)</li>
-            <li>Списки исключений (.ru, .рф, банки, госуслуги)</li>
-            <li>Удобная веб-панель управления и мониторинга</li>
-            <li>0% нагрузки на CPU роутера при передаче трафика</li>
+            <li>Бесшовный Failover (Priority / Race) и защита от 16 КБ ТСПУ/DPI</li>
+            <li>Живые политики KeeneticOS (PBR) и аппаратный Fastpath (IPSet / proto 188)</li>
+            <li>Встроенный DoH/DoT DNS-прокси (Hijack / Override) и DNSBL-фильтры</li>
+            <li>Аппаратная блокировка трафика по расписанию и BlackHole-интерфейс</li>
+            <li>Единый автономный Web UI (Vue 3, 13 языков), 7–15 МБ RAM</li>
           </ul>
         </div>
         <div>
@@ -395,6 +395,11 @@
           <tr>
             <td><strong>x86_64</strong></td>
             <td>x86 Entware / Виртуальные машины Keenetic</td>
+            <td><span class="badge badge-cyan">Готово</span></td>
+          </tr>
+          <tr>
+            <td><strong>mips-3.4</strong></td>
+            <td>Giga SE (KN-2410), Keenetic MIPS Big-Endian (QCA9563/QCA9558)</td>
             <td><span class="badge badge-cyan">Готово</span></td>
           </tr>
         </tbody>
