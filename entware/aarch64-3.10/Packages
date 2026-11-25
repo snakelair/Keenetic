@@ -43,9 +43,9 @@ Depends: ca-certificates
 Section: multimedia
 Architecture: aarch64-3.10
 Maintainer: SmartPhoto Team
-MD5Sum: 92e7ccc86b7774bc0a46083923ad0fb9
-SHA256Sum: 596cb0f01b9dab20b8fa2259855114b47a9c6a22a343d13d34910f7782ade4e0
-Size: 4861170
+MD5Sum: 8ebf80b78406c6fbcdbf3a56be6e3fec
+SHA256Sum: 13cd073e14a27200fbd520c99154c4f0a3605aa6ac3e533dd39211e1dca348b2
+Size: 4861606
 Filename: smart-photo_1.1.0_aarch64-3.10.ipk
 Description: Google Photos-like photo manager and viewer daemon for USB storage with modern Web UI on Keenetic Entware routers.
 
@@ -54,8 +54,8 @@ Version: 1.1.2
 Section: multimedia
 Architecture: aarch64-3.10
 Maintainer: SmartPhoto Team
-MD5Sum: f190db5453bcd90942eccc841ff2ba27
-SHA256Sum: c06168b5e1c4ef981f618becd807dc7eb3e8d928ba650378773a24cce08a7a5f
+MD5Sum: e88200983b6fb0b406b44b12a6fb4e40
+SHA256Sum: abcdc40fb76c377211db5f334d7164525a476a2d36176db05a9ee9bcb1105e08
 Size: 1623185
 Filename: ffmpeg-mini_1.1.2_aarch64-3.10.ipk
 Description: Lightweight Pure Go video thumbnail processor and companion cover extractor for Keenetic routers.
