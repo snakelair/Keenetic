@@ -1,16 +1,3 @@
-Package: smart-route
-Version: 1.1.0
-Depends: iptables, ipset, ip-full, ca-certificates
-Section: net
-Architecture: aarch64-3.10
-Maintainer: Smart-Route Team
-Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
-Priority: optional
-MD5Sum: a825c0d064cf023de86af0b35d946da3
-SHA256Sum: 20426fae99cd705b3dad3e0606503f838f5fdf2a90ee59fea5563c1e6203c110
-Size: 4735220
-Filename: smart-route_1.1.0_aarch64-3.10.ipk
-
 Package: smart-vpn
 Version: 1.0.144
 Depends: ca-certificates
@@ -23,6 +10,19 @@ Filename: smart-vpn_1.0.144_aarch64-3.10.ipk
 Size: 5770073
 MD5Sum: 14e2ab063e1adf20f53809225304ee25
 SHA256Sum: dab2a274342027c31b139451f122cb36cff2fe69e38f76a797f99b99f5ffd688
+
+Package: smart-route
+Version: 1.1.0
+Depends: iptables, ipset, ip-full, ca-certificates
+Section: net
+Architecture: aarch64-3.10
+Maintainer: Smart-Route Team
+Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
+Priority: optional
+MD5Sum: a825c0d064cf023de86af0b35d946da3
+SHA256Sum: 20426fae99cd705b3dad3e0606503f838f5fdf2a90ee59fea5563c1e6203c110
+Size: 4735220
+Filename: smart-route_1.1.0_aarch64-3.10.ipk
 
 Package: smart-utils
 Version: 1.0.43
@@ -38,26 +38,26 @@ Size: 3638414
 Filename: smart-utils_1.0.43_aarch64-3.10.ipk
 
 Package: smart-photo
-Version: 1.0.165
+Version: 1.1.0
 Depends: ca-certificates
 Section: multimedia
 Architecture: aarch64-3.10
 Maintainer: SmartPhoto Team
-MD5Sum: 474d4e7ee279feca917017ab7eb2944e
-SHA256Sum: 69f4f664e11f015f1ca32d9e30501fd453aa5b20687fc23f0c2cffb99c85c754
-Size: 4456242
-Filename: smart-photo_1.0.165_aarch64-3.10.ipk
+MD5Sum: 92e7ccc86b7774bc0a46083923ad0fb9
+SHA256Sum: 596cb0f01b9dab20b8fa2259855114b47a9c6a22a343d13d34910f7782ade4e0
+Size: 4861170
+Filename: smart-photo_1.1.0_aarch64-3.10.ipk
 Description: Google Photos-like photo manager and viewer daemon for USB storage with modern Web UI on Keenetic Entware routers.
 
 Package: ffmpeg-mini
-Version: 1.0.0
+Version: 1.1.2
 Section: multimedia
 Architecture: aarch64-3.10
 Maintainer: SmartPhoto Team
-MD5Sum: 06eb80425fb17678baf6821dbfb4b895
-SHA256Sum: 12fafbcf18b9a37bab6c44892937ce5ab0cc9957b7518431a4da3e4a5c7c3928
-Size: 1190619
-Filename: ffmpeg-mini_1.0.0_aarch64-3.10.ipk
+MD5Sum: f190db5453bcd90942eccc841ff2ba27
+SHA256Sum: c06168b5e1c4ef981f618becd807dc7eb3e8d928ba650378773a24cce08a7a5f
+Size: 1623185
+Filename: ffmpeg-mini_1.1.2_aarch64-3.10.ipk
 Description: Lightweight Pure Go video thumbnail processor and companion cover extractor for Keenetic routers.
 
 Package: smart-nvr

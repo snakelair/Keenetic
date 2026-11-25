@@ -1,5 +1,64 @@
 # 📦 SmartPhoto Changelog
 
+## [1.1.0] - 2026-11-25
+
+### Оптимизация памяти, поддержка HEIC/360°/INSV, фоновые превью и безопасность
+- **Оптимизация памяти**: плоский `photoStore` без указателей, компактные SHA-1 множества, потоковая работа с индексом/Sync/AI и очистка пустых персон/нулевых векторов (снижение кучи на 86k фото ~в 3.5×).
+- **Поддержка форматов**: нативный pure-Go HEIC/HEIF (включая 10-bit и EXIF/GPS), превью для HEVC-видео, поддержка 360°/Insta360 `.insv` и WebGL 360°-плеер.
+- **Фоновые превью**: опциональная фоновая генерация миниатюр с защитой от перегрузки роутера.
+- **Безопасность и Smart TV**: E2E-шифрование Cloud Pairing v2 (AES-256-GCM), CSRF-защита и rate-limit PIN.
+- **Стабильность и Desktop**: атомарные файловые операции, устранение гонок при индексации/удалении, доработки Desktop-клиента и удаление устаревшего `hybrid`-режима.
+
+## [1.0.175] - 2026-10-17
+
+### Remove CHANGELOG from binary, pre-compress static web assets to gzip, and add threshold sync.Pool gzip middleware
+- Remove CHANGELOG from binary, pre-compress static web assets to gzip, and add threshold sync.Pool gzip middleware
+
+## [1.0.174] - 2026-10-16
+
+### Fix Android showreel flickering, mobile audio unlock, and add floating/Back-button exit
+- Fix Android showreel flickering, mobile audio unlock, and add floating/Back-button exit
+
+## [1.0.173] - 2026-10-16
+
+### Showreel: limit max 2 videos per batch, preload photos before scene start, add Chill 10s mode, and configure random infinite 15% volume music
+- Showreel: limit max 2 videos per batch, preload photos before scene start, add Chill 10s mode, and configure random infinite 15% volume music
+
+## [1.0.172] - 2026-10-16
+
+### Enlarge showreel cards, streamline HUD controls, and improve media quality with random skips
+- Enlarge showreel cards, streamline HUD controls, and improve media quality with random skips
+
+## [1.0.171] - 2026-10-15
+
+### Stream showreel media in strict novelty order and fix 3D viewport positioning
+- Stream showreel media in strict novelty order and fix 3D viewport positioning
+
+## [1.0.170] - 2026-10-15
+
+### Fix collection photos in 3D showreel and embed tracker.chiptune.su player
+- Fix collection photos in 3D showreel and embed tracker.chiptune.su player
+
+## [1.0.169] - 2026-10-15
+
+### Rewrite logo showreel with 6 3D choreographies, audio synth, and particle physics
+- Rewrite logo showreel with 6 3D choreographies, audio synth, and particle physics
+
+## [1.0.168] - 2026-10-15
+
+### Enlarge screensaver to large modern canvases with Ken Burns, zoom and fade
+- Enlarge screensaver to large modern canvases with Ken Burns, zoom and fade
+
+## [1.0.167] - 2026-10-15
+
+### Upgrade screensaver to fast-paced 3D collage with photoflashes, flips, fans and stacking
+- Upgrade screensaver to fast-paced 3D collage with photoflashes, flips, fans and stacking
+
+## [1.0.166] - 2026-10-15
+
+### Add dynamic cinematic photo and video slideshow on logo triple-click
+- Add dynamic cinematic photo and video slideshow on logo triple-click
+
 ## [1.0.165] - 2026-10-15
 
 ### Устранение ложного успеха обновления в Web UI и надежная доставка OPKG-пакетов через Entware

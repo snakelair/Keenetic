@@ -1,16 +1,3 @@
-Package: smart-route
-Version: 1.1.0
-Depends: iptables, ipset, ip-full, ca-certificates
-Section: net
-Architecture: x86_64
-Maintainer: Smart-Route Team
-Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
-Priority: optional
-MD5Sum: 7f9075622ec77fa2e0b80e1d8a9722e5
-SHA256Sum: f5782119b15546c0ab963250f794108517421d754903f60060a1621b993788fc
-Size: 5210896
-Filename: smart-route_1.1.0_x86_64.ipk
-
 Package: smart-vpn
 Version: 1.0.144
 Depends: ca-certificates
@@ -23,6 +10,19 @@ Filename: smart-vpn_1.0.144_x86_64.ipk
 Size: 6161981
 MD5Sum: c5c46fcc9b0a3dbb17c7a314b80d6389
 SHA256Sum: 0f7ab64368986d24ced29626898954a6fbd989282618b41b64e280710a1f3685
+
+Package: smart-route
+Version: 1.1.0
+Depends: iptables, ipset, ip-full, ca-certificates
+Section: net
+Architecture: x86_64
+Maintainer: Smart-Route Team
+Description: Dynamic multi-interface failover routing and transparent proxy daemon with modern Web UI for Keenetic Entware routers.
+Priority: optional
+MD5Sum: 7f9075622ec77fa2e0b80e1d8a9722e5
+SHA256Sum: f5782119b15546c0ab963250f794108517421d754903f60060a1621b993788fc
+Size: 5210896
+Filename: smart-route_1.1.0_x86_64.ipk
 
 Package: smart-utils
 Version: 1.0.43
@@ -38,26 +38,26 @@ Size: 4012466
 Filename: smart-utils_1.0.43_x86_64.ipk
 
 Package: smart-photo
-Version: 1.0.165
+Version: 1.1.0
 Depends: ca-certificates
 Section: multimedia
 Architecture: x86_64
 Maintainer: SmartPhoto Team
-MD5Sum: 66ff024471d13229289ec3c538313024
-SHA256Sum: b6c96d2ebf6f4c6c742825946d23c19f7d2f34302fdb164750c8fcbc09bcf32a
-Size: 4885632
-Filename: smart-photo_1.0.165_x86_64.ipk
+MD5Sum: a7d2a9c2348a118a51cb384fa8ce5014
+SHA256Sum: ef9c1d2bcb89e540dd2a2a540a465988cfa7afb908538c62e710c804d149fd20
+Size: 5348958
+Filename: smart-photo_1.1.0_x86_64.ipk
 Description: Google Photos-like photo manager and viewer daemon for USB storage with modern Web UI on Keenetic Entware routers.
 
 Package: ffmpeg-mini
-Version: 1.0.0
+Version: 1.1.2
 Section: multimedia
 Architecture: x86_64
 Maintainer: SmartPhoto Team
-MD5Sum: d57a0c2922b842ac8c4b3dcb0ceac5bf
-SHA256Sum: c558a0f3ad999c40d44f0d01d0593cce6a84182aa84a05c902e39c9f1345a217
-Size: 1312194
-Filename: ffmpeg-mini_1.0.0_x86_64.ipk
+MD5Sum: 14b6d15afb729d44041878178230a483
+SHA256Sum: 0babc828ed48e427915dcdc64b0991ce66f6d61067159e2387961f9db1bc940e
+Size: 1799303
+Filename: ffmpeg-mini_1.1.2_x86_64.ipk
 Description: Lightweight Pure Go video thumbnail processor and companion cover extractor for Keenetic routers.
 
 Package: smart-nvr
