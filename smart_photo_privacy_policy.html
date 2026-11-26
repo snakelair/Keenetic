@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Photo — Privacy Policy / Политика конфиденциальности</title>
+  <style>
+    :root {
+      --bg-main: #0B0F19;
+      --bg-card: #161B22;
+      --bg-hover: #1E2530;
+      --border: rgba(240, 246, 252, 0.14);
+      --text-main: #F0F6FC;
+      --text-muted: #8B949E;
+      --accent-cyan: #38D39F;
+      --accent-blue: #58A6FF;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+      background: radial-gradient(circle at top right, rgba(31,111,235,0.16), transparent 45%),
+                  radial-gradient(circle at top left, rgba(56,211,159,0.12), transparent 40%),
+                  var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.65;
+      padding: 32px 16px 64px;
+    }
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 20px 24px;
+      margin-bottom: 24px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #1F6FEB, #38D39F);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+    .brand h1 {
+      margin: 0;
+      font-size: 1.35rem;
+      line-height: 1.2;
+    }
+    .brand p {
+      margin: 2px 0 0;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+    .lang-switch {
+      display: flex;
+      gap: 8px;
+    }
+    .lang-btn {
+      background: var(--bg-hover);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 8px 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .lang-btn.active {
+      background: rgba(56, 211, 159, 0.16);
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+    }
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 26px 28px;
+      margin-bottom: 18px;
+    }
+    h2 {
+      margin-top: 0;
+      font-size: 1.15rem;
+      color: var(--accent-cyan);
+    }
+    ul {
+      padding-left: 20px;
+      margin: 8px 0 0;
+    }
+    li { margin-bottom: 8px; }
+    code {
+      background: rgba(88, 166, 255, 0.12);
+      color: var(--accent-blue);
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-size: 0.9em;
+    }
+    a { color: var(--accent-blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      background: rgba(56, 211, 159, 0.12);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(56, 211, 159, 0.35);
+      margin-bottom: 12px;
+    }
+    .hidden { display: none; }
+    footer {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-top: 24px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+            <circle cx="12" cy="13" r="4"/>
+          </svg>
+        </div>
+        <div>
+          <h1>Smart Photo</h1>
+          <p>Privacy Policy / Политика конфиденциальности • com.smartphoto.sync</p>
+        </div>
+      </div>
+      <div class="lang-switch">
+        <button class="lang-btn active" id="btn-ru" onclick="setLang('ru')">RU</button>
+        <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+    </div>
+
+    <!-- RUSSIAN -->
+    <div id="lang-ru">
+      <div class="card">
+        <span class="badge">Последнее обновление: 26 ноября 2026</span>
+        <h2>1. Принцип Zero-Collection</h2>
+        <p>
+          <strong>Smart Photo</strong> — это автономная галерея и клиент синхронизации с вашим личным сервером
+          SmartPhoto (Keenetic Entware, Linux или Windows). Разработчик <strong>не собирает, не хранит на своих серверах,
+          не продаёт и не передаёт третьим лицам</strong> ваши фотографии, видеозаписи, биометрические векторы или аналитику.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>2. Какие данные используются на устройстве</h2>
+        <ul>
+          <li><strong>Медиафайлы и EXIF-метаданные:</strong> разрешения <code>READ_MEDIA_IMAGES</code>, <code>READ_MEDIA_VIDEO</code>,
+            <code>READ_MEDIA_VISUAL_USER_SELECTED</code> и <code>ACCESS_MEDIA_LOCATION</code> нужны только для отображения локальной галереи,
+            просмотра EXIF/GPS-сведений и резервного копирования выбранных папок напрямую на ваш сервер с проверкой SHA-256.</li>
+          <li><strong>Локальный ИИ-поиск и лица:</strong> распознавание и кластеризация лиц (Google ML Kit, ONNX SCRFD &amp; ArcFace)
+            и векторный поиск выполняются <strong>полностью локально на вашем смартфоне</strong>.</li>
+          <li><strong>Камера:</strong> разрешение <code>CAMERA</code> используется только для сканирования QR-кода подключения сервера.</li>
+          <li><strong>Токены и настройки:</strong> хранятся локально в <code>DataStore</code> и исключены из облачного бэкапа Android.</li>
+          <li><strong>Облачный PIN (опционально):</strong> при ручном выборе 6-значного Cloud PIN приложение временно запрашивает параметры подключения через брокер <code>ntfy.sh</code>.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>3. Реклама, аналитика и удаление данных</h2>
+        <ul>
+          <li>В приложении <strong>отсутствуют реклама и трекинговые SDK</strong>.</li>
+          <li>Удалить все локальные индексы и токены можно в любой момент через «Очистить данные» в настройках Android или удаление приложения.</li>
+          <li>Удаление фото в галерее всегда требует подтверждения с выбором области («Только с устройства», «Только с сервера», «Отовсюду»).</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>4. Контакты</h2>
+        <p>
+          Вопросы и обращения по приватности:
+          <a href="https://github.com/snakelair/Keenetic/issues" target="_blank" rel="noopener">GitHub Issues</a>
+          • Email: <a href="mailto:snakelair@yandex.ru">snakelair@yandex.ru</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- ENGLISH -->
+    <div id="lang-en" class="hidden">
+      <div class="card">
+        <span class="badge">Effective Date: November 26, 2026</span>
+        <h2>1. Zero-Collection Principle</h2>
+        <p>
+          <strong>Smart Photo</strong> is an offline-first photo &amp; video gallery and synchronization client for your personal
+          self-hosted SmartPhoto server (Keenetic Entware, Linux, or Windows). The developer does <strong>not collect, store on
+          developer servers, sell, or share</strong> your photos, videos, face embeddings, or usage analytics.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>2. Data Processed Locally &amp; Self-Hosted Sync</h2>
+        <ul>
+          <li><strong>Photos, Videos &amp; EXIF Metadata:</strong> Permissions <code>READ_MEDIA_IMAGES</code>, <code>READ_MEDIA_VIDEO</code>,
+            <code>READ_MEDIA_VISUAL_USER_SELECTED</code>, and <code>ACCESS_MEDIA_LOCATION</code> are used solely to render your local gallery,
+            inspect EXIF/GPS details, and sync user-selected folders directly to your own server with SHA-256 verification.</li>
+          <li><strong>On-Device AI Face Clustering &amp; Search:</strong> Face detection and vector search (Google ML Kit, ONNX SCRFD &amp; ArcFace)
+            run <strong>100% locally on your device</strong>. Embeddings are stored in your local Room database and never sent to the developer.</li>
+          <li><strong>Camera:</strong> <code>CAMERA</code> permission is used exclusively to scan your server pairing QR code.</li>
+          <li><strong>Credentials:</strong> Server URLs and Sync Tokens are stored locally in Android <code>DataStore</code> and excluded from Android cloud backups.</li>
+          <li><strong>Optional Cloud PIN:</strong> Only when you explicitly use 6-digit Cloud PIN pairing, the app retrieves temporary pairing info via <code>ntfy.sh</code>.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>3. Ads, Trackers &amp; User Control</h2>
+        <ul>
+          <li>Smart Photo contains <strong>no ads, no analytics, and no tracking SDKs</strong>.</li>
+          <li>You can wipe all local databases, AI indices, and tokens at any time by clearing app data or uninstalling the app.</li>
+          <li>Media deletion always asks for explicit confirmation (Device only, Server only, or Everywhere).</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>4. Contact</h2>
+        <p>
+          Privacy inquiries:
+          <a href="https://github.com/snakelair/Keenetic/issues" target="_blank" rel="noopener">GitHub Issues</a>
+          • Email: <a href="mailto:snakelair@yandex.ru">snakelair@yandex.ru</a>
+        </p>
+      </div>
+    </div>
+
+    <footer>Smart Photo (com.smartphoto.sync) • Private Self-Hosted Gallery</footer>
+  </div>
+
+  <script>
+    function setLang(lang) {
+      document.getElementById('lang-ru').classList.toggle('hidden', lang !== 'ru');
+      document.getElementById('lang-en').classList.toggle('hidden', lang !== 'en');
+      document.getElementById('btn-ru').classList.toggle('active', lang === 'ru');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.documentElement.lang = lang;
+    }
+  </script>
+</body>
+</html>
